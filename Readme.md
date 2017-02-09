@@ -47,8 +47,9 @@ Insert a author detail view. This page includes also all news which are associat
 ### Show author in ``ext:news`` view
 
 - Access the author properties in a news record with {newsItem.newsAuthor}
-- Add a link to the profile page (don't forget to load the viewhelper {namespace md=Mediadreams\MdNewsAuthor\ViewHelpers}):
+- Add a link to the profile page
 
+Don't forget to load the viewhelper {namespace md=Mediadreams\MdNewsAuthor\ViewHelpers}:
 
     <f:link.action action="show" controller="NewsAuthor" extensionName="mdnewsauthor" pluginName="newsauthor" arguments="{newsAuthor: newsItem.newsAuthor}" pageUid="{settings.newsAuthor.authorDetailPid}" title="More about {md:ShowAuthorName(author:'{newsItem.newsAuthor}')}">
         {md:ShowAuthorName(author:'{newsItem.newsAuthor}')}
