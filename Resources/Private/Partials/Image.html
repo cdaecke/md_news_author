@@ -1,0 +1,16 @@
+<figure class="newsauthor-img">
+  <f:link.typolink parameter="{img.originalResource.properties.link}">
+    <f:media
+      file="{img}"
+      width="{imgWidth}"
+      height="{imgHeight}"
+      alt="{img.originalResource.alternative}"
+      title="{img.originalResource.title}"
+      class="{cssClass}"
+      />
+  </f:link.typolink>
+
+  <f:if condition="{img.originalResource.properties.description}">
+    <figcaption>{img.originalResource.properties.description}</figcaption> 
+  </f:if>
+</figure>
