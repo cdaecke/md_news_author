@@ -4,7 +4,7 @@ This extension is based on extbase & fluid and provides the famous extension ``e
 
 ## Requirements
 
-- TYPO3 7.6
+- TYPO3 > 7.6
 - ext:news > 4.0
 
 ### Installation
