@@ -48,6 +48,9 @@
       <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.image">
         <source>Author image</source>
       </trans-unit>
+      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.categories">
+        <source>Categories</source>
+      </trans-unit>
 
       <trans-unit id="flex_author">
         <source>General settings</source>
@@ -80,6 +83,14 @@
       <trans-unit id="flex_author.listImageHeight">
         <source>Image height (numeric with optional "m" or "c")</source>
       </trans-unit>
+
+      <trans-unit id="flex_author.tabCategory">
+        <source>Categories</source>
+      </trans-unit>
+      <trans-unit id="flex_author.categoryDesc">
+        <source>Show authors of selected categories only</source>
+      </trans-unit>
+
       <trans-unit id="flex_author.tabDetail">
         <source>Detail view settings</source>
       </trans-unit>

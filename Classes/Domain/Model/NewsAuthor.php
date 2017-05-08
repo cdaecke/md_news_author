@@ -111,6 +111,13 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
    * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
    */
   protected $image;
+
+  /**
+   * categories
+   *
+   * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
+   */
+  protected $categories;
   
   /**
    * Returns the gender
@@ -341,6 +348,49 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   public function setImage($image) 
   {
     $this->image = $image;
+  }
+
+  /**
+   * Adds a Category
+   *
+   * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
+   * @return void
+   */
+  public function addCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
+  {
+    $this->categories->attach($category);
+  }
+ 
+  /**
+   * Removes a Category
+   *
+   * @param \TYPO3\CMS\Extbase\Domain\Model\Category $categoryToRemove The Category to be removed
+   * @return void
+   */
+  public function removeCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $categoryToRemove)
+  {
+    $this->categories->detach($categoryToRemove);
+  }
+ 
+  /**
+   * Returns the categories
+   *
+   * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $categories
+   */
+  public function getCategories()
+  {
+    return $this->categories;
+  }
+ 
+  /**
+   * Sets the categories
+   *
+   * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $categories
+   * @return void
+   */
+  public function setCategories(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories)
+  {
+    $this->categories = $categories;
   }
 
 }

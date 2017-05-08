@@ -57,7 +57,13 @@ class NewsAuthorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
    */
   public function listAction()
   {
-    $newsAuthors = $this->newsAuthorRepository->findAll();
+    
+    if ($this->settings['categoriesList'] != '') {
+      $newsAuthors = $this->newsAuthorRepository->getAuthorsByCategories($this->settings['categoriesList']);
+    } else {
+      $newsAuthors = $this->newsAuthorRepository->findAll();
+    }
+
     $this->view->assign('newsAuthors', $newsAuthors);
   }
   

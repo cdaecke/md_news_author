@@ -36,5 +36,38 @@ class NewsAuthorRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
   protected $defaultOrderings = array(
     'lastname' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
   );
+
+  /**
+   * Get authors according to categories
+   *
+   * @param string $categories Comma separated UIDs of categories
+   * @return QueryInterface
+   */
+  public function getAuthorsByCategories($categories='') {
+    if (empty($categories)) {
+      throw new \InvalidArgumentException('No categories given.', 1494071855);
+    }
+
+    $constraint = array();
+    $query = $this->createQuery();
+
+    if (!is_array($categories)) {
+      $categories = \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $categories, true);
+    }
+
+    foreach ($categories as $category) {
+      $categoryConstraints[] = $query->contains('categories', $category);
+    }
+
+    $constraint[] = $query->logicalOr($categoryConstraints);
+    
+    if (!empty($constraint)) {
+      $query->matching(
+        $query->logicalAnd($constraint)
+      );
+    }
+
+    return $query->execute();
+  }
   
 }
