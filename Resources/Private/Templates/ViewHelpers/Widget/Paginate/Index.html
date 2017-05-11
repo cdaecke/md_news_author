@@ -1,0 +1,85 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<f:if condition="{configuration.insertAbove}">
+  <f:render section="paginator" arguments="{pagination: pagination,configuration:configuration}" />
+</f:if>
+
+<f:renderChildren arguments="{contentArguments}" />
+
+<f:if condition="{configuration.insertBelow}">
+  <f:render section="paginator" arguments="{pagination: pagination,configuration:configuration}" />
+</f:if>
+
+<f:section name="paginator">
+  <f:if condition="{pagination.numberOfPages} > 1">
+
+    <div class="page-navigation">
+      <p>
+        <f:translate key="LLL:EXT:md_news_author/Resources/Private/Language/locallang.xlf:template.paginate_overall" arguments="{0:pagination.current,1:pagination.numberOfPages}" />
+      </p>
+      <ul class="f3-widget-paginator">
+        <f:if condition="{pagination.previousPage}">
+          <li class="previous">
+            <f:if condition="{pagination.previousPage} > 1">
+              <f:then>
+                <f:widget.link addQueryStringMethod="GET" arguments="{currentPage: pagination.previousPage}">
+                  <f:translate key="LLL:EXT:md_news_author/Resources/Private/Language/locallang.xlf:template.paginate_previous" />
+                </f:widget.link>
+              </f:then>
+              <f:else>
+                <f:widget.link addQueryStringMethod="GET">
+                  <f:translate key="LLL:EXT:md_news_author/Resources/Private/Language/locallang.xlf:template.paginate_previous" />
+                </f:widget.link>
+              </f:else>
+            </f:if>
+          </li>
+        </f:if>
+        <f:if condition="{pagination.displayRangeStart} > 1">
+          <li class="first">
+            <f:widget.link addQueryStringMethod="GET">1</f:widget.link>
+          </li>
+        </f:if>
+        <f:if condition="{pagination.hasLessPages}">
+          <li>....</li>
+        </f:if>
+        <f:for each="{pagination.pages}" as="page">
+          <f:if condition="{page.isCurrent}">
+            <f:then>
+              <li class="current">{page.number}</li>
+            </f:then>
+            <f:else>
+              <li>
+                <f:if condition="{page.number} > 1">
+                  <f:then>
+                    <f:widget.link addQueryStringMethod="GET" arguments="{currentPage: page.number}">{page.number}</f:widget.link>
+                  </f:then>
+                  <f:else>
+                    <f:widget.link addQueryStringMethod="GET">{page.number}</f:widget.link>
+                  </f:else>
+                </f:if>
+              </li>
+            </f:else>
+          </f:if>
+        </f:for>
+        <f:if condition="{pagination.hasMorePages}">
+          <li>....</li>
+        </f:if>
+        <f:if condition="{pagination.displayRangeEnd} < {pagination.numberOfPages}">
+          <li class="last">
+            <f:widget.link addQueryStringMethod="GET" arguments="{currentPage: pagination.numberOfPages}">{pagination.numberOfPages}</f:widget.link>
+          </li>
+        </f:if>
+        <f:if condition="{pagination.nextPage}">
+          <li class="last next">
+            <f:widget.link addQueryStringMethod="GET" arguments="{currentPage: pagination.nextPage}">
+              <f:translate key="LLL:EXT:md_news_author/Resources/Private/Language/locallang.xlf:template.paginate_next" />
+            </f:widget.link>
+          </li>
+        </f:if>
+      </ul>
+    </div>
+    <div class="news-clear"></div>
+  </f:if>
+</f:section>
+</html>

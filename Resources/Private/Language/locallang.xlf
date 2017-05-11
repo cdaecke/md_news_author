@@ -31,6 +31,16 @@
       <trans-unit id="template.twitter">
         <source>Twitter</source>
       </trans-unit>
+
+      <trans-unit id="template.paginate_overall">
+        <source>Page %s of %s.</source>
+      </trans-unit>
+      <trans-unit id="template.paginate_previous">
+        <source>Previous</source>
+      </trans-unit>
+      <trans-unit id="template.paginate_next">
+        <source>Next</source>
+      </trans-unit>
       
       <trans-unit id="template.dateFormat">
         <source>%d.%m.%Y</source>
