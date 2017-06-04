@@ -117,6 +117,13 @@ Thanks for this great extension, Dmitry Dulepov!
                 ),
             ),
 
+            // sorting
+            'a-z' => array(
+                array(
+                    'GETvar' => 'tx_mdnewsauthor_newsauthor[selectedLetter]',
+                ),
+            ),
+
             // EXT:md_news_author end
             
         ),

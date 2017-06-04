@@ -83,6 +83,9 @@
       <trans-unit id="flex_author.listImageHeight">
         <source>Image height (numeric with optional "m" or "c")</source>
       </trans-unit>
+      <trans-unit id="flex_author.listAlphabeticalNavigation">
+        <source>Show alphabetical navigation</source>
+      </trans-unit>
 
       <trans-unit id="flex_author.tabCategory">
         <source>Categories</source>

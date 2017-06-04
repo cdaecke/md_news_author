@@ -53,15 +53,36 @@ class NewsAuthorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
   /**
    * action list
    *
+   * @param string $selectedLetter
    * @return void
    */
-  public function listAction()
+  public function listAction($selectedLetter="")
   {
     
+    // get all authors
+    // we need all authors all the time because the alphabetical filter needs them as well
     if ($this->settings['categoriesList'] != '') {
       $newsAuthors = $this->newsAuthorRepository->getAuthorsByCategories($this->settings['categoriesList']);
     } else {
       $newsAuthors = $this->newsAuthorRepository->findAll();
+    }
+
+    $activeLetters = array();
+    foreach($newsAuthors as $author){
+      $char = mb_substr($author->getLastname(),0,1, "UTF-8");
+      $activeLetters[$char] = true;
+    }
+    $this->view->assign('activeLetters', $activeLetters);
+    $this->view->assign('selectedLetter', $selectedLetter);
+
+    // assign selected authors only
+    // we need to query again because of the selected letter
+    if (!empty($selectedLetter)) {
+      if ($this->settings['categoriesList'] != '') {
+        $newsAuthors = $this->newsAuthorRepository->getAuthorsByCategories($this->settings['categoriesList'], $selectedLetter);
+      } else {
+        $newsAuthors = $this->newsAuthorRepository->getAuthorsByInitial($selectedLetter);
+      }
     }
 
     $this->view->assign('newsAuthors', $newsAuthors);

@@ -8,6 +8,28 @@
 
   <!--TYPO3SEARCH_end-->
   <div  class="newsauthor-list" >
+
+    <f:if condition="{settings.list.alphabeticalNavigation}">
+      <div class="alphabetical-nav">
+        <span class="letter first"><f:link.page><f:translate key="tx_newsauthor_domain_model_newsauthor.all"/></f:link.page></span>
+        <md:showAlphabeticalNavigation letters="{settings.authorList.letters}" activeLetters="{activeLetters}">
+          <f:then>
+            <f:if condition="{selectedLetter}=={letter}">
+              <f:then>
+                <span class="letter active"><f:link.action arguments="{selectedLetter:letter}">{letter}</f:link.action></span>
+              </f:then>
+              <f:else>
+                <span class="letter"><f:link.action arguments="{selectedLetter:letter}">{letter}</f:link.action></span>
+              </f:else>
+            </f:if>
+          </f:then>
+          <f:else>
+            <span class="letter">{letter}</span>
+          </f:else>
+        </md:showAlphabeticalNavigation>
+      </div>
+    </f:if>
+
     <f:widget.paginate objects="{newsAuthors}" as="newsAuthorPaginated" configuration="{settings.authorList.paginate}">
       <f:for each="{newsAuthorPaginated}" as="newsAuthor">
         <div class="newsauthor-wrapper">

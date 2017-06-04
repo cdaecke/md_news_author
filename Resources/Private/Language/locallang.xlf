@@ -15,6 +15,9 @@
       <trans-unit id="tx_newsauthor_domain_model_newsauthor.backLinkLabel">
         <source>Back to autor list</source>
       </trans-unit>
+      <trans-unit id="tx_newsauthor_domain_model_newsauthor.all">
+        <source>All</source>
+      </trans-unit>
 
       <trans-unit id="template.phone">
         <source>Phone</source>

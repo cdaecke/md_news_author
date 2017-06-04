@@ -38,12 +38,35 @@ class NewsAuthorRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
   );
 
   /**
+   * Get authors according to the initial of the lastname
+   *
+   * @param string $initial Initial of lastname
+   * @return QueryInterface
+   */
+  public function getAuthorsByInitial($initial) {
+    if (empty($initial)) {
+      throw new \InvalidArgumentException('No initial for lastname given.', 1496613849);
+    }
+
+    $query = $this->createQuery();
+
+    $query->matching(
+      $query->logicalAnd(
+        $query->like('lastname', $initial . '%')
+      )
+    );
+
+    return $query->execute();
+  }
+
+  /**
    * Get authors according to categories
    *
    * @param string $categories Comma separated UIDs of categories
+   * @param string $initial Initial of lastname
    * @return QueryInterface
    */
-  public function getAuthorsByCategories($categories='') {
+  public function getAuthorsByCategories($categories='', $initial='') {
     if (empty($categories)) {
       throw new \InvalidArgumentException('No categories given.', 1494071855);
     }
@@ -60,6 +83,12 @@ class NewsAuthorRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
     $constraint[] = $query->logicalOr($categoryConstraints);
+
+    if (!empty($initial)) {
+      $constraint[] = $query->logicalAnd(
+        $query->like('lastname', $initial . '%')
+      );
+    }
     
     if (!empty($constraint)) {
       $query->matching(

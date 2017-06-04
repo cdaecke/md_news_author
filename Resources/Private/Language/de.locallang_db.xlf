@@ -109,6 +109,10 @@
         <source>Image height (numeric with optional "m" or "c")</source>
         <target>Bildhöhe (Zahl in Pixel mit optionalem "m" oder "c")</target>
       </trans-unit>
+      <trans-unit id="flex_author.listAlphabeticalNavigation">
+        <source>Show alphabetical navigation</source>
+        <target>Zeige alphabetischen Filter</target>
+      </trans-unit>
 
       <trans-unit id="flex_author.tabCategory">
         <source>Categories</source>

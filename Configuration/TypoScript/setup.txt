@@ -7,6 +7,8 @@ plugin.tx_mdnewsauthor {
     newsDetailPid = {$plugin.tx_mdnewsauthor.settings.newsDetailPid}
 
     authorList {
+      letters = {$plugin.tx_mdnewsauthor.settings.authorList.letters}
+
       paginate {
         itemsPerPage = {$plugin.tx_mdnewsauthor.settings.authorList.paginate.itemsPerPage}
         insertAbove = {$plugin.tx_mdnewsauthor.settings.authorList.paginate.insertAbove}
