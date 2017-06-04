@@ -104,6 +104,19 @@ Thanks for this great extension, Dmitry Dulepov!
                     ),
                 ),
             ),
+
+            'authorList' => array(
+                '0' => array(
+                    'GETvar' => 'tx_mdnewsauthor_newsauthor[action]',
+                    'noMatch' => 'bypass',
+                ),
+
+                '1' => array(
+                    'GETvar' => 'tx_mdnewsauthor_newsauthor[controller]',
+                    'noMatch' => 'bypass',
+                ),
+            ),
+
             // EXT:md_news_author end
             
         ),
