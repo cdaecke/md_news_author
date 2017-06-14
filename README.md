@@ -31,6 +31,7 @@ Insert paginated list of all authors.
 - Choose for *Page with single author view* the page with single author view
 - Select the sysfolder where the author records are stored
 - Additional settings can be found in the tab *List view settings*
+- If needed, show authors of certain categoreies only (tab *Categories*)
 - Save and close
 
 ### Authors detail page
