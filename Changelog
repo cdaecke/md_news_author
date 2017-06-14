@@ -1,0 +1,14 @@
+Version 2.0.0 (2017-06-14)
+  - add alphabetical filter for author list
+  - add categories for authors
+
+  All changess:
+  - 2017-06-14 [DOC] add categories to documentation (Commit f801e27 by chris)
+  - 2017-06-14 [TASK] update version number (Commit 7c47626 by chris)
+  - 2017-06-05 [FEATURE] add alphabetical filter to author list (Commit af24452 by chris)
+  - 2017-06-04 [TASK] update documentation: add list view to realURL config (Commit f75a9eb by chris)
+  - 2017-05-14 [TASK] add tags for ext:indexed_search in templates (<!--TYPO3SEARCH_end--> and <!--TYPO3SEARCH_begin-->) - Do not index the author list - Do not index the articles on authors detail page (Commit ecb4ec3 by chris)
+  - 2017-05-12 [TASK] use own pagination template (copy of the news pagination - thanks Georg Ringer!) (Commit 0fbe573 by chris)
+  - 2017-05-08 [TASK] add categories to authors, filter authors by categories references #1 (Commit f50f2aa by chris)
+  - 2017-05-06 [TASK] add pagination widget to list view (Commit 482f5d1 by chris)
+  - 2017-05-06 [TASK] change version number to DEV (Commit c54a599 by chris)
