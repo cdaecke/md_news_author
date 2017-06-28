@@ -130,6 +130,9 @@ Thanks for this great extension, Dmitry Dulepov!
         ),
     ),
 
+## Bugs and Known Issues
+If you find a bug, it would be nice if you add an issue on [Github](https://github.com/cdaecke/md_news_author/issues).
+
 # THANKS
 
 Thanks a lot to all who make this outstanding TYPO3 project possible!
