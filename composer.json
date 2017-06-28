@@ -28,7 +28,7 @@
   },
   "require": {
     "php": ">=5.3.7 <8.0",
-    "typo3/cms-core": ">=7.6,<9.0"
+    "typo3/cms-core": ">=7.6,<9.0",
     "georgringer/news": ">=4.0.0"
   },
   "autoload": {
