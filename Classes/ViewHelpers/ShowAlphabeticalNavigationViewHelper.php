@@ -41,17 +41,15 @@ class ShowAlphabeticalNavigationViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHel
 {
 
   /**
-   * @param string $letters
-   * @param array $activeLetters
    * @return string
    */
-  public function render($letters, $activeLetters) {
+  public function render() {
     $alphabet = '';
-    $lettersArray = explode (",", $letters);
+    $lettersArray = explode (",", $this->arguments['letters']);
     
     foreach($lettersArray as $letter){
       $this->templateVariableContainer->add('letter', $letter);
-      if(array_key_exists($letter, $activeLetters)){
+      if(array_key_exists($letter, $this->arguments['activeLetters'])){
         $alphabet .= $this->renderThenChild();
       }else{
         $alphabet .= $this->renderElseChild();
