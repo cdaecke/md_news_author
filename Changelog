@@ -1,8 +1,20 @@
+Version 2.0.1 (2017-07-10)
+  - add composer.json
+  - fix ShowAlphabeticalNavigationViewHelper()
+
+  All changes
+  - 2017-07-10 [TASK] raise version number (Commit 083177d by chris)
+  - 2017-07-10 [BUGFIX] remove PHP warning in ShowAlphabeticalNavigationViewHelper(). Make it compatible with AbstractConditionViewHelper::render() (Commit b0eced4 by chris)
+  - 2017-06-28 [BUGFIX] composer.json (Commit 9d6d438 by chris)
+  - 2017-06-28 [DOC] add section "Bugs and Known Issues" (Commit f8599d1 by chris)
+  - 2017-06-28 [TASK] add composer.json (Commit b76a1f2 by chris)
+
+
 Version 2.0.0 (2017-06-14)
   - add alphabetical filter for author list
   - add categories for authors
 
-  All changess:
+  All changes:
   - 2017-06-14 [DOC] add categories to documentation (Commit f801e27 by chris)
   - 2017-06-14 [TASK] update version number (Commit 7c47626 by chris)
   - 2017-06-05 [FEATURE] add alphabetical filter to author list (Commit af24452 by chris)
