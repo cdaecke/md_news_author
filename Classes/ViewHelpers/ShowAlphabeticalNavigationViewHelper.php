@@ -41,6 +41,17 @@ class ShowAlphabeticalNavigationViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHel
 {
 
   /**
+   * Initialize arguments
+   *
+   * @return void
+   */
+  public function initializeArguments() {
+    parent::initializeArguments();
+    $this->registerArgument('letters', 'string', '', true);
+    $this->registerArgument('activeLetters', 'array', '', true);
+  }
+
+  /**
    * @return string
    */
   public function render() {
