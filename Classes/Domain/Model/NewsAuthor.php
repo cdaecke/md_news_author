@@ -118,6 +118,14 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
    * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
    */
   protected $categories;
+
+  /**
+   * news
+   *
+   * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\News>
+   * @lazy
+   */
+  protected $news;
   
   /**
    * Returns the gender
@@ -391,6 +399,49 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   public function setCategories(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories)
   {
     $this->categories = $categories;
+  }
+
+  /**
+   * Adds a News
+   *
+   * @param \Mediadreams\MdNewsAuthor\Domain\Model\News $news
+   * @return void
+   */
+  public function addNews(\Mediadreams\MdNewsAuthor\Domain\Model\News $news)
+  {
+    $this->news->attach($news);
+  }
+ 
+  /**
+   * Removes a News
+   *
+   * @param \Mediadreams\MdNewsAuthor\Domain\Model\News $newsToRemove The News to be removed
+   * @return void
+   */
+  public function removeNews(\Mediadreams\MdNewsAuthor\Domain\Model\News $newsToRemove)
+  {
+    $this->news->detach($newsToRemove);
+  }
+ 
+  /**
+   * Returns the news
+   *
+   * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\News> $news
+   */
+  public function getNews()
+  {
+    return $this->news;
+  }
+ 
+  /**
+   * Sets the news
+   *
+   * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\News> $news
+   * @return void
+   */
+  public function setNews(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $news)
+  {
+    $this->news = $news;
   }
 
 }

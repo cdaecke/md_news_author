@@ -9,7 +9,7 @@
 <div class="newsauthor-detail" itemscope itemtype="http://schema.org/Person">
   <div class="author-wrapper">
     <h2 itemprop="name">
-      {md:ShowAuthorName(author:'{newsAuthor}')}
+      {md:ShowAuthorName(author: newsAuthor)}
     </h2>
 
     <f:if condition="{newsAuthor.image}">
@@ -61,7 +61,7 @@
 
   <!--TYPO3SEARCH_end-->
   <section class="articles-wrapper" id="author-articles">
-    <h2><f:translate key="template.show.articleHeader" arguments="{0: '{md:ShowAuthorName(author:\'{newsAuthor}\')}'}" /></h2>
+    <h2><f:translate key="template.show.articleHeader" arguments="{0: '{md:ShowAuthorName(author:newsAuthor)}'}" /></h2>
 
     <f:widget.paginate objects="{authorNews}" as="paginatedAuthorNews" configuration="{itemsPerPage: '{settings.authorDetail.paginate.itemsPerPage}', insertAbove: '{settings.authorDetail.paginate.insertAbove}', insertBelow: '{settings.authorDetail.paginate.insertBelow}', maximumNumberOfLinks: '{settings.authorDetail.paginate.maximumNumberOfLinks}'}">
 

@@ -295,6 +295,20 @@ return array(
         'gif,jpg,jpeg,png'
       ),
     ),
+    'news' => array(
+      'exclude' => 1,
+      'label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.news',
+      'config' => array(
+        'type' => 'select',
+        'multiple' => 1,
+        'foreign_table' => 'tx_news_domain_model_news',
+        'MM' => 'tx_mdnewsauthor_news_newsauthor_mm',
+        'MM_opposite_field' => 'news',
+        'foreign_table_where' => ' AND tx_news_domain_model_news.pid=###CURRENT_PID### ORDER BY tx_news_domain_model_news.datetime DESC ',
+        'minitems' => 0,
+        'maxitems' => 99,
+      ),
+    ),
     
   ),
 );

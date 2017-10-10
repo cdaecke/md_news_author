@@ -45,8 +45,8 @@
               <f:render partial="Image" arguments="{img:newsAuthor.image, imgWidth:settings.list.image.width, imgHeight:settings.list.image.height, cssClass:'img-responsive'}" />
             </f:if>
 
-            <div class="name">            
-                {md:ShowAuthorName(author:'{newsAuthor}')}
+            <div class="name">
+              {md:ShowAuthorName(author: newsAuthor)}
             </div>
           </f:link.action>
         </div><!-- /.newsauthor-wrapper -->

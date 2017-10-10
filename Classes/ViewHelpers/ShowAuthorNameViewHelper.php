@@ -37,7 +37,7 @@ namespace Mediadreams\MdNewsAuthor\ViewHelpers;
  * <code>
  * <md:ShowAuthorName author="{newsItem.newsAuthor}" />
  * OR inline
- * {md:ShowAuthorName(author:'{newsItem.newsAuthor}')}
+ * {md:ShowAuthorName(author: newsAuthor)}
  * </code>
  * <output>
  * {Title} Firstname Lastname

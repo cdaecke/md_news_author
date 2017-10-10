@@ -51,17 +51,38 @@ class NewsRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
   /**
    * Find news by authors uid
    *
-   * @param integer $authorUid
-   * @return Ambigous <\TYPO3\CMS\Extbase\Persistence\QueryResultInterface, multitype:>
+   * @param int $authorUid Uid of author
+   * @return array
    */
   public function getNewsByAuthor($authorUid)
   {
-    $query = $this->createQuery();
+    $data = [];
 
-    $query->matching(
-      $query->equals('news_author', $authorUid)
+    $res = $this->getDatabaseConnection()->exec_SELECT_mm_query(
+      'tx_news_domain_model_news.*',
+      'tx_news_domain_model_news',
+      'tx_mdnewsauthor_news_newsauthor_mm',
+      'tx_mdnewsauthor_domain_model_newsauthor',
+      ' AND tx_mdnewsauthor_domain_model_newsauthor.uid=' . (int)$authorUid . ' AND tx_news_domain_model_news.deleted = 0 AND tx_news_domain_model_news.hidden = 0',
+      '',
+      'tx_news_domain_model_news.datetime DESC'
     );
 
-    return $query->execute();
+    while ($row = $this->getDatabaseConnection()->sql_fetch_assoc($res)) {
+      $data[] = $row;
+    }
+
+    $this->getDatabaseConnection()->sql_free_result($res);
+
+    return $data;
   }
+
+  /**
+   * @return \TYPO3\Cms\Core\Database\DatabaseConnection
+   */
+  protected static function getDatabaseConnection()
+  {
+    return $GLOBALS['TYPO3_DB'];
+  }
+  
 }

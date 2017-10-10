@@ -67,6 +67,10 @@
         <source>Categories</source>
         <target>Kategorien</target>
       </trans-unit>
+      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.news">
+        <source>News</source>
+        <target>News</target>
+      </trans-unit>
 
       <trans-unit id="flex_author">
         <source>General settings</source>

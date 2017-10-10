@@ -101,8 +101,10 @@ class NewsAuthorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     $GLOBALS['TSFE']->page['title'] = $pageTitle;
     $GLOBALS['TSFE']->indexedDocTitle = $pageTitle;
 
-    $this->view->assign('newsAuthor', $newsAuthor);
-    $this->view->assign('authorNews', $this->newsRepository->getNewsByAuthor($newsAuthor->getUid()));
+    $this->view->assignMultiple(array(
+      'newsAuthor' => $newsAuthor,
+      'authorNews' => $this->newsRepository->getNewsByAuthor($newsAuthor->getUid())
+    ));
   }
 
 }
