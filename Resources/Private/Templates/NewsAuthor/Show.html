@@ -67,7 +67,7 @@
 
       <f:for each="{paginatedAuthorNews}" as="newsItem">
         <article itemscope="itemscope" itemtype="http://schema.org/Article">
-          <f:link.action pageUid="{f:if(condition:'{newsItem.firstCategory.singlePid}',then:'{newsItem.firstCategory.singlePid}',else:'{settings.newsDetailPid}')}" action="detail" controller="News" extensionName="News" pluginName="Pi1" arguments="{news:newsItem}">
+          <f:link.page pageUid="{f:if(condition:'{newsItem.firstCategory.singlePid}',then:'{newsItem.firstCategory.singlePid}',else:'{settings.newsDetailPid}')}" additionalParams="{tx_news_pi1: {news: newsItem.uid, controller: 'News', action: 'detail'}}">
             <div class="article-meta">
               <span class="news-list-date">
                 <time datetime="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}">
@@ -89,7 +89,7 @@
                 </f:else>
               </f:if>
             </div>  
-          </f:link.action>
+          </f:link.page>
         </article>
       </f:for>
 
