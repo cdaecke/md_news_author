@@ -1,6 +1,6 @@
 # TYPO3 Extension ``md_news_author``
 
-This extension is based on extbase & fluid and provides the famous extension ``ext:news`` of Georg Ringer (thanks a lot!) with an author. You can centrally manage authors and attach them to news records. The extensions comes with a plugin, which lists all authors and provides a detail page of one author which also shows the news records of the selected author.
+This extension is based on extbase & fluid and provides the famous extension ``ext:news`` of Georg Ringer (thanks a lot!) with one or more authors. You can centrally manage authors and attach them to news records. The extensions comes with a plugin, which lists all authors and provides a detail page of one author which also shows the news records of the selected author.
 
 ## Requirements
 
@@ -19,7 +19,7 @@ This extension is based on extbase & fluid and provides the famous extension ``e
 
 - Create some author records on a sysfolder (use list modul, push plus-icon [*Create new record*] and select *News Author*)
 - Create a news record on a sysfolder and find the new tab *Author*
-- Select the author for the news record
+- Select one or more authors for the news record
 - Save and close
 
 ### List authors
@@ -47,14 +47,23 @@ Insert a author detail view. This page includes also all news which are associat
 
 ### Show author in ``ext:news`` view
 
-- Access the author properties in a news record with {newsItem.newsAuthor}
+- Access the author properties in a news record with {newsItem.newsAuthor}. Since there could be more than one author attached to a news record, you have to iterate:
+
+    <f:for each="{newsItem.newsAuthor}" as="author">
+        {md:ShowAuthorName(author:'{author}')}
+        {author.phone}
+        {author. ...}
+    </f:for>
+
 - Add a link to the profile page
 
 Don't forget to load the viewhelper {namespace md=Mediadreams\MdNewsAuthor\ViewHelpers}:
 
-    <f:link.action action="show" controller="NewsAuthor" extensionName="mdnewsauthor" pluginName="newsauthor" arguments="{newsAuthor: newsItem.newsAuthor}" pageUid="{settings.newsAuthor.authorDetailPid}" title="More about {md:ShowAuthorName(author:'{newsItem.newsAuthor}')}">
-        {md:ShowAuthorName(author:'{newsItem.newsAuthor}')}
-    </f:link.action>
+    <f:for each="{newsItem.newsAuthor}" as="author">
+        <f:link.action action="show" controller="NewsAuthor" extensionName="mdnewsauthor" pluginName="newsauthor" arguments="{newsAuthor: author}" pageUid="{settings.newsAuthor.authorDetailPid}" title="More about {md:ShowAuthorName(author:'{author}')}">
+            <md:ShowAuthorName author="{author}" />
+        </f:link.action>
+    </f:for>
 
 ### Page TSconfig
 
