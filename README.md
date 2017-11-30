@@ -56,6 +56,7 @@ Insert a author detail view. This page includes also all news which are associat
         {author. ...}
     </f:for>
 
+
 - Add a link to the profile page
 
 Don't forget to load the viewhelper {namespace md=Mediadreams\MdNewsAuthor\ViewHelpers}:
