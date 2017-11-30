@@ -171,7 +171,7 @@ return array(
       'config' => array(
         'type' => 'input',
         'size' => 30,
-        'eval' => 'trim,required'
+        'eval' => 'trim'
       ),
     ),
     'position' => array(
@@ -180,7 +180,7 @@ return array(
       'config' => array(
         'type' => 'input',
         'size' => 30,
-        'eval' => 'trim,required'
+        'eval' => 'trim'
       ),
     ),
     'phone' => array(
