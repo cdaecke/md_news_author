@@ -14,7 +14,7 @@
     <f:if condition="{newsAuthor.companie}">
         <dt>{f:translate(key:'template.companie')}</dt>
         <dd itemprop="telephone">
-            <f:link.typolink parameter="tel:{newsAuthor.companie}"><i class="fa fa-building-o" aria-hidden="true"></i>{newsAuthor.phone}</f:link.typolink>
+            <f:link.typolink parameter="tel:{newsAuthor.companie}"><i class="fa fa-building-o" aria-hidden="true"></i>{newsAuthor.companie}</f:link.typolink>
         </dd>
     </f:if>
     <f:if condition="{newsAuthor.position}">
