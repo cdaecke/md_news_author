@@ -266,7 +266,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   /**
    * Returns the position
    *
-   * @return string $lastname
+   * @return string position
    */
   public function getPosition()
   {
