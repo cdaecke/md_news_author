@@ -62,7 +62,23 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
    * @validate NotEmpty
    */
   protected $lastname = '';
-
+    
+  /**
+   * companie
+   *
+   * @var string
+   * @validate NotEmpty
+   */
+  protected $companie = '';
+  
+  /**
+   * position
+   *
+   * @var string
+   * @validate NotEmpty
+   */
+  protected $position = '';
+  
   /**
    * phone
    *
@@ -97,6 +113,21 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
    * @var string
    */
   protected $twitter = '';
+  
+  /**
+   * linkedin
+   *
+   * @var string
+   */
+  protected $linkedin = '';
+
+  /**
+   * xing
+   *
+   * @var string
+   */
+  protected $xing = ''; 
+   
   
   /**
    * bio
@@ -212,6 +243,48 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   }
 
   /**
+   * Returns the companie
+   *
+   * @return string companie
+   */
+  public function getCompanie()
+  {
+    return $this->companie;
+  }
+  
+  /**
+   * Sets the companie
+   *
+   * @param string companie
+   * @return void
+   */
+  public function setCompanie($companie)
+  {
+    $this->companie = $companie;
+  }
+  
+  /**
+   * Returns the position
+   *
+   * @return string $lastname
+   */
+  public function getPosition()
+  {
+    return $this->position;
+  }
+  
+  /**
+   * Sets the position
+   *
+   * @param string position
+   * @return void
+   */
+  public function setPosition($position)
+  {
+    $this->position = $position;
+  }
+
+  /**
    * Returns the phone numer
    *
    * @return string $phone
@@ -314,6 +387,48 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   public function setTwitter($twitter)
   {
     $this->twitter = $twitter;
+  }
+    
+  /**
+   * Returns the linkedin
+   *
+   * @return string linkedin
+   */
+  public function getLinkedin()
+  {
+    return $this->linkedin;
+  }
+  
+  /**
+   * Sets the linkedin
+   *
+   * @param string linkedin
+   * @return void
+   */
+  public function setLinkedin($linkedin)
+  {
+    $this->linkedin = $linkedin;
+  }
+
+  /**
+   * Returns the xing
+   *
+   * @return string xing
+   */
+  public function getXing()
+  {
+    return $this->xing;
+  }
+  
+  /**
+   * Sets the xing
+   *
+   * @param string xing
+   * @return void
+   */
+  public function setXing($xing)
+  {
+    $this->xing = $xing;
   }
 
   /**
