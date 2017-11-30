@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
   'title' => 'News Author',
-  'description' => 'Adds an author to a tx_news record, show a list of all authors and display a detail page of the author containing the attached news entries.',
+  'description' => 'Adds one or more authors to a tx_news record, show a list of all authors and display a detail page of the author containing the attached news entries.',
   'category' => 'plugin',
   'author' => 'Christoph Daecke',
   'author_email' => 'typo3@mediadreams.org',
@@ -21,7 +21,7 @@ $EM_CONF[$_EXTKEY] = array(
   'uploadfolder' => '0',
   'createDirs' => '',
   'clearCacheOnLoad' => 0,
-  'version' => '3.0.0-DEV',
+  'version' => '3.0.0',
   'constraints' => array(
     'depends' => array(
       'typo3' => '7.6.0-8.7.99',
