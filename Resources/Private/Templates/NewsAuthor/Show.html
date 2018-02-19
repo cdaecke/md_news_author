@@ -11,7 +11,18 @@
     <h2 itemprop="name">
       {md:ShowAuthorName(author: newsAuthor)}
     </h2>
-
+    <f:if condition="{newsAuthor.company}">
+        <dt>{f:translate(key:'template.company')}</dt>
+        <dd itemprop="worksFor">
+            <f:link.typolink parameter="tel:{newsAuthor.company}"><i class="fa fa-building-o" aria-hidden="true"></i>{newsAuthor.company}</f:link.typolink>
+        </dd>
+    </f:if>
+    <f:if condition="{newsAuthor.position}">
+        <dt>{f:translate(key:'template.position')}</dt>
+        <dd itemprop="jobTitle">
+            <f:link.typolink parameter="tel:{newsAuthor.phone}"><i class="fa fa-briefcase" aria-hidden="true"></i>{newsAuthor.position}</f:link.typolink>
+        </dd>
+    </f:if>
     <f:if condition="{newsAuthor.image}">
       <f:render partial="Image" arguments="{img:newsAuthor.image, imgWidth:settings.detail.image.width, imgHeight:settings.detail.image.height, cssClass:'img-responsive'}" />
     </f:if>
@@ -43,6 +54,18 @@
         <dt>{f:translate(key:'template.twitter')}</dt>
         <dd><f:link.external uri="{newsAuthor.twitter}"><i class="fa fa-twitter-square" aria-hidden="true"></i>{newsAuthor.twitter}</f:link.external></dd>
       </f:if>
+        <f:if condition="{newsAuthor.linkedin}">
+            <dt>{f:translate(key:'template.linkedin')}</dt>
+            <dd>
+                <f:link.external uri="{newsAuthor.linkedin}"><i class="fa fa-linkedin-square" aria-hidden="true"></i>{newsAuthor.linkedin}</f:link.external>
+            </dd>
+        </f:if>
+        <f:if condition="{newsAuthor.xing}">
+            <dt>{f:translate(key:'template.xing')}</dt>
+            <dd>
+                <f:link.external uri="{newsAuthor.xing}"><i class="fa fa-xing-square" aria-hidden="true"></i>{newsAuthor.xing}</f:link.external>
+            </dd>
+        </f:if>  
     </dl>
     
     <f:if condition="{settings.listPid}">

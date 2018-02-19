@@ -27,6 +27,12 @@
       <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.lastname">
         <source>Lastname</source>
       </trans-unit>
+      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.company">
+        <source>Company</source>
+      </trans-unit>
+      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.position">
+        <source>Position</source>
+      </trans-unit>  
       <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.phone">
         <source>Phone number</source>
       </trans-unit>
@@ -41,6 +47,12 @@
       </trans-unit>
       <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.twitter">
         <source>Twitter</source>
+      </trans-unit>
+      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.linkedin">
+        <source>LinkedIn</source>
+      </trans-unit>
+      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.xing">
+        <source>Xing</source>
       </trans-unit>
       <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.bio">
         <source>Bio</source>

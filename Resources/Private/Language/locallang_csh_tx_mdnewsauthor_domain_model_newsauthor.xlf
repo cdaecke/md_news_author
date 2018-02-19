@@ -15,6 +15,12 @@
       <trans-unit id="lastname.description">
         <source>Authors lastname (mandatory)</source>
       </trans-unit>
+      <trans-unit id="company.description">
+        <source>Authors Company</source>
+      </trans-unit>
+      <trans-unit id="position.description">
+        <source>Authors Company Position</source>
+      </trans-unit>
       <trans-unit id="phone.description">
         <source>Authors phone number</source>
       </trans-unit>
@@ -29,6 +35,12 @@
       </trans-unit>
       <trans-unit id="twitter.description">
         <source>Authors Twitter profile url</source>
+      </trans-unit>
+      <trans-unit id="xing.description">
+        <source>Authors Xing profile url</source>
+      </trans-unit>
+      <trans-unit id="linkedin.description">
+        <source>Authors Linkedin profile url</source>
       </trans-unit>
       <trans-unit id="bio.description">
         <source>Details about the author</source>

@@ -29,14 +29,15 @@ return array(
     'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('md_news_author') . 'Resources/Public/Icons/tx_mdnewsauthor_domain_model_newsauthor.gif'
   ),
   'interface' => array(
-    'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, gender, title, firstname, lastname, phone, email, www, facebook, twitter, bio, image',
+    'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, gender, title, firstname, lastname, company, position, phone, email, www, facebook, twitter, xing, linkedin, bio, image',
   ),
   'types' => array(
     '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, ;;palette_name, ;;palette_contact, bio;;;richtext:rte_transform[mode=ts_links], image, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, hidden, starttime, endtime'),
   ),
   'palettes' => array(
     'palette_name' => array('showitem' => 'gender, title, --linebreak--, firstname, lastname'),
-    'palette_contact' => array('showitem' => 'phone, --linebreak--, email, www, --linebreak--, facebook, twitter'),
+    'palette_companie' => array('showitem' => 'company, position'),
+    'palette_contact' => array('showitem' => 'phone, --linebreak--, email, www, --linebreak--, facebook, twitter, --linebreak--, linkedin, xing'),
   ),
   'columns' => array(
   
@@ -164,6 +165,24 @@ return array(
         'eval' => 'trim,required'
       ),
     ),
+    'company' => array(
+      'exclude' => 1,
+      'label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.company',
+      'config' => array(
+        'type' => 'input',
+        'size' => 30,
+        'eval' => 'trim'
+      ),
+    ),
+    'position' => array(
+      'exclude' => 1,
+      'label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.position',
+      'config' => array(
+        'type' => 'input',
+        'size' => 30,
+        'eval' => 'trim'
+      ),
+    ),
     'phone' => array(
       'exclude' => 1,
       'label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.phone',
@@ -203,6 +222,24 @@ return array(
     'twitter' => array(
       'exclude' => 1,
       'label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.twitter',
+      'config' => array(
+        'type' => 'input',
+        'size' => 30,
+        'eval' => 'trim'
+      ),
+    ),
+    'xing' => array(
+      'exclude' => 1,
+      'label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.xing',
+      'config' => array(
+        'type' => 'input',
+        'size' => 30,
+        'eval' => 'trim'
+      ),
+    ),
+    'linkedin' => array(
+      'exclude' => 1,
+      'label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.linkedin',
       'config' => array(
         'type' => 'input',
         'size' => 30,
