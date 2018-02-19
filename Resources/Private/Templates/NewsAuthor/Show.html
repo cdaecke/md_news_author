@@ -11,15 +11,15 @@
     <h2 itemprop="name">
       {md:ShowAuthorName(author: newsAuthor)}
     </h2>
-    <f:if condition="{newsAuthor.companie}">
-        <dt>{f:translate(key:'template.companie')}</dt>
-        <dd itemprop="telephone">
-            <f:link.typolink parameter="tel:{newsAuthor.companie}"><i class="fa fa-building-o" aria-hidden="true"></i>{newsAuthor.companie}</f:link.typolink>
+    <f:if condition="{newsAuthor.company}">
+        <dt>{f:translate(key:'template.company')}</dt>
+        <dd itemprop="worksFor">
+            <f:link.typolink parameter="tel:{newsAuthor.company}"><i class="fa fa-building-o" aria-hidden="true"></i>{newsAuthor.company}</f:link.typolink>
         </dd>
     </f:if>
     <f:if condition="{newsAuthor.position}">
         <dt>{f:translate(key:'template.position')}</dt>
-        <dd itemprop="telephone">
+        <dd itemprop="jobTitle">
             <f:link.typolink parameter="tel:{newsAuthor.phone}"><i class="fa fa-briefcase" aria-hidden="true"></i>{newsAuthor.position}</f:link.typolink>
         </dd>
     </f:if>
