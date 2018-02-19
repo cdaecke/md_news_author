@@ -64,7 +64,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   protected $lastname = '';
     
   /**
-   * companie
+   * company
    *
    * @var string
    * @validate NotEmpty
@@ -243,9 +243,9 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   }
 
   /**
-   * Returns the companie
+   * Returns the company
    *
-   * @return string companie
+   * @return string company
    */
   public function getCompany()
   {
@@ -253,9 +253,9 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   }
   
   /**
-   * Sets the companie
+   * Sets the company
    *
-   * @param string companie
+   * @param string company
    * @return void
    */
   public function setCompany($company)
