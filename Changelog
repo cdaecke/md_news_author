@@ -1,3 +1,9 @@
+Version 3.0.1 (2018-02-19)
+  BUGFIX: Do not allow to add the same author multiple times to the same news record
+
+  All changes
+  https://github.com/cdaecke/md_news_author/compare/v3.0.0...v3.0.1
+
 Version 3.0.0 (2017-11-30)
   Add possibility to have more than one author attached to a news record
 

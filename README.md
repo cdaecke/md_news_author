@@ -1,6 +1,6 @@
 # TYPO3 Extension ``md_news_author``
 
-This extension is based on extbase & fluid and provides the famous extension ``ext:news`` of Georg Ringer (thanks a lot!) with one or more authors. You can centrally manage authors and attach them to news records. The extensions comes with a plugin, which lists all authors and provides a detail page of one author which also shows the news records of the selected author.
+This extension is based on extbase & fluid and provides the famous extension ``ext:news`` of Georg Ringer (thanks a lot @georgringer !) with one or more authors. You can centrally manage authors and attach them to news records. The extensions comes with a plugin, which lists all authors and provides a detail page of one author which also shows the news records of the selected author.
 
 ## Requirements
 
@@ -77,7 +77,7 @@ This will show only the author records, which are stored on page ID = 1
 
 ### ``ext:realurl`` configuration
 
-Thanks for this great extension, Dmitry Dulepov!
+Thanks for this great extension, Dmitry Dulepov (@dmitryd)!
 
     'postVarSets' => array(
         '_DEFAULT' => array(
