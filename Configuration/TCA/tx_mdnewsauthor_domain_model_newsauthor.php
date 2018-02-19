@@ -32,7 +32,7 @@ return array(
     'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, gender, title, firstname, lastname, company, position, phone, email, www, facebook, twitter, xing, linkedin, bio, image',
   ),
   'types' => array(
-    '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, ;;palette_name, ;;palette_contact, bio;;;richtext:rte_transform[mode=ts_links], image, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, hidden, starttime, endtime'),
+    '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, ;;palette_name, ;;palette_company, ;;palette_contact, bio;;;richtext:rte_transform[mode=ts_links], image, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, hidden, starttime, endtime'),
   ),
   'palettes' => array(
     'palette_name' => array('showitem' => 'gender, title, --linebreak--, firstname, lastname'),
