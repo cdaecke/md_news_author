@@ -36,7 +36,7 @@ return array(
   ),
   'palettes' => array(
     'palette_name' => array('showitem' => 'gender, title, --linebreak--, firstname, lastname'),
-    'palette_companie' => array('showitem' => 'company, position'),
+    'palette_company' => array('showitem' => 'company, position'),
     'palette_contact' => array('showitem' => 'phone, --linebreak--, email, www, --linebreak--, facebook, twitter, --linebreak--, linkedin, xing'),
   ),
   'columns' => array(
