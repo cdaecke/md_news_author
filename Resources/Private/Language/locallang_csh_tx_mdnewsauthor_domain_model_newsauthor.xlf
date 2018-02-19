@@ -15,7 +15,7 @@
       <trans-unit id="lastname.description">
         <source>Authors lastname (mandatory)</source>
       </trans-unit>
-      <trans-unit id="companie.description">
+      <trans-unit id="company.description">
         <source>Authors Company</source>
       </trans-unit>
       <trans-unit id="position.description">
