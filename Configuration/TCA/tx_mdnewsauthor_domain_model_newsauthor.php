@@ -300,7 +300,6 @@ return array(
       'label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.news',
       'config' => array(
         'type' => 'select',
-        'multiple' => 1,
         'foreign_table' => 'tx_news_domain_model_news',
         'MM' => 'tx_mdnewsauthor_news_newsauthor_mm',
         'MM_opposite_field' => 'news',

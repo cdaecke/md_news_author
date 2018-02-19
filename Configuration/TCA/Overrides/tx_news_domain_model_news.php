@@ -18,7 +18,6 @@ $tmp_news_author_columns = array(
       'size' => 10,
       'autoSizeMax' => 30,
       'maxitems' => 99,
-      'multiple' => 1,
     ),
   ),
 
