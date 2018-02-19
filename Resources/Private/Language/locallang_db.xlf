@@ -27,7 +27,7 @@
       <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.lastname">
         <source>Lastname</source>
       </trans-unit>
-      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.companie">
+      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.company">
         <source>Company</source>
       </trans-unit>
       <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.position">
