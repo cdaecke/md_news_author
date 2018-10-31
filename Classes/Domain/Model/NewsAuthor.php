@@ -46,7 +46,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
    * @var string
    */
   protected $gender = '';
-  
+
   /**
    * firstname
    *
@@ -54,7 +54,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
    * @validate NotEmpty
    */
   protected $firstname = '';
-  
+
   /**
    * lastname
    *
@@ -62,23 +62,21 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
    * @validate NotEmpty
    */
   protected $lastname = '';
-    
+
   /**
    * company
    *
    * @var string
-   * @validate NotEmpty
    */
   protected $company = '';
-  
+
   /**
    * position
    *
    * @var string
-   * @validate NotEmpty
    */
   protected $position = '';
-  
+
   /**
    * phone
    *
@@ -113,7 +111,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
    * @var string
    */
   protected $twitter = '';
-  
+
   /**
    * linkedin
    *
@@ -126,16 +124,16 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
    *
    * @var string
    */
-  protected $xing = ''; 
-   
-  
+  protected $xing = '';
+
+
   /**
    * bio
    *
    * @var string
    */
   protected $bio = '';
-  
+
   /**
    * image
    *
@@ -157,7 +155,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
    * @lazy
    */
   protected $news;
-  
+
   /**
    * Returns the gender
    *
@@ -167,7 +165,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     return $this->gender;
   }
-  
+
   /**
    * Sets the gender
    *
@@ -188,7 +186,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     return $this->title;
   }
-  
+
   /**
    * Sets the title
    *
@@ -199,7 +197,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     $this->title = $title;
   }
-  
+
   /**
    * Returns the firstname
    *
@@ -209,7 +207,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     return $this->firstname;
   }
-  
+
   /**
    * Sets the firstname
    *
@@ -220,7 +218,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     $this->firstname = $firstname;
   }
-  
+
   /**
    * Returns the lastname
    *
@@ -230,7 +228,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     return $this->lastname;
   }
-  
+
   /**
    * Sets the lastname
    *
@@ -251,7 +249,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     return $this->company;
   }
-  
+
   /**
    * Sets the company
    *
@@ -262,7 +260,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     $this->company = $company;
   }
-  
+
   /**
    * Returns the position
    *
@@ -272,7 +270,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     return $this->position;
   }
-  
+
   /**
    * Sets the position
    *
@@ -293,7 +291,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     return $this->phone;
   }
-  
+
   /**
    * Sets the phone number
    *
@@ -314,7 +312,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     return $this->email;
   }
-  
+
   /**
    * Sets the email
    *
@@ -335,7 +333,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     return $this->www;
   }
-  
+
   /**
    * Sets the www
    *
@@ -356,7 +354,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     return $this->facebook;
   }
-  
+
   /**
    * Sets the facebook
    *
@@ -377,7 +375,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     return $this->twitter;
   }
-  
+
   /**
    * Sets the twitter
    *
@@ -388,7 +386,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     $this->twitter = $twitter;
   }
-    
+
   /**
    * Returns the linkedin
    *
@@ -398,7 +396,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     return $this->linkedin;
   }
-  
+
   /**
    * Sets the linkedin
    *
@@ -419,7 +417,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     return $this->xing;
   }
-  
+
   /**
    * Sets the xing
    *
@@ -440,7 +438,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     return $this->bio;
   }
-  
+
   /**
    * Sets the bio
    *
@@ -451,13 +449,13 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     $this->bio = $bio;
   }
-  
+
   /**
    * Returns the image
    *
    * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $image
    */
-  public function getImage() 
+  public function getImage()
   {
     return $this->image;
   }
@@ -468,7 +466,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
    * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $image
    * @return void
    */
-  public function setImage($image) 
+  public function setImage($image)
   {
     $this->image = $image;
   }
@@ -483,7 +481,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     $this->categories->attach($category);
   }
- 
+
   /**
    * Removes a Category
    *
@@ -494,7 +492,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     $this->categories->detach($categoryToRemove);
   }
- 
+
   /**
    * Returns the categories
    *
@@ -504,7 +502,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     return $this->categories;
   }
- 
+
   /**
    * Sets the categories
    *
@@ -526,7 +524,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     $this->news->attach($news);
   }
- 
+
   /**
    * Removes a News
    *
@@ -537,7 +535,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     $this->news->detach($newsToRemove);
   }
- 
+
   /**
    * Returns the news
    *
@@ -547,7 +545,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   {
     return $this->news;
   }
- 
+
   /**
    * Sets the news
    *
