@@ -58,12 +58,28 @@ class NewsRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
   {
     $data = [];
 
+    // look for translated author and overwrite $authorUid
+    if ($GLOBALS['TSFE']->sys_language_uid > 0) {
+      $select = 'uid';
+      $table = 'tx_mdnewsauthor_domain_model_newsauthor';
+      $where = '(sys_language_uid = ' .(int)$GLOBALS['TSFE']->sys_language_uid. ' AND l10n_parent = ' .(int)$authorUid. ' )';  
+      $where  .= $GLOBALS['TSFE']->sys_page->enableFields($table);    
+      $order = '';
+      $group = '';
+      $limit = '1';
+      $translatedAuthor = $this->getDatabaseConnection()->exec_SELECTgetRows($select, $table, $where, $group, $order, $limit);
+
+      if ($translatedAuthor && $translatedAuthor[0]['uid']) {
+        $authorUid = $translatedAuthor[0]['uid'];
+      }
+    }
+
     $res = $this->getDatabaseConnection()->exec_SELECT_mm_query(
       'tx_news_domain_model_news.*',
       'tx_news_domain_model_news',
       'tx_mdnewsauthor_news_newsauthor_mm',
       'tx_mdnewsauthor_domain_model_newsauthor',
-      ' AND tx_mdnewsauthor_domain_model_newsauthor.uid=' . (int)$authorUid . ' AND tx_news_domain_model_news.deleted = 0 AND tx_news_domain_model_news.hidden = 0',
+      ' AND (tx_mdnewsauthor_domain_model_newsauthor.uid=' . (int)$authorUid . ') '.$GLOBALS['TSFE']->sys_page->enableFields('tx_news_domain_model_news'),
       '',
       'tx_news_domain_model_news.datetime DESC'
     );

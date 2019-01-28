@@ -7,13 +7,14 @@ $tmp_news_author_columns = array(
 
   'news_author' => array(
     'exclude' => 1,
+    'l10n_mode' => 'mergeIfNotBlank',
     'label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor',
     'config' => array(
       'type' => 'select',
       'renderType' => 'selectMultipleSideBySide',
       'enableMultiSelectFilterTextfield' => true,
       'foreign_table' => 'tx_mdnewsauthor_domain_model_newsauthor',
-      'foreign_table_where' => ' ###PAGE_TSCONFIG_STR### AND tx_mdnewsauthor_domain_model_newsauthor.deleted = 0 AND tx_mdnewsauthor_domain_model_newsauthor.hidden = 0 ORDER By tx_mdnewsauthor_domain_model_newsauthor.lastname ASC, tx_mdnewsauthor_domain_model_newsauthor.firstname ASC',
+      'foreign_table_where' => ' ###PAGE_TSCONFIG_STR### AND tx_mdnewsauthor_domain_model_newsauthor.deleted = 0 AND tx_mdnewsauthor_domain_model_newsauthor.hidden = 0 AND tx_mdnewsauthor_domain_model_newsauthor.sys_language_uid = ###REC_FIELD_sys_language_uid### ORDER By tx_mdnewsauthor_domain_model_newsauthor.lastname ASC, tx_mdnewsauthor_domain_model_newsauthor.firstname ASC',
       'MM' => 'tx_mdnewsauthor_news_newsauthor_mm',
       'size' => 10,
       'autoSizeMax' => 30,
