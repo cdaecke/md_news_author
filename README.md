@@ -71,7 +71,7 @@ Don't forget to load the viewhelper {namespace md=Mediadreams\MdNewsAuthor\ViewH
 
 In order to show only authors of a single page in the "Authors"-tab of a news record, you can use the following TSconfig:
 
-    TCEFORM.tx_news_domain_model_news.news_author.PAGE_TSCONFIG_STR = AND tx_mdnewsauthor_domain_model_newsauthor.pid = 1
+    TCEFORM.tx_news_domain_model_news.news_author.PAGE_TSCONFIG_STR = 1
 
 This will show only the author records, which are stored on page ID = 1
 
