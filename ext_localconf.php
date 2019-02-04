@@ -19,6 +19,13 @@ $GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['classes']['Domain/Model/News'][] = '
   )
 );
 
+/**
+ * Add page TsConfig
+ */
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
+  '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:' . $_EXTKEY . '/Configuration/TsConfig/Page/TCEFORM.ts">'
+);
+
 $GLOBALS['TYPO3_CONF_VARS']
         ['SC_OPTIONS']
         ['cms/layout/class.tx_cms_layout.php']

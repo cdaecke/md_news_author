@@ -1,0 +1,5 @@
+
+TCEFORM {
+  // set default PAGE_TSCONFIG_STR to FALSE in order to load authors from all pages
+  tx_news_domain_model_news.news_author.PAGE_TSCONFIG_STR = FALSE
+}
