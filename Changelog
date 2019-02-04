@@ -1,4 +1,4 @@
-Version 3.0.2 (2018-02-04)
+Version 3.0.2 (2019-02-04)
   BUGFIX: Respect translations of authors in news records
   BUGFIX: Make TCEFORM working again for TYPO3 8
   Add some more fields the author record
