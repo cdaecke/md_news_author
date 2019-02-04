@@ -1,3 +1,12 @@
+Version 3.0.2 (2018-02-04)
+  BUGFIX: Respect translations of authors in news records
+  BUGFIX: Make TCEFORM working again for TYPO3 8
+
+  ATTENTION: Make sure to clear the cache in TYPO3 install tool after this update!
+
+  All changes
+  https://github.com/cdaecke/md_news_author/compare/v3.0.1...v3.0.2
+
 Version 3.0.1 (2018-02-19)
   BUGFIX: Do not allow to add the same author multiple times to the same news record
 
