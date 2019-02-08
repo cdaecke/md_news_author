@@ -27,7 +27,9 @@ namespace Mediadreams\MdNewsAuthor\ViewHelpers;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * ViewHelper to show author name with optional title
@@ -48,18 +50,36 @@ namespace Mediadreams\MdNewsAuthor\ViewHelpers;
  * @author Christoph Daecke <typo3@mediadreams.org>
  *
  */
-class ShowAuthorNameViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class ShowAuthorNameViewHelper extends AbstractViewHelper
 {
+  use CompileWithRenderStatic;
 
   /**
-   * @param object $author
-   * @return string         Name of author with optional authors title
+   * Initialize arguments
    */
-  public function render($author)
+  public function initializeArguments()
   {
-    if (!is_object($author)) {
+    parent::initializeArguments();
+    $this->registerArgument('author', 'object', 'the author object', true);
+  }
+
+  /**
+   * @param array $arguments
+   * @param \Closure $renderChildrenClosure
+   * @param RenderingContextInterface $renderingContext
+   * @return string
+   */
+  public static function renderStatic(
+    array $arguments,
+    \Closure $renderChildrenClosure,
+    RenderingContextInterface $renderingContext
+  ) {
+
+    if (!is_object($arguments['author'])) {
       return '';
     }
+
+    $author = $arguments['author'];
 
     $authorTitle = $author->getTitle();
     $fullAuthor = $author->getFirstname().' '.$author->getLastname();
