@@ -49,6 +49,18 @@ Insert a author detail view. This page includes also all news which are associat
 
 - Access the author properties in a news record with {newsItem.newsAuthor}. Since there could be more than one author attached to a news record, you have to iterate:
 
+TYPO3 9:
+
+```
+<f:for each="{newsItem.newsAuthor}" as="author">
+    {md:ShowAuthorName(author: author)}
+    {author.phone}
+    {author. ...}
+</f:for>
+```
+
+TYPO3 8
+
 ```
 <f:for each="{newsItem.newsAuthor}" as="author">
     {md:ShowAuthorName(author:'{author}')}
