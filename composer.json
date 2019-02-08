@@ -2,7 +2,7 @@
   "name": "mediadreams/md_news_author",
   "type": "typo3-cms-extension",
   "description": "Adds one or more authors to a tx_news record, show a list of all authors and display a detail page of the author containing the attached news entries.",
-  "version": "3.0.2",
+  "version": "4.0.0DEV",
   "license": "GPL-2.0+",
   "keywords": [
     "TYPO3", 
@@ -27,9 +27,9 @@
     "source": "https://github.com/cdaecke/md_news_author"
   },
   "require": {
-    "php": ">=5.3.7 <8.0",
-    "typo3/cms-core": ">=7.6,<9.0",
-    "georgringer/news": ">=4.0.0"
+    "php": ">=5.6.0 <8.0",
+    "typo3/cms-core": ">=8.7,<10.0",
+    "georgringer/news": ">=7.0.0"
   },
   "autoload": {
     "psr-4": {
