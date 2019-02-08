@@ -6,12 +6,11 @@ if (!defined('TYPO3_MODE')) {
 /**
  * Plugin
  */
-// TODO: add icon!
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
   'Mediadreams.md_news_author',
   'NewsAuthor',
   'News author',
-  'EXT:md_news_author/Resources/Public/Icons/Extension.svg'
+  'EXT:md_news_author/Resources/Public/Icons/tx_mdnewsauthor_domain_model_newsauthor.svg'
 );
 
 /**

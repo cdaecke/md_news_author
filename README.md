@@ -59,7 +59,7 @@ TYPO3 9:
 </f:for>
 ```
 
-TYPO3 8
+TYPO3 8:
 
 ```
 <f:for each="{newsItem.newsAuthor}" as="author">
@@ -159,3 +159,7 @@ If you find a bug, it would be nice if you add an issue on [Github](https://gith
 # THANKS
 
 Thanks a lot to all who make this outstanding TYPO3 project possible!
+
+## Credits
+
+Extension icon by [Font Awesome](https://fontawesome.com/icons/user?style=solid)

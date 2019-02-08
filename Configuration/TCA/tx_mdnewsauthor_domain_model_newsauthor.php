@@ -26,7 +26,7 @@ return array(
       'endtime' => 'endtime',
     ),
     'searchFields' => 'title,firstname,lastname,bio,image,',
-    'iconfile' => 'EXT:md_news_author/Resources/Public/Icons/tx_mdnewsauthor_domain_model_newsauthor.gif'
+    'iconfile' => 'EXT:md_news_author/Resources/Public/Icons/tx_mdnewsauthor_domain_model_newsauthor.svg'
   ),
   'interface' => array(
     'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, gender, title, firstname, lastname, company, position, phone, email, www, facebook, twitter, xing, linkedin, bio, image',
