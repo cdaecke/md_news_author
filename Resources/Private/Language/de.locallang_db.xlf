@@ -35,6 +35,10 @@
         <source>Lastname</source>
         <target>Nachname</target>
       </trans-unit>
+      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.slug">
+        <source>URL path segment</source>
+        <target>URL Pfadsegment</target>
+      </trans-unit>
       <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.phone">
         <source>Phone number</source>
         <target>Telefonnummer</target>

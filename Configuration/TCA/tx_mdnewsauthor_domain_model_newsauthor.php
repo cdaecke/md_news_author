@@ -29,7 +29,7 @@ return array(
     'iconfile' => 'EXT:md_news_author/Resources/Public/Icons/tx_mdnewsauthor_domain_model_newsauthor.svg'
   ),
   'interface' => array(
-    'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, gender, title, firstname, lastname, company, position, phone, email, www, facebook, twitter, xing, linkedin, bio, image',
+    'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, gender, title, firstname, lastname, slug, company, position, phone, email, www, facebook, twitter, xing, linkedin, bio, image',
   ),
   'types' => array(
     '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, ;;palette_name, ;;palette_company, ;;palette_contact, bio;;;richtext:rte_transform[mode=ts_links], image, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, hidden, starttime, endtime'),
@@ -163,6 +163,16 @@ return array(
         'type' => 'input',
         'size' => 30,
         'eval' => 'trim,required'
+      ),
+    ),
+    // this is the fallback for TYPO3 8 and will be overwritten in "Overrides/tx_news_domain_model_news.php" for TYPO3 9
+    'slug' => array(
+      'exclude' => true,
+      'label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.slug',
+      'config' => array(
+        'type' => 'input',
+        'size' => 30,
+        'eval' => 'nospace,alphanum_x,lower,unique',
       ),
     ),
     'company' => array(

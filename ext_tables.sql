@@ -10,6 +10,7 @@ CREATE TABLE tx_mdnewsauthor_domain_model_newsauthor (
   title varchar(255) DEFAULT '' NOT NULL,
   firstname varchar(255) DEFAULT '' NOT NULL,
   lastname varchar(255) DEFAULT '' NOT NULL,
+  slug varchar(2048),
   company varchar(255) DEFAULT '' NOT NULL,
   position varchar(255) DEFAULT '' NOT NULL,
   phone varchar(255) DEFAULT '' NOT NULL,
