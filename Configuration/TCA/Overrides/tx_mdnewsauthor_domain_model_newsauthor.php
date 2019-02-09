@@ -11,7 +11,6 @@ if (version_compare(TYPO3_branch, '9.2', '>=')) {
     'generatorOptions' => [
       'fields' => ['firstname', 'lastname'],
       'fieldSeparator' => '-',
-      'prefixParentPageSlug' => true
     ],
     'fallbackCharacter' => '-',
     'eval' => 'uniqueInSite',
