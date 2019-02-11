@@ -1,39 +1,39 @@
 {
-  "name": "mediadreams/md_news_author",
-  "type": "typo3-cms-extension",
-  "description": "Adds one or more authors to a tx_news record, show a list of all authors and display a detail page of the author containing the attached news entries.",
-  "version": "4.0.0DEV",
-  "license": "GPL-2.0+",
-  "keywords": [
-    "TYPO3", 
-    "TYPO3 CMS", 
-    "extension", 
-    "author", 
-    "news author", 
-    "news", 
-    "tx_news", 
-    "blog author"
-  ],
-  "homepage": "http://www.mediadreams.org",
-  "authors": [
-    {
-      "name": "Christoph Daecke",
-      "email": "typo3@mediadreams.org",
-      "role": "Developer"
+    "name": "mediadreams/md_news_author",
+    "type": "typo3-cms-extension",
+    "description": "Adds one or more authors to a tx_news record, show a list of all authors and display a detail page of the author containing the attached news entries.",
+    "version": "4.0.0DEV",
+    "license": "GPL-2.0+",
+    "keywords": [
+        "TYPO3", 
+        "TYPO3 CMS", 
+        "extension", 
+        "author", 
+        "news author", 
+        "news", 
+        "tx_news", 
+        "blog author"
+    ],
+    "homepage": "http://www.mediadreams.org",
+    "authors": [
+        {
+            "name": "Christoph Daecke",
+            "email": "typo3@mediadreams.org",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/cdaecke/md_news_author/issues",
+        "source": "https://github.com/cdaecke/md_news_author"
+    },
+    "require": {
+        "php": ">=5.6.0 <8.0",
+        "typo3/cms-core": ">=8.7,<10.0",
+        "georgringer/news": ">=6.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mediadreams\\MdNewsAuthor\\": "Classes"
+        }
     }
-  ],
-  "support": {
-    "issues": "https://github.com/cdaecke/md_news_author/issues",
-    "source": "https://github.com/cdaecke/md_news_author"
-  },
-  "require": {
-    "php": ">=5.6.0 <8.0",
-    "typo3/cms-core": ">=8.7,<10.0",
-    "georgringer/news": ">=6.0.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "Mediadreams\\MdNewsAuthor\\": "Classes"
-    }
-  }
 }

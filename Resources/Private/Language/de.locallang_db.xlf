@@ -1,161 +1,161 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-  <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2016-09-15T14:10:30Z" product-name="md_news_author">
-    <header/>
-    <body>
-      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor">
-        <source>News Author</source>
-        <target>News Autor</target>
-      </trans-unit>
-      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.news_author_tab">
-        <source>Author</source>
-        <target>Autor</target>
-      </trans-unit>
-      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.title">
-        <source>Title</source>
-        <target>Titel</target>
-      </trans-unit>
-      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.gender">
-        <source>Gender</source>
-        <target>Geschlecht</target>
-      </trans-unit>
-      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.gender.female">
-        <source>female</source>
-        <target>weibliche</target>
-      </trans-unit>
-      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.gender.male">
-        <source>male</source>
-        <target>männlich</target>
-      </trans-unit>
-      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.firstname">
-        <source>Firstname</source>
-        <target>Vorname</target>
-      </trans-unit>
-      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.lastname">
-        <source>Lastname</source>
-        <target>Nachname</target>
-      </trans-unit>
-      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.slug">
-        <source>URL path segment</source>
-        <target>URL Pfadsegment</target>
-      </trans-unit>
-      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.phone">
-        <source>Phone number</source>
-        <target>Telefonnummer</target>
-      </trans-unit>
-      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.email">
-        <source>Email</source>
-        <target>eMail</target>
-      </trans-unit>
-      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.www">
-        <source>WWW</source>
-        <target>WWW</target>
-      </trans-unit>
-      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.facebook">
-        <source>Facebook</source>
-        <target>Facebook</target>
-      </trans-unit>
-      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.twitter">
-        <source>Twitter</source>
-        <target>Twitter</target>
-      </trans-unit>
-      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.bio">
-        <source>Bio</source>
-        <target>Über die Person</target>
-      </trans-unit>
-      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.image">
-        <source>Author image</source>
-        <target>Bild</target>
-      </trans-unit>
-      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.categories">
-        <source>Categories</source>
-        <target>Kategorien</target>
-      </trans-unit>
-      <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.news">
-        <source>News</source>
-        <target>News</target>
-      </trans-unit>
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2016-09-15T14:10:30Z" product-name="md_news_author">
+        <header/>
+        <body>
+            <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor">
+                <source>News Author</source>
+                <target>News Autor</target>
+            </trans-unit>
+            <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.news_author_tab">
+                <source>Author</source>
+                <target>Autor</target>
+            </trans-unit>
+            <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.title">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.gender">
+                <source>Gender</source>
+                <target>Geschlecht</target>
+            </trans-unit>
+            <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.gender.female">
+                <source>female</source>
+                <target>weibliche</target>
+            </trans-unit>
+            <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.gender.male">
+                <source>male</source>
+                <target>männlich</target>
+            </trans-unit>
+            <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.firstname">
+                <source>Firstname</source>
+                <target>Vorname</target>
+            </trans-unit>
+            <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.lastname">
+                <source>Lastname</source>
+                <target>Nachname</target>
+            </trans-unit>
+            <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.slug">
+                <source>URL path segment</source>
+                <target>URL Pfadsegment</target>
+            </trans-unit>
+            <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.phone">
+                <source>Phone number</source>
+                <target>Telefonnummer</target>
+            </trans-unit>
+            <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.email">
+                <source>Email</source>
+                <target>eMail</target>
+            </trans-unit>
+            <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.www">
+                <source>WWW</source>
+                <target>WWW</target>
+            </trans-unit>
+            <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.facebook">
+                <source>Facebook</source>
+                <target>Facebook</target>
+            </trans-unit>
+            <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.twitter">
+                <source>Twitter</source>
+                <target>Twitter</target>
+            </trans-unit>
+            <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.bio">
+                <source>Bio</source>
+                <target>Über die Person</target>
+            </trans-unit>
+            <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.image">
+                <source>Author image</source>
+                <target>Bild</target>
+            </trans-unit>
+            <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.categories">
+                <source>Categories</source>
+                <target>Kategorien</target>
+            </trans-unit>
+            <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.news">
+                <source>News</source>
+                <target>News</target>
+            </trans-unit>
 
-      <trans-unit id="flex_author">
-        <source>General settings</source>
-        <target>Allgemeine Einstellungen</target>
-      </trans-unit>
-      <trans-unit id="flex_author.view">
-        <source>Plugin settings</source>
-        <target>Plugin Einstellungen</target>
-      </trans-unit>
-      <trans-unit id="flex_author.mode">
-        <source>Please choose plugin mode</source>
-        <target>Bitte wählen!</target>
-      </trans-unit>
-      <trans-unit id="flex_author.list">
-        <source>List authors</source>
-        <target>Autoren-Liste</target>
-      </trans-unit>
-      <trans-unit id="flex_author.show">
-        <source>Author details</source>
-        <target>Autoren-Detail</target>
-      </trans-unit>
-      <trans-unit id="flex_author.detailPid">
-        <source>Page with single author view</source>
-        <target>Seite mit Detailansicht eines Autors</target>
-      </trans-unit>
-      <trans-unit id="flex_author.listPid">
-        <source>Page with author list</source>
-        <target>Seite mit Listenansicht der Autoren</target>
-      </trans-unit>
+            <trans-unit id="flex_author">
+                <source>General settings</source>
+                <target>Allgemeine Einstellungen</target>
+            </trans-unit>
+            <trans-unit id="flex_author.view">
+                <source>Plugin settings</source>
+                <target>Plugin Einstellungen</target>
+            </trans-unit>
+            <trans-unit id="flex_author.mode">
+                <source>Please choose plugin mode</source>
+                <target>Bitte wählen!</target>
+            </trans-unit>
+            <trans-unit id="flex_author.list">
+                <source>List authors</source>
+                <target>Autoren-Liste</target>
+            </trans-unit>
+            <trans-unit id="flex_author.show">
+                <source>Author details</source>
+                <target>Autoren-Detail</target>
+            </trans-unit>
+            <trans-unit id="flex_author.detailPid">
+                <source>Page with single author view</source>
+                <target>Seite mit Detailansicht eines Autors</target>
+            </trans-unit>
+            <trans-unit id="flex_author.listPid">
+                <source>Page with author list</source>
+                <target>Seite mit Listenansicht der Autoren</target>
+            </trans-unit>
 
-      <trans-unit id="flex_author.tabList">
-        <source>List view settings</source>
-        <target>Einstellungen Listenansicht</target>
-      </trans-unit>
-      <trans-unit id="flex_author.listImageWidth">
-        <source>Image width (numeric with optional "m" or "c")</source>
-        <target>Bildbreite (Zahl in Pixel mit optionalem "m" oder "c")</target>
-      </trans-unit>
-      <trans-unit id="flex_author.listImageHeight">
-        <source>Image height (numeric with optional "m" or "c")</source>
-        <target>Bildhöhe (Zahl in Pixel mit optionalem "m" oder "c")</target>
-      </trans-unit>
-      <trans-unit id="flex_author.listAlphabeticalNavigation">
-        <source>Show alphabetical navigation</source>
-        <target>Zeige alphabetischen Filter</target>
-      </trans-unit>
+            <trans-unit id="flex_author.tabList">
+                <source>List view settings</source>
+                <target>Einstellungen Listenansicht</target>
+            </trans-unit>
+            <trans-unit id="flex_author.listImageWidth">
+                <source>Image width (numeric with optional "m" or "c")</source>
+                <target>Bildbreite (Zahl in Pixel mit optionalem "m" oder "c")</target>
+            </trans-unit>
+            <trans-unit id="flex_author.listImageHeight">
+                <source>Image height (numeric with optional "m" or "c")</source>
+                <target>Bildhöhe (Zahl in Pixel mit optionalem "m" oder "c")</target>
+            </trans-unit>
+            <trans-unit id="flex_author.listAlphabeticalNavigation">
+                <source>Show alphabetical navigation</source>
+                <target>Zeige alphabetischen Filter</target>
+            </trans-unit>
 
-      <trans-unit id="flex_author.tabCategory">
-        <source>Categories</source>
-        <target>Kategorien</target>
-      </trans-unit>
-      <trans-unit id="flex_author.categoryDesc">
-        <source>Show authors of selected categories only</source>
-        <target>Zeige nur Autoren der gewählten Kategorien</target>
-      </trans-unit>
+            <trans-unit id="flex_author.tabCategory">
+                <source>Categories</source>
+                <target>Kategorien</target>
+            </trans-unit>
+            <trans-unit id="flex_author.categoryDesc">
+                <source>Show authors of selected categories only</source>
+                <target>Zeige nur Autoren der gewählten Kategorien</target>
+            </trans-unit>
 
-      <trans-unit id="flex_author.tabDetail">
-        <source>Detail view settings</source>
-        <target>Einstellungen Detailansicht</target>
-      </trans-unit>
-      <trans-unit id="flex_author.detailImageWidth">
-        <source>Image width (numeric with optional "m" or "c")</source>
-        <target>Bildbreite (Zahl in Pixel mit optionalem "m" oder "c")</target>
-      </trans-unit>
-      <trans-unit id="flex_author.detailImageHeight">
-        <source>Image height (numeric with optional "m" or "c")</source>
-        <target>Bildhöhe (Zahl in Pixel mit optionalem "m" oder "c")</target>
-      </trans-unit>
+            <trans-unit id="flex_author.tabDetail">
+                <source>Detail view settings</source>
+                <target>Einstellungen Detailansicht</target>
+            </trans-unit>
+            <trans-unit id="flex_author.detailImageWidth">
+                <source>Image width (numeric with optional "m" or "c")</source>
+                <target>Bildbreite (Zahl in Pixel mit optionalem "m" oder "c")</target>
+            </trans-unit>
+            <trans-unit id="flex_author.detailImageHeight">
+                <source>Image height (numeric with optional "m" or "c")</source>
+                <target>Bildhöhe (Zahl in Pixel mit optionalem "m" oder "c")</target>
+            </trans-unit>
 
-      <trans-unit id="tx_newsauthor_domain_model_news">
-        <source>News</source>
-        <target>News</target>
-      </trans-unit>
-      <trans-unit id="tx_newsauthor_domain_model_news.news_author">
-        <source>News Author</source>
-        <target>News Autor</target>
-      </trans-unit>
-      <trans-unit id="tx_news_domain_model_news.tx_extbase_type.Tx_NewsAuthor_News">
-        <source>News Author News</source>
-        <target>News Autor News</target>
-      </trans-unit>
-    </body>
-  </file>
+            <trans-unit id="tx_newsauthor_domain_model_news">
+                <source>News</source>
+                <target>News</target>
+            </trans-unit>
+            <trans-unit id="tx_newsauthor_domain_model_news.news_author">
+                <source>News Author</source>
+                <target>News Autor</target>
+            </trans-unit>
+            <trans-unit id="tx_news_domain_model_news.tx_extbase_type.Tx_NewsAuthor_News">
+                <source>News Author News</source>
+                <target>News Autor News</target>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>

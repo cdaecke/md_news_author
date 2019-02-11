@@ -1,40 +1,40 @@
 
 plugin.tx_mdnewsauthor {
-  # Pid for author detail view
-  settings {
-    authorDetailPid = 
-    newsDetailPid = 
+    # Pid for author detail view
+    settings {
+        authorDetailPid = 
+        newsDetailPid = 
 
-    authorList {
-      letters = A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z
-      
-      paginate {
-        itemsPerPage = 10
-        insertAbove = 0
-        insertBelow = 1
-        maximumNumberOfLinks = 6
-      }
+        authorList {
+            letters = A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z
+            
+            paginate {
+                itemsPerPage = 10
+                insertAbove = 0
+                insertBelow = 1
+                maximumNumberOfLinks = 6
+            }
+        }
+
+        authorDetail {
+            paginate {
+                itemsPerPage = 10
+                insertAbove = 0
+                insertBelow = 1
+                maximumNumberOfLinks = 6
+            }
+        }
     }
 
-    authorDetail {
-      paginate {
-        itemsPerPage = 10
-        insertAbove = 0
-        insertBelow = 1
-        maximumNumberOfLinks = 6
-      }
+    view {
+        templateRootPath = EXT:md_news_author/Resources/Private/Templates/
+        partialRootPath = EXT:md_news_author/Resources/Private/Partials/
+        layoutRootPath = EXT:md_news_author/Resources/Private/Layouts/
+
+        widget.paginate = EXT:md_news_author/Resources/Private/Templates/
     }
-  }
 
-  view {
-    templateRootPath = EXT:md_news_author/Resources/Private/Templates/
-    partialRootPath = EXT:md_news_author/Resources/Private/Partials/
-    layoutRootPath = EXT:md_news_author/Resources/Private/Layouts/
-
-    widget.paginate = EXT:md_news_author/Resources/Private/Templates/
-  }
-
-  persistence {
-    storagePid =
-  }
+    persistence {
+        storagePid =
+    }
 }

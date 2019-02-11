@@ -10,26 +10,24 @@
  * "version" and "dependencies" must not be touched!
  ***************************************************************/
 
-$EM_CONF[$_EXTKEY] = array(
-  'title' => 'News Author',
-  'description' => 'Adds one or more authors to a tx_news record, show a list of all authors and display a detail page of the author containing the attached news entries.',
-  'category' => 'plugin',
-  'author' => 'Christoph Daecke',
-  'author_email' => 'typo3@mediadreams.org',
-  'state' => 'stable',
-  'internal' => '',
-  'uploadfolder' => '0',
-  'createDirs' => '',
-  'clearCacheOnLoad' => 0,
-  'version' => '4.0.0DEV',
-  'constraints' => array(
-    'depends' => array(
-      'typo3' => '8.7.0-9.5.99',
-      'news' => '6.0',
-    ),
-    'conflicts' => array(
-    ),
-    'suggests' => array(
-    ),
-  ),
-);
+$EM_CONF[$_EXTKEY] = [
+    'title' => 'News Author',
+    'description' => 'Adds one or more authors to a tx_news record, show a list of all authors and display a detail page of the author containing the attached news entries.',
+    'category' => 'plugin',
+    'author' => 'Christoph Daecke',
+    'author_email' => 'typo3@mediadreams.org',
+    'state' => 'stable',
+    'internal' => '',
+    'uploadfolder' => '0',
+    'createDirs' => '',
+    'clearCacheOnLoad' => 0,
+    'version' => '4.0.0DEV',
+    'constraints' => [
+        'depends' => [
+            'typo3' => '8.7.0-9.5.99',
+            'news' => '6.0',
+        ],
+        'conflicts' => [],
+        'suggests' => [],
+    ],
+];

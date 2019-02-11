@@ -1,20 +1,20 @@
 
 config.tx_extbase {
-  persistence {
-    classes {
+    persistence {
+        classes {
 
-      GeorgRinger\News\Domain\Model\News {
-        subclasses {
-          GeorgRinger\News\Domain\Model\News = Mediadreams\MdNewsAuthor\Domain\Model\News
-        }
-      }
+            GeorgRinger\News\Domain\Model\News {
+                subclasses {
+                    GeorgRinger\News\Domain\Model\News = Mediadreams\MdNewsAuthor\Domain\Model\News
+                }
+            }
 
-      Mediadreams\MdNewsAuthor\Domain\Model\News {
-        mapping {
-          tableName = tx_news_domain_model_news
+            Mediadreams\MdNewsAuthor\Domain\Model\News {
+                mapping {
+                    tableName = tx_news_domain_model_news
+                }
+            }
+            
         }
-      }
-        
     }
-  }
 }
