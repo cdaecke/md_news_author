@@ -4,8 +4,8 @@ This extension is based on extbase & fluid and provides the famous extension ``e
 
 ## Requirements
 
-- TYPO3 > 7.6
-- ext:news > 4.0
+- TYPO3 >= 8.7
+- ext:news >= 6.0
 
 ### Installation
 
@@ -87,6 +87,67 @@ In order to show only authors of a single page in the "Authors"-tab of a news re
 
 This will show only the author records, which are stored on page ID = 1
 
+### ``routeEnhancers`` for TYPO3 9
+
+```
+routeEnhancers:
+  NewsAuthorPlugin:
+    type: Extbase
+    extension: MdNewsAuthor
+    plugin: NewsAuthor
+    routes:
+      - 
+        routePath: '{slug}'
+        _controller: 'NewsAuthor::show'
+        _arguments:
+          'slug': 'newsAuthor'
+      -
+        routePath: '/a-z/{letter}'
+        _controller: 'NewsAuthor::list'
+        _arguments:
+          'letter': 'selectedLetter'
+    defaultController: 'NewsAuthor::list'
+    defaults:
+      letter: ''
+    requirements:
+      slug: '^[a-zA-Z0-9].*$'
+      letter: \d+
+    aspects:
+      slug:
+        type: PersistedAliasMapper
+        tableName: 'tx_mdnewsauthor_domain_model_newsauthor'
+        routeFieldName: 'slug'
+      letter:
+        type: StaticValueMapper
+        map:
+          a: A
+          b: B
+          c: C
+          d: D
+          e: E
+          f: F
+          g: G
+          h: H
+          i: I
+          j: J
+          k: K
+          l: L
+          m: M
+          n: N
+          o: O
+          p: P
+          q: Q
+          r: R
+          s: S
+          t: T
+          u: U
+          v: V
+          w: W
+          x: X
+          y: Y
+          z: Z
+```
+
 ### ``ext:realurl`` configuration
 
 Thanks for this great extension, Dmitry Dulepov (@dmitryd)!
@@ -162,4 +223,4 @@ Thanks a lot to all who make this outstanding TYPO3 project possible!
 
 ## Credits
 
-Extension icon by [Font Awesome](https://fontawesome.com/icons/user?style=solid)
+Extension icon by [Font Awesome](https://fontawesome.com/icons/user?style=solid).
