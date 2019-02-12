@@ -9,7 +9,9 @@ defined('TYPO3_MODE') or die();
     [
         'label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.categories',
         'exclude' => 1,
-        'l10n_mode' => 'mergeIfNotBlank',
         'l10n_display' => 'hideDiff',
+        'behaviour' => [
+            'allowLanguageSynchronization' => TRUE
+        ],
     ]
 );
