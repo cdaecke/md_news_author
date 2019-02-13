@@ -6,7 +6,6 @@ $tmp_news_author_columns = [
 
     'news_author' => [
         'exclude' => 1,
-        'l10n_mode' => 'mergeIfNotBlank',
         'label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor',
         'config' => [
             'type' => 'select',
@@ -18,6 +17,9 @@ $tmp_news_author_columns = [
             'size' => 10,
             'autoSizeMax' => 30,
             'maxitems' => 99,
+            'behaviour' => [
+                'allowLanguageSynchronization' => true
+            ],
         ],
     ],
 
