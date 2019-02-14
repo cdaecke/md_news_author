@@ -1,29 +1,26 @@
 <?php
-if (!defined('TYPO3_MODE')) {
-  die('Access denied.');
-}
+defined('TYPO3_MODE') or die();
+
 
 $GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['classes']['Domain/Model/News'][] = 'md_news_author';
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-  'Mediadreams.' . $_EXTKEY,
-  'NewsAuthor',
-  array(
-    'NewsAuthor' => '',
-    
-  ),
-  // non-cacheable actions
-  array(
-    'NewsAuthor' => '',
-    
-  )
+    'Mediadreams.' . $_EXTKEY,
+    'NewsAuthor',
+    array(
+        'NewsAuthor' => '',
+    ),
+    // non-cacheable actions
+    array(
+        'NewsAuthor' => '',
+    )
 );
 
 /**
  * Add page TsConfig
  */
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
-  '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:' . $_EXTKEY . '/Configuration/TsConfig/Page/TCEFORM.ts">'
+    '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:' . $_EXTKEY . '/Configuration/TsConfig/Page/TCEFORM.tsconfig">'
 );
 
 $GLOBALS['TYPO3_CONF_VARS']

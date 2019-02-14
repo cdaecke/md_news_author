@@ -64,6 +64,13 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   protected $lastname = '';
 
   /**
+   * slug
+   *
+   * @var string
+   */
+  protected $slug = '';
+
+  /**
    * company
    *
    * @var string
@@ -238,6 +245,27 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
   public function setLastname($lastname)
   {
     $this->lastname = $lastname;
+  }
+
+  /**
+   * Returns the slug
+   *
+   * @return string $slug
+   */
+  public function getSlug()
+  {
+    return $this->slug;
+  }
+
+  /**
+   * Sets the slug
+   *
+   * @param string $slug
+   * @return void
+   */
+  public function setSlug($slug)
+  {
+    $this->slug = $slug;
   }
 
   /**

@@ -1,59 +1,59 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-    xmlns:md="http://typo3.org/ns/Mediadreams/MdNewsAuthor/ViewHelpers"
-    data-namespace-typo3-fluid="true">
+      xmlns:md="http://typo3.org/ns/Mediadreams/MdNewsAuthor/ViewHelpers"
+      data-namespace-typo3-fluid="true">
     
 <f:layout name="Default" />
 
 <f:section name="main">
 
-  <!--TYPO3SEARCH_end-->
-  <div  class="newsauthor-list" >
+    <!--TYPO3SEARCH_end-->
+    <div  class="newsauthor-list" >
 
-    <f:if condition="{settings.list.alphabeticalNavigation}">
-      <div class="alphabetical-nav">
-        <span class="letter first"><f:link.page><f:translate key="tx_newsauthor_domain_model_newsauthor.all"/></f:link.page></span>
-        <md:showAlphabeticalNavigation letters="{settings.authorList.letters}" activeLetters="{activeLetters}">
-          <f:then>
-            <f:if condition="{selectedLetter}=={letter}">
-              <f:then>
-                <span class="letter active"><f:link.action arguments="{selectedLetter:letter}">{letter}</f:link.action></span>
-              </f:then>
-              <f:else>
-                <span class="letter"><f:link.action arguments="{selectedLetter:letter}">{letter}</f:link.action></span>
-              </f:else>
-            </f:if>
-          </f:then>
-          <f:else>
-            <span class="letter">{letter}</span>
-          </f:else>
-        </md:showAlphabeticalNavigation>
-      </div>
-    </f:if>
-
-    <f:widget.paginate objects="{newsAuthors}" as="newsAuthorPaginated" configuration="{settings.authorList.paginate}">
-      <f:for each="{newsAuthorPaginated}" as="newsAuthor">
-        <div class="newsauthor-wrapper">
-          <f:link.action 
-            pageUid="{settings.detailPid}" 
-            action="show" 
-            arguments="{newsAuthor : newsAuthor}" 
-            class="detail"
-            title="{f:translate(key:'tx_newsauthor_domain_model_newsauthor.detailLinkTitle', arguments:'{0: \'{newsAuthor.firstname} {newsAuthor.lastname}\'}')}"
-          >
-
-            <f:if condition="{newsAuthor.image}">
-              <f:render partial="Image" arguments="{img:newsAuthor.image, imgWidth:settings.list.image.width, imgHeight:settings.list.image.height, cssClass:'img-responsive'}" />
-            </f:if>
-
-            <div class="name">
-              {md:ShowAuthorName(author: newsAuthor)}
+        <f:if condition="{settings.list.alphabeticalNavigation}">
+            <div class="alphabetical-nav">
+                <span class="letter first"><f:link.page><f:translate key="tx_newsauthor_domain_model_newsauthor.all"/></f:link.page></span>
+                <md:showAlphabeticalNavigation letters="{settings.authorList.letters}" activeLetters="{activeLetters}">
+                    <f:then>
+                        <f:if condition="{selectedLetter}=={letter}">
+                            <f:then>
+                                <span class="letter active"><f:link.action arguments="{selectedLetter:letter}">{letter}</f:link.action></span>
+                            </f:then>
+                            <f:else>
+                                <span class="letter"><f:link.action arguments="{selectedLetter:letter}">{letter}</f:link.action></span>
+                            </f:else>
+                        </f:if>
+                    </f:then>
+                    <f:else>
+                        <span class="letter">{letter}</span>
+                    </f:else>
+                </md:showAlphabeticalNavigation>
             </div>
-          </f:link.action>
-        </div><!-- /.newsauthor-wrapper -->
-      </f:for>
-    </f:widget.paginate>
-  </div><!-- /.newsauthor-list -->
-  <!--TYPO3SEARCH_begin-->
+        </f:if>
+
+        <f:widget.paginate objects="{newsAuthors}" as="newsAuthorPaginated" configuration="{settings.authorList.paginate}">
+            <f:for each="{newsAuthorPaginated}" as="newsAuthor">
+                <div class="newsauthor-wrapper">
+                    <f:link.action 
+                        pageUid="{settings.detailPid}" 
+                        action="show" 
+                        arguments="{newsAuthor : newsAuthor}" 
+                        class="detail"
+                        title="{f:translate(key:'tx_newsauthor_domain_model_newsauthor.detailLinkTitle', arguments:'{0: \'{newsAuthor.firstname} {newsAuthor.lastname}\'}')}"
+                    >
+
+                        <f:if condition="{newsAuthor.image}">
+                            <f:render partial="Image" arguments="{img:newsAuthor.image, imgWidth:settings.list.image.width, imgHeight:settings.list.image.height, cssClass:'img-responsive'}" />
+                        </f:if>
+
+                        <div class="name">
+                            {md:ShowAuthorName(author: newsAuthor)}
+                        </div>
+                    </f:link.action>
+                </div><!-- /.newsauthor-wrapper -->
+            </f:for>
+        </f:widget.paginate>
+    </div><!-- /.newsauthor-list -->
+    <!--TYPO3SEARCH_begin-->
 
 </f:section>
 

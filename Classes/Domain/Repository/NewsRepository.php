@@ -27,12 +27,30 @@ namespace Mediadreams\MdNewsAuthor\Domain\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Query\QueryBuilder;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 
 /**
  * The repository for News
  */
 class NewsRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
+  /**
+   * News table
+   *
+   * @var string
+   */
+  const TABLE_NEWS = 'tx_news_domain_model_news';
+
+  /**
+   * News author table
+   *
+   * @var string
+   */
+  const TABLE_AUTHOR = 'tx_mdnewsauthor_domain_model_newsauthor';
+
 
   // Ordering of result
   protected $defaultOrderings = array(
@@ -56,49 +74,66 @@ class NewsRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
    */
   public function getNewsByAuthor($authorUid)
   {
-    $data = [];
+    // Initialize Query Builder for table 'tx_mdnewsauthor_domain_model_newsauthor'
+    /** @var QueryBuilder $queryBuilderNews */
+    $queryBuilderAuthor = GeneralUtility::makeInstance(ConnectionPool::class)
+                          ->getQueryBuilderForTable(self::TABLE_AUTHOR);
+
 
     // look for translated author and overwrite $authorUid
     if ($GLOBALS['TSFE']->sys_language_uid > 0) {
-      $select = 'uid';
-      $table = 'tx_mdnewsauthor_domain_model_newsauthor';
-      $where = '(sys_language_uid = ' .(int)$GLOBALS['TSFE']->sys_language_uid. ' AND l10n_parent = ' .(int)$authorUid. ' )';  
-      $where  .= $GLOBALS['TSFE']->sys_page->enableFields($table);    
-      $order = '';
-      $group = '';
-      $limit = '1';
-      $translatedAuthor = $this->getDatabaseConnection()->exec_SELECTgetRows($select, $table, $where, $group, $order, $limit);
+      $translatedAuthor = $queryBuilderAuthor
+        ->select('uid')
+        ->from(self::TABLE_AUTHOR)
+        ->where(
+            $queryBuilderAuthor->expr()->eq(
+              'sys_language_uid',
+              $queryBuilderAuthor->createNamedParameter((int)$GLOBALS['TSFE']->sys_language_uid, \PDO::PARAM_INT)
+            )
+          )
+        ->andWhere(
+            $queryBuilderAuthor->expr()->eq(
+              'l10n_parent', 
+              $queryBuilderAuthor->createNamedParameter((int)$authorUid, \PDO::PARAM_INT)
+            )
+         )
+        ->setMaxResults(1)
+        ->execute()
+        ->fetchAll();
 
       if ($translatedAuthor && $translatedAuthor[0]['uid']) {
         $authorUid = $translatedAuthor[0]['uid'];
       }
     }
 
-    $res = $this->getDatabaseConnection()->exec_SELECT_mm_query(
-      'tx_news_domain_model_news.*',
-      'tx_news_domain_model_news',
-      'tx_mdnewsauthor_news_newsauthor_mm',
-      'tx_mdnewsauthor_domain_model_newsauthor',
-      ' AND (tx_mdnewsauthor_domain_model_newsauthor.uid=' . (int)$authorUid . ') '.$GLOBALS['TSFE']->sys_page->enableFields('tx_news_domain_model_news'),
-      '',
-      'tx_news_domain_model_news.datetime DESC'
-    );
 
-    while ($row = $this->getDatabaseConnection()->sql_fetch_assoc($res)) {
-      $data[] = $row;
-    }
+    // Initialize Query Builder for table 'tx_news_domain_model_news'
+    /** @var QueryBuilder $queryBuilderNews */
+    $queryBuilderNews = GeneralUtility::makeInstance(ConnectionPool::class)
+                        ->getQueryBuilderForTable(self::TABLE_NEWS);
 
-    $this->getDatabaseConnection()->sql_free_result($res);
+    $news = $queryBuilderNews
+      ->select('tx_news_domain_model_news.*')
+      ->from(self::TABLE_NEWS)
+      ->leftJoin(
+        self::TABLE_NEWS,
+        self::TABLE_AUTHOR,
+        'newsauthorMM',
+        $queryBuilderNews->expr()->eq(
+          'newsauthorMM.uid', 
+          $queryBuilderNews->quoteIdentifier('tx_news_domain_model_news.uid')
+        )
+      )
+      ->where(
+        $queryBuilderNews->expr()->eq(
+          'newsauthorMM.uid', 
+          $queryBuilderNews->createNamedParameter((int)$authorUid, \PDO::PARAM_INT)
+        )
+      )
+      ->execute()
+      ->fetchAll();
 
-    return $data;
-  }
-
-  /**
-   * @return \TYPO3\Cms\Core\Database\DatabaseConnection
-   */
-  protected static function getDatabaseConnection()
-  {
-    return $GLOBALS['TYPO3_DB'];
+    return $news;
   }
   
 }
