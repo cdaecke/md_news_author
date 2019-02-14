@@ -1,3 +1,12 @@
+Version 4.0.0 (2019-02-14)
+    FEATURE: TYPO3 9 compatibility
+
+    ATTENTION:
+    Make sure to run the database analyzer in the install tool and clear the cache afterwards!
+
+    All changes
+    https://github.com/cdaecke/md_news_author/compare/v3.0.2...v4.0.0
+
 Version 3.0.2 (2019-02-04)
     BUGFIX: Respect translations of authors in news records
     BUGFIX: Make TCEFORM working again for TYPO3 8
