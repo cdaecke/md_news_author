@@ -1,64 +1,64 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-  <file source-language="en" datatype="plaintext" original="messages" date="2016-09-15T14:10:30Z" product-name="md_news_author">
-    <header/>
-    <body>
-      <trans-unit id="tx_newsauthor_domain_model_newsauthor">
-        <source>News Author</source>
-      </trans-unit>
-      <trans-unit id="tx_newsauthor_domain_model_newsauthor.detailLinkTitle">
-        <source>More about: %s</source>
-      </trans-unit>
-      <trans-unit id="tx_newsauthor_domain_model_newsauthor.backLinkTitle">
-        <source>Show all authors</source>
-      </trans-unit>
-      <trans-unit id="tx_newsauthor_domain_model_newsauthor.backLinkLabel">
-        <source>Back to autor list</source>
-      </trans-unit>
-      <trans-unit id="tx_newsauthor_domain_model_newsauthor.all">
-        <source>All</source>
-      </trans-unit>
+    <file source-language="en" datatype="plaintext" original="messages" date="2016-09-15T14:10:30Z" product-name="md_news_author">
+        <header/>
+        <body>
+          <trans-unit id="tx_newsauthor_domain_model_newsauthor">
+              <source>News Author</source>
+          </trans-unit>
+          <trans-unit id="tx_newsauthor_domain_model_newsauthor.detailLinkTitle">
+              <source>More about: %s</source>
+          </trans-unit>
+          <trans-unit id="tx_newsauthor_domain_model_newsauthor.backLinkTitle">
+              <source>Show all authors</source>
+          </trans-unit>
+          <trans-unit id="tx_newsauthor_domain_model_newsauthor.backLinkLabel">
+              <source>Back to autor list</source>
+          </trans-unit>
+          <trans-unit id="tx_newsauthor_domain_model_newsauthor.all">
+              <source>All</source>
+          </trans-unit>
 
-      <trans-unit id="template.phone">
-        <source>Phone</source>
-      </trans-unit>
-      <trans-unit id="template.email">
-        <source>Email</source>
-      </trans-unit>
-      <trans-unit id="template.www">
-        <source>WWW</source>
-      </trans-unit>
-      <trans-unit id="template.facebook">
-        <source>Facebook</source>
-      </trans-unit>
-      <trans-unit id="template.twitter">
-        <source>Twitter</source>
-      </trans-unit>
-      <trans-unit id="template.linkedin">
-        <source>LinkedIn</source>
-      </trans-unit>
-      <trans-unit id="template.xing">
-        <source>Xing</source>
-      </trans-unit>
+          <trans-unit id="template.phone">
+              <source>Phone</source>
+          </trans-unit>
+          <trans-unit id="template.email">
+              <source>Email</source>
+          </trans-unit>
+          <trans-unit id="template.www">
+              <source>WWW</source>
+          </trans-unit>
+          <trans-unit id="template.facebook">
+              <source>Facebook</source>
+          </trans-unit>
+          <trans-unit id="template.twitter">
+              <source>Twitter</source>
+          </trans-unit>
+          <trans-unit id="template.linkedin">
+              <source>LinkedIn</source>
+          </trans-unit>
+          <trans-unit id="template.xing">
+              <source>Xing</source>
+          </trans-unit>
 
-      <trans-unit id="template.paginate_overall">
-        <source>Page %s of %s.</source>
-      </trans-unit>
-      <trans-unit id="template.paginate_previous">
-        <source>Previous</source>
-      </trans-unit>
-      <trans-unit id="template.paginate_next">
-        <source>Next</source>
-      </trans-unit>
-      
-      <trans-unit id="template.dateFormat">
-        <source>%d.%m.%Y</source>
-      </trans-unit>
+          <trans-unit id="template.paginate_overall">
+              <source>Page %s of %s.</source>
+          </trans-unit>
+          <trans-unit id="template.paginate_previous">
+              <source>Previous</source>
+          </trans-unit>
+          <trans-unit id="template.paginate_next">
+              <source>Next</source>
+          </trans-unit>
+          
+          <trans-unit id="template.dateFormat">
+              <source>%d.%m.%Y</source>
+          </trans-unit>
 
-      <trans-unit id="template.show.articleHeader">
-        <source>Articles of %s</source>
-      </trans-unit>
-      
-    </body>
-  </file>
+          <trans-unit id="template.show.articleHeader">
+              <source>Articles of %s</source>
+          </trans-unit>
+          
+        </body>
+    </file>
 </xliff>

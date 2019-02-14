@@ -4,8 +4,8 @@ This extension is based on extbase & fluid and provides the famous extension ``e
 
 ## Requirements
 
-- TYPO3 > 7.6
-- ext:news > 4.0
+- TYPO3 >= 8.7
+- ext:news >= 6.0
 
 ### Installation
 
@@ -49,6 +49,18 @@ Insert a author detail view. This page includes also all news which are associat
 
 - Access the author properties in a news record with {newsItem.newsAuthor}. Since there could be more than one author attached to a news record, you have to iterate:
 
+TYPO3 9:
+
+```
+<f:for each="{newsItem.newsAuthor}" as="author">
+    {md:ShowAuthorName(author: author)}
+    {author.phone}
+    {author. ...}
+</f:for>
+```
+
+TYPO3 8:
+
 ```
 <f:for each="{newsItem.newsAuthor}" as="author">
     {md:ShowAuthorName(author:'{author}')}
@@ -74,6 +86,67 @@ In order to show only authors of a single page in the "Authors"-tab of a news re
     TCEFORM.tx_news_domain_model_news.news_author.PAGE_TSCONFIG_STR = 1
 
 This will show only the author records, which are stored on page ID = 1
+
+### ``routeEnhancers`` for TYPO3 9
+
+```
+routeEnhancers:
+  NewsAuthorPlugin:
+    type: Extbase
+    extension: MdNewsAuthor
+    plugin: NewsAuthor
+    routes:
+      - 
+        routePath: '{slug}'
+        _controller: 'NewsAuthor::show'
+        _arguments:
+          'slug': 'newsAuthor'
+      -
+        routePath: '/a-z/{letter}'
+        _controller: 'NewsAuthor::list'
+        _arguments:
+          'letter': 'selectedLetter'
+    defaultController: 'NewsAuthor::list'
+    defaults:
+      letter: ''
+    requirements:
+      slug: '^[a-zA-Z0-9].*$'
+      letter: \d+
+    aspects:
+      slug:
+        type: PersistedAliasMapper
+        tableName: 'tx_mdnewsauthor_domain_model_newsauthor'
+        routeFieldName: 'slug'
+      letter:
+        type: StaticValueMapper
+        map:
+          a: A
+          b: B
+          c: C
+          d: D
+          e: E
+          f: F
+          g: G
+          h: H
+          i: I
+          j: J
+          k: K
+          l: L
+          m: M
+          n: N
+          o: O
+          p: P
+          q: Q
+          r: R
+          s: S
+          t: T
+          u: U
+          v: V
+          w: W
+          x: X
+          y: Y
+          z: Z
+```
 
 ### ``ext:realurl`` configuration
 
@@ -147,3 +220,7 @@ If you find a bug, it would be nice if you add an issue on [Github](https://gith
 # THANKS
 
 Thanks a lot to all who make this outstanding TYPO3 project possible!
+
+## Credits
+
+Extension icon by [Font Awesome](https://fontawesome.com/icons/user?style=solid).

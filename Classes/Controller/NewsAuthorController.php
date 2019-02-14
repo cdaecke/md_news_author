@@ -34,77 +34,76 @@ namespace Mediadreams\MdNewsAuthor\Controller;
 class NewsAuthorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
 
-  /**
-   * newsAuthorRepository
-   *
-   * @var \Mediadreams\MdNewsAuthor\Domain\Repository\NewsAuthorRepository
-   * @inject
-   */
-  protected $newsAuthorRepository = NULL;
+    /**
+     * newsAuthorRepository
+     *
+     * @var \Mediadreams\MdNewsAuthor\Domain\Repository\NewsAuthorRepository
+     * @inject
+     */
+    protected $newsAuthorRepository = NULL;
 
-  /**
-   * newsRepository
-   *
-   * @var \Mediadreams\MdNewsAuthor\Domain\Repository\NewsRepository
-   * @inject
-   */
-  protected $newsRepository;
+    /**
+     * newsRepository
+     *
+     * @var \Mediadreams\MdNewsAuthor\Domain\Repository\NewsRepository
+     * @inject
+     */
+    protected $newsRepository;
   
-  /**
-   * action list
-   *
-   * @param string $selectedLetter
-   * @return void
-   */
-  public function listAction($selectedLetter="")
-  {
-    
-    // get all authors
-    // we need all authors all the time because the alphabetical filter needs them as well
-    if ($this->settings['categoriesList'] != '') {
-      $newsAuthors = $this->newsAuthorRepository->getAuthorsByCategories($this->settings['categoriesList']);
-    } else {
-      $newsAuthors = $this->newsAuthorRepository->findAll();
-    }
+    /**
+     * action list
+     *
+     * @param string $selectedLetter
+     * @return void
+     */
+    public function listAction($selectedLetter="")
+    {
+        // get all authors
+        // we need all authors all the time because the alphabetical filter needs them as well
+        if ($this->settings['categoriesList'] != '') {
+            $newsAuthors = $this->newsAuthorRepository->getAuthorsByCategories($this->settings['categoriesList']);
+        } else {
+            $newsAuthors = $this->newsAuthorRepository->findAll();
+        }
 
-    $activeLetters = array();
-    foreach($newsAuthors as $author){
-      $char = mb_substr($author->getLastname(),0,1, "UTF-8");
-      $activeLetters[$char] = true;
-    }
-    $this->view->assign('activeLetters', $activeLetters);
-    $this->view->assign('selectedLetter', $selectedLetter);
+        $activeLetters = array();
+        foreach($newsAuthors as $author){
+            $char = mb_substr($author->getLastname(),0,1, "UTF-8");
+            $activeLetters[$char] = true;
+        }
+        $this->view->assign('activeLetters', $activeLetters);
+        $this->view->assign('selectedLetter', $selectedLetter);
 
-    // assign selected authors only
-    // we need to query again because of the selected letter
-    if (!empty($selectedLetter)) {
-      if ($this->settings['categoriesList'] != '') {
-        $newsAuthors = $this->newsAuthorRepository->getAuthorsByCategories($this->settings['categoriesList'], $selectedLetter);
-      } else {
-        $newsAuthors = $this->newsAuthorRepository->getAuthorsByInitial($selectedLetter);
-      }
-    }
+        // assign selected authors only
+        // we need to query again because of the selected letter
+        if (!empty($selectedLetter)) {
+            if ($this->settings['categoriesList'] != '') {
+                $newsAuthors = $this->newsAuthorRepository->getAuthorsByCategories($this->settings['categoriesList'], $selectedLetter);
+            } else {
+                $newsAuthors = $this->newsAuthorRepository->getAuthorsByInitial($selectedLetter);
+            }
+        }
 
-    $this->view->assign('newsAuthors', $newsAuthors);
-  }
+        $this->view->assign('newsAuthors', $newsAuthors);
+    }
   
-  /**
-   * action show
-   *
-   * @param \Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor
-   * @return void
-   */
-  public function showAction(\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor)
-  {
-    // write page title
-    $pageTitle = $newsAuthor->getTitle().' '.$newsAuthor->getFirstname().' '.$newsAuthor->getLastname();
-    $GLOBALS['TSFE']->page['title'] = $pageTitle;
-    $GLOBALS['TSFE']->indexedDocTitle = $pageTitle;
+    /**
+     * action show
+     *
+     * @param \Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor
+     * @return void
+     */
+    public function showAction(\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor)
+    {
+        // write page title
+        $pageTitle = $newsAuthor->getTitle().' '.$newsAuthor->getFirstname().' '.$newsAuthor->getLastname();
+        $GLOBALS['TSFE']->page['title'] = $pageTitle;
+        $GLOBALS['TSFE']->indexedDocTitle = $pageTitle;
 
-    $this->view->assignMultiple(array(
-      'newsAuthor' => $newsAuthor,
-      'authorNews' => $this->newsRepository->getNewsByAuthor($newsAuthor->getUid())
-    ));
-  }
+        $this->view->assignMultiple([
+            'newsAuthor' => $newsAuthor,
+            'authorNews' => $this->newsRepository->getNewsByAuthor($newsAuthor->getUid())
+        ]);
+    }
 
 }
