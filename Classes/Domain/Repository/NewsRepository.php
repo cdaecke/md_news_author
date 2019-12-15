@@ -64,50 +64,18 @@ class NewsRepository extends \GeorgRinger\News\Domain\Repository\NewsRepository
    * We use this to get the news records ordered by "datetime"
    *
    * @param int $authorUid Uid of author
-   * @return obj | false
+   * @return obj
    */
   public function getNewsByAuthor(int $authorUid)
   {
-    // Initialize Query Builder for table 'tx_mdnewsauthor_news_newsauthor_mm'
-    /** @var QueryBuilder $queryBuilderNews */
-    $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
-                          ->getQueryBuilderForTable(self::TABLE_AUTHOR_MM);
+    $query = $this->createQuery();
+    $query->matching(
+      $query->logicalAnd([
+        $query->equals('newsAuthor.uid', (int)$authorUid),
+      ])
+    );
 
-    // find all news IDs which belong to the author
-    $newsUids = $queryBuilder
-      ->select('uid_local')
-      ->from(self::TABLE_AUTHOR_MM)
-      ->where(
-          $queryBuilder->expr()->eq(
-            'uid_foreign',
-            $queryBuilder->createNamedParameter((int)$authorUid, \PDO::PARAM_INT)
-          )
-        )
-      ->execute()
-      ->fetchAll();
-
-    // build array with news IDs
-    $newsArr = [];
-    foreach ($newsUids as $newsUid) {
-      $newsArr[] = $newsUid['uid_local'];
-    }
-    
-    // finally get the news records
-    if ( count($newsArr) > 0 ) {
-      $constraint = [];
-      $query = $this->createQuery();
-
-      $constraints[] = $query->in('uid', $newsArr);
-
-      $query->matching(
-        $query->logicalAnd($constraints)
-      );
-
-      return $query->execute();
-    } else {
-      return false;
-    }
-
+    return $query->execute();
   }
 
 }
