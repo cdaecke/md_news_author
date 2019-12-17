@@ -74,43 +74,45 @@
             </f:if>
         </div><!-- /.author-wrapper -->
 
+        <f:if condition="{authorNews}">
         <!--TYPO3SEARCH_end-->
-        <section class="articles-wrapper" id="author-articles">
-            <h2><f:translate key="template.show.articleHeader" arguments="{0: '{md:ShowAuthorName(author:newsAuthor)}'}" /></h2>
+            <section class="articles-wrapper" id="author-articles">
+                <h2><f:translate key="template.show.articleHeader" arguments="{0: '{md:ShowAuthorName(author:newsAuthor)}'}" /></h2>
 
-            <f:widget.paginate objects="{authorNews}" as="paginatedAuthorNews" configuration="{itemsPerPage: '{settings.authorDetail.paginate.itemsPerPage}', insertAbove: '{settings.authorDetail.paginate.insertAbove}', insertBelow: '{settings.authorDetail.paginate.insertBelow}', maximumNumberOfLinks: '{settings.authorDetail.paginate.maximumNumberOfLinks}'}">
+                <f:widget.paginate objects="{authorNews}" as="paginatedAuthorNews" configuration="{itemsPerPage: '{settings.authorDetail.paginate.itemsPerPage}', insertAbove: '{settings.authorDetail.paginate.insertAbove}', insertBelow: '{settings.authorDetail.paginate.insertBelow}', maximumNumberOfLinks: '{settings.authorDetail.paginate.maximumNumberOfLinks}'}">
 
-                <f:for each="{paginatedAuthorNews}" as="newsItem">
-                    <article itemscope="itemscope" itemtype="http://schema.org/Article">
-                        <f:link.page pageUid="{f:if(condition:'{newsItem.firstCategory.singlePid}',then:'{newsItem.firstCategory.singlePid}',else:'{settings.newsDetailPid}')}" additionalParams="{tx_news_pi1: {news: newsItem.uid, controller: 'News', action: 'detail'}}">
-                            <div class="article-meta">
-                                <span class="news-list-date">
-                                    <time datetime="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}">
-                                        <f:format.date format="{f:translate(key:'template.dateFormat')}">{newsItem.datetime}</f:format.date>
-                                        <meta itemprop="datePublished" content="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}" />
-                                    </time>
-                                </span>
-                            </div>
+                    <f:for each="{paginatedAuthorNews}" as="newsItem">
+                        <article itemscope="itemscope" itemtype="http://schema.org/Article">
+                            <f:link.page pageUid="{f:if(condition:'{newsItem.firstCategory.singlePid}',then:'{newsItem.firstCategory.singlePid}',else:'{settings.newsDetailPid}')}" additionalParams="{tx_news_pi1: {news: newsItem.uid, controller: 'News', action: 'detail'}}">
+                                <div class="article-meta">
+                                    <span class="news-list-date">
+                                        <time datetime="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}">
+                                            <f:format.date format="{f:translate(key:'template.dateFormat')}">{newsItem.datetime}</f:format.date>
+                                            <meta itemprop="datePublished" content="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}" />
+                                        </time>
+                                    </span>
+                                </div>
 
-                            <h3><span itemprop="headline">{newsItem.title}</span></h3>
+                                <h3><span itemprop="headline">{newsItem.title}</span></h3>
 
-                            <div class="teaser-text">
-                                <f:if condition="{newsItem.teaser}">
-                                    <f:then>
-                                        <div itemprop="description">{newsItem.teaser -> f:format.html()}</div>
-                                    </f:then>
-                                    <f:else>
-                                        <div itemprop="description">{newsItem.bodytext -> f:format.crop(maxCharacters: '200', respectWordBoundaries:'1') -> f:format.html()}</div>
-                                    </f:else>
-                                </f:if>
-                            </div>  
-                        </f:link.page>
-                    </article>
-                </f:for>
+                                <div class="teaser-text">
+                                    <f:if condition="{newsItem.teaser}">
+                                        <f:then>
+                                            <div itemprop="description">{newsItem.teaser -> f:format.html()}</div>
+                                        </f:then>
+                                        <f:else>
+                                            <div itemprop="description">{newsItem.bodytext -> f:format.crop(maxCharacters: '200', respectWordBoundaries:'1') -> f:format.html()}</div>
+                                        </f:else>
+                                    </f:if>
+                                </div>  
+                            </f:link.page>
+                        </article>
+                    </f:for>
 
-            </f:widget.paginate>
-        </section>
-        <!--TYPO3SEARCH_begin-->
+                </f:widget.paginate>
+            </section>
+            <!--TYPO3SEARCH_begin-->
+        </f:if>
     </div><!-- /.newsauthor-detail -->
 
 </f:section>
