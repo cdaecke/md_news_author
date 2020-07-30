@@ -27,7 +27,7 @@ namespace Mediadreams\MdNewsAuthor\ViewHelpers;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractConditionViewHelper;
 
 /**
  * ViewHelper to show alphabetical filter for author list
@@ -37,36 +37,40 @@ namespace Mediadreams\MdNewsAuthor\ViewHelpers;
  * @author Christoph Daecke <typo3@mediadreams.org>
  *
  */
-class ShowAlphabeticalNavigationViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractConditionViewHelper
+class ShowAlphabeticalNavigationViewHelper extends AbstractConditionViewHelper
 {
+    /**
+     * Initialize arguments
+     *
+     * @return void
+     */
+    public function initializeArguments()
+    {
+        parent::initializeArguments();
+        $this->registerArgument('letters', 'string', '', true);
+        $this->registerArgument('activeLetters', 'array', '', true);
+    }
 
-  /**
-   * Initialize arguments
-   *
-   * @return void
-   */
-  public function initializeArguments() {
-    parent::initializeArguments();
-    $this->registerArgument('letters', 'string', '', true);
-    $this->registerArgument('activeLetters', 'array', '', true);
-  }
+    /**
+     * @return string
+     */
+    public function render()
+    {
+        $alphabet = '';
+        $lettersArray = explode (",", $this->arguments['letters']);
 
-  /**
-   * @return string
-   */
-  public function render() {
-    $alphabet = '';
-    $lettersArray = explode (",", $this->arguments['letters']);
-    
-    foreach($lettersArray as $letter){
-      $this->templateVariableContainer->add('letter', $letter);
-      if(array_key_exists($letter, $this->arguments['activeLetters'])){
-        $alphabet .= $this->renderThenChild();
-      }else{
-        $alphabet .= $this->renderElseChild();
-      }
-      $this->templateVariableContainer->remove('letter');
-    } 
-    return $alphabet;
-  }
+        foreach($lettersArray as $letter){
+            $this->templateVariableContainer->add('letter', $letter);
+
+            if(array_key_exists($letter, $this->arguments['activeLetters'])){
+                $alphabet .= $this->renderThenChild();
+            } else {
+                $alphabet .= $this->renderElseChild();
+            }
+
+            $this->templateVariableContainer->remove('letter');
+        }
+
+        return $alphabet;
+    }
 }

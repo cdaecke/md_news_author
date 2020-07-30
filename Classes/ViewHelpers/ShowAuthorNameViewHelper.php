@@ -27,9 +27,9 @@ namespace Mediadreams\MdNewsAuthor\ViewHelpers;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * ViewHelper to show author name with optional title
@@ -52,43 +52,43 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
  */
 class ShowAuthorNameViewHelper extends AbstractViewHelper
 {
-  use CompileWithRenderStatic;
+    use CompileWithRenderStatic;
 
-  /**
-   * Initialize arguments
-   */
-  public function initializeArguments()
-  {
-    parent::initializeArguments();
-    $this->registerArgument('author', 'object', 'the author object', true);
-  }
-
-  /**
-   * @param array $arguments
-   * @param \Closure $renderChildrenClosure
-   * @param RenderingContextInterface $renderingContext
-   * @return string
-   */
-  public static function renderStatic(
-    array $arguments,
-    \Closure $renderChildrenClosure,
-    RenderingContextInterface $renderingContext
-  ) {
-
-    if (!is_object($arguments['author'])) {
-      return '';
+    /**
+     * Initialize arguments
+     */
+    public function initializeArguments()
+    {
+        parent::initializeArguments();
+        $this->registerArgument('author', 'object', 'the author object', true);
     }
 
-    $author = $arguments['author'];
+    /**
+     * @param array $arguments
+     * @param \Closure $renderChildrenClosure
+     * @param RenderingContextInterface $renderingContext
+     * @return string
+     */
+    public static function renderStatic(
+        array $arguments,
+        \Closure $renderChildrenClosure,
+        RenderingContextInterface $renderingContext
+    )
+    {
+        if (!is_object($arguments['author'])) {
+            return '';
+        }
 
-    $authorTitle = $author->getTitle();
-    $fullAuthor = $author->getFirstname().' '.$author->getLastname();
+        $author = $arguments['author'];
 
-    if ($authorTitle) {
-      $fullAuthor = $authorTitle.' '.$fullAuthor;
+        $authorTitle = $author->getTitle();
+        $fullAuthor = $author->getFirstname().' '.$author->getLastname();
+
+        if ($authorTitle) {
+            $fullAuthor = $authorTitle.' '.$fullAuthor;
+        }
+
+        return $fullAuthor;
     }
-
-    return $fullAuthor;
-  }
   
 }
