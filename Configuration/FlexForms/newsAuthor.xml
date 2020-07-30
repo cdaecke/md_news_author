@@ -14,6 +14,7 @@
                             <onChange>reload</onChange>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <eval>required</eval>
                                 <items type="array">
                                     <numIndex index="1" type="array">
@@ -146,10 +147,10 @@
                             <label>LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:flex_author.categoryDesc</label>
                             <config>
                                 <type>select</type>
+                                <renderType>selectTree</renderType>
                                 <autoSizeMax>50</autoSizeMax>
                                 <foreign_table>sys_category</foreign_table>
                                 <maxitems>9999</maxitems>
-                                <renderMode>tree</renderMode>
                                 <size>10</size>
                                 <treeConfig>
                                     <appearance>
