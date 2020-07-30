@@ -37,7 +37,7 @@ class News extends \GeorgRinger\News\Domain\Model\News
    * newsAuthor
    *
    * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor>
-   * @lazy
+   * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
    */
   protected $newsAuthor = null;
 

@@ -51,7 +51,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
    * firstname
    *
    * @var string
-   * @validate NotEmpty
+   * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
    */
   protected $firstname = '';
 
@@ -59,7 +59,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
    * lastname
    *
    * @var string
-   * @validate NotEmpty
+   * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
    */
   protected $lastname = '';
 
@@ -159,7 +159,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
    * news
    *
    * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\News>
-   * @lazy
+   * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
    */
   protected $news;
 

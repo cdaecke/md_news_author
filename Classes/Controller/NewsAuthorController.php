@@ -38,7 +38,7 @@ class NewsAuthorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
      * newsAuthorRepository
      *
      * @var \Mediadreams\MdNewsAuthor\Domain\Repository\NewsAuthorRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $newsAuthorRepository = NULL;
 
@@ -46,7 +46,7 @@ class NewsAuthorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
      * newsRepository
      *
      * @var \Mediadreams\MdNewsAuthor\Domain\Repository\NewsRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $newsRepository;
   
