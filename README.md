@@ -4,8 +4,8 @@ This extension is based on extbase & fluid and provides the famous extension ``e
 
 ## Requirements
 
-- TYPO3 >= 8.7
-- ext:news >= 6.0
+- TYPO3 >= 9.5
+- ext:news >= 7.0
 
 ### Installation
 
@@ -49,21 +49,9 @@ Insert a author detail view. This page includes also all news which are associat
 
 - Access the author properties in a news record with {newsItem.newsAuthor}. Since there could be more than one author attached to a news record, you have to iterate:
 
-TYPO3 9:
-
 ```
 <f:for each="{newsItem.newsAuthor}" as="author">
     {md:ShowAuthorName(author: author)}
-    {author.phone}
-    {author. ...}
-</f:for>
-```
-
-TYPO3 8:
-
-```
-<f:for each="{newsItem.newsAuthor}" as="author">
-    {md:ShowAuthorName(author:'{author}')}
     {author.phone}
     {author. ...}
 </f:for>
@@ -87,7 +75,7 @@ In order to show only authors of a single page in the "Authors"-tab of a news re
 
 This will show only the author records, which are stored on page ID = 1
 
-### ``routeEnhancers`` for TYPO3 9
+### ``routeEnhancers``
 
 ```
 routeEnhancers:
@@ -147,72 +135,6 @@ routeEnhancers:
           y: Y
           z: Z
 ```
-
-### ``ext:realurl`` configuration
-
-Thanks for this great extension, Dmitry Dulepov (@dmitryd)!
-
-    'postVarSets' => array(
-        '_DEFAULT' => array(
-
-            // EXT:md_news_author
-            'author' => array(
-
-                '0' => array(
-                    'GETvar' => 'tx_mdnewsauthor_newsauthor[action]',
-                    'noMatch' => 'bypass',
-                ),
-
-                '1' => array(
-                    'GETvar' => 'tx_mdnewsauthor_newsauthor[controller]',
-                    'noMatch' => 'bypass',
-                ),
-
-                '2' => array(
-                    'GETvar' => 'tx_mdnewsauthor_newsauthor[newsAuthor]',
-                    'lookUpTable' => array(
-                        'table' => 'tx_mdnewsauthor_domain_model_newsauthor',
-                        'id_field' => 'uid',
-                        'alias_field' => 'concat(firstname, " ",lastname)',
-                        'addWhereClause' => ' AND NOT deleted',
-                        'useUniqueCache' => 1,
-                        'useUniqueCache_conf' => array(
-                            'strtolower' => 1,
-                            'spaceCharacter' => '-',
-                        ),
-                        'languageGetVar' => 'L',
-                        'languageExceptionUids' => '',
-                        'languageField' => 'sys_language_uid',
-                        'transOrigPointerField' => 'l10n_parent',
-                        'autoUpdate' => 1,
-                        'expireDays' => 180,
-                    ),
-                ),
-            ),
-
-            'authorList' => array(
-                '0' => array(
-                    'GETvar' => 'tx_mdnewsauthor_newsauthor[action]',
-                    'noMatch' => 'bypass',
-                ),
-
-                '1' => array(
-                    'GETvar' => 'tx_mdnewsauthor_newsauthor[controller]',
-                    'noMatch' => 'bypass',
-                ),
-            ),
-
-            // sorting
-            'a-z' => array(
-                array(
-                    'GETvar' => 'tx_mdnewsauthor_newsauthor[selectedLetter]',
-                ),
-            ),
-
-            // EXT:md_news_author end
-            
-        ),
-    ),
 
 ## Bugs and Known Issues
 If you find a bug, it would be nice if you add an issue on [Github](https://github.com/cdaecke/md_news_author/issues).
