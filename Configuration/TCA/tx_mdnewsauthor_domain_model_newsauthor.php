@@ -31,7 +31,7 @@ return [
         '1' => ['showitem' => 'sys_language_uid,l10n_parent,l10n_diffsource,,--palette--;;palette_name,,--palette--;;palette_company,,--palette--;;palette_contact,bio,image,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,hidden,starttime,endtime,--div--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_category.tabs.category,categories'],
     ],
     'palettes' => [
-        'palette_name' => ['showitem' => 'gender, title, --linebreak--, firstname, lastname'],
+        'palette_name' => ['showitem' => 'gender, title, --linebreak--, firstname, lastname, --linebreak--, slug'],
         'palette_company' => ['showitem' => 'company, position'],
         'palette_contact' => ['showitem' => 'phone, --linebreak--, email, www, --linebreak--, facebook, twitter, --linebreak--, linkedin, xing'],
     ],
@@ -159,14 +159,22 @@ return [
                 'eval' => 'trim,required'
             ],
         ],
-        // this is the fallback for TYPO3 8 and will be overwritten in "Overrides/tx_news_domain_model_news.php" for TYPO3 9
         'slug' => [
             'exclude' => true,
             'label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.slug',
             'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'nospace,alphanum_x,lower,unique',
+                'type' => 'slug',
+                'size' => 50,
+                'generatorOptions' => [
+                    'fields' => ['firstname', 'lastname'],
+                    'fieldSeparator' => '-',
+                    'replacements' => [
+                        '/' => '-'
+                    ],
+                ],
+                'fallbackCharacter' => '-',
+                'eval' => 'uniqueInSite',
+                'default' => ''
             ],
         ],
         'company' => [
