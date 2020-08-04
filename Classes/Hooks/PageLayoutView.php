@@ -34,38 +34,38 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * PageLayoutView
  */
-class PageLayoutView implements \TYPO3\CMS\Backend\View\PageLayoutViewDrawItemHookInterface {
+class PageLayoutView implements \TYPO3\CMS\Backend\View\PageLayoutViewDrawItemHookInterface
+{
 
-  /**
-   * Preprocesses the preview rendering of a content element.
-   *
-   * @param PageLayoutView $parentObject Calling parent object
-   * @param boolean $drawItem Whether to draw the item using the default functionalities
-   * @param string $headerContent Header content
-   * @param string $itemContent Item content
-   * @param array $row Record row of tt_content
-   * @return void
-   */
-  public function preProcess(\TYPO3\CMS\Backend\View\PageLayoutView &$parentObject, &$drawItem, &$headerContent, &$itemContent, array &$row) {
+    /**
+     * Preprocesses the preview rendering of a content element.
+     *
+     * @param PageLayoutView $parentObject Calling parent object
+     * @param boolean $drawItem Whether to draw the item using the default functionalities
+     * @param string $headerContent Header content
+     * @param string $itemContent Item content
+     * @param array $row Record row of tt_content
+     * @return void
+     */
+    public function preProcess(\TYPO3\CMS\Backend\View\PageLayoutView &$parentObject, &$drawItem, &$headerContent, &$itemContent, array &$row)
+    {
+        if ($row['list_type'] !== 'mdnewsauthor_newsauthor') {
+            return;
+        }
 
-    if ($row['list_type'] !== 'mdnewsauthor_newsauthor') {
-      return;
+        $drawItem = FALSE;
+        $itemContent = $parentObject->linkEditContent('<strong>' . htmlspecialchars($GLOBALS['LANG']->sL('LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor')) . '</strong>', $row);
+
+        $flexform = GeneralUtility::xml2array($row['pi_flexform']);
+
+        if( isset($flexform['data']['general']['lDEF']['switchableControllerActions']['vDEF']) ) {
+            $switchableControllerActions = html_entity_decode( strip_tags( $flexform['data']['general']['lDEF']['switchableControllerActions']['vDEF'] ) );
+
+            $actionKey = mb_substr($switchableControllerActions, strpos($switchableControllerActions, '->')+2);
+            $actionTranslation = $GLOBALS['LANG']->sL('LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:flex_author.'.$actionKey);
+
+            $itemContent .= $parentObject->linkEditContent('<br>' . htmlspecialchars($actionTranslation), $row);
+        }
     }
-
-    $drawItem = FALSE;
-    $headerContent = $header = $parentObject->linkEditContent('<strong>' . htmlspecialchars($GLOBALS['LANG']->sL('LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor')) . '</strong>', $row);
-
-    $flexform = GeneralUtility::xml2array($row['pi_flexform']);
-
-    if( isset($flexform['data']['general']['lDEF']['switchableControllerActions']['vDEF']) ) {
-      $switchableControllerActions = html_entity_decode( strip_tags( $flexform['data']['general']['lDEF']['switchableControllerActions']['vDEF'] ) );
-
-      $actionKey = mb_substr($switchableControllerActions, strpos($switchableControllerActions, '->')+2);
-      $actionTranslation = $GLOBALS['LANG']->sL('LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:flex_author.'.$actionKey);
-
-      $headerContent .= $parentObject->linkEditContent('<br><strong style="text-transform: uppercase">' . htmlspecialchars($actionTranslation) . '</strong>', $row);
-    }
-        
-  }
 
 }
