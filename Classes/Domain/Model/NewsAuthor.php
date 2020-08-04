@@ -1,4 +1,5 @@
 <?php
+
 namespace Mediadreams\MdNewsAuthor\Domain\Model;
 
 
@@ -32,557 +33,556 @@ namespace Mediadreams\MdNewsAuthor\Domain\Model;
  */
 class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+    /**
+     * title
+     *
+     * @var string
+     */
+    protected $title = '';
 
-  /**
-   * title
-   *
-   * @var string
-   */
-  protected $title = '';
+    /**
+     * gender
+     *
+     * @var string
+     */
+    protected $gender = '';
 
-  /**
-   * gender
-   *
-   * @var string
-   */
-  protected $gender = '';
+    /**
+     * firstname
+     *
+     * @var string
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     */
+    protected $firstname = '';
 
-  /**
-   * firstname
-   *
-   * @var string
-   * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
-   */
-  protected $firstname = '';
+    /**
+     * lastname
+     *
+     * @var string
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     */
+    protected $lastname = '';
 
-  /**
-   * lastname
-   *
-   * @var string
-   * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
-   */
-  protected $lastname = '';
+    /**
+     * slug
+     *
+     * @var string
+     */
+    protected $slug = '';
 
-  /**
-   * slug
-   *
-   * @var string
-   */
-  protected $slug = '';
+    /**
+     * company
+     *
+     * @var string
+     */
+    protected $company = '';
 
-  /**
-   * company
-   *
-   * @var string
-   */
-  protected $company = '';
+    /**
+     * position
+     *
+     * @var string
+     */
+    protected $position = '';
 
-  /**
-   * position
-   *
-   * @var string
-   */
-  protected $position = '';
+    /**
+     * phone
+     *
+     * @var string
+     */
+    protected $phone = '';
 
-  /**
-   * phone
-   *
-   * @var string
-   */
-  protected $phone = '';
+    /**
+     * email
+     *
+     * @var string
+     */
+    protected $email = '';
 
-  /**
-   * email
-   *
-   * @var string
-   */
-  protected $email = '';
+    /**
+     * www
+     *
+     * @var string
+     */
+    protected $www = '';
 
-  /**
-   * www
-   *
-   * @var string
-   */
-  protected $www = '';
+    /**
+     * facebook
+     *
+     * @var string
+     */
+    protected $facebook = '';
 
-  /**
-   * facebook
-   *
-   * @var string
-   */
-  protected $facebook = '';
+    /**
+     * twitter
+     *
+     * @var string
+     */
+    protected $twitter = '';
 
-  /**
-   * twitter
-   *
-   * @var string
-   */
-  protected $twitter = '';
+    /**
+     * linkedin
+     *
+     * @var string
+     */
+    protected $linkedin = '';
 
-  /**
-   * linkedin
-   *
-   * @var string
-   */
-  protected $linkedin = '';
-
-  /**
-   * xing
-   *
-   * @var string
-   */
-  protected $xing = '';
+    /**
+     * xing
+     *
+     * @var string
+     */
+    protected $xing = '';
 
 
-  /**
-   * bio
-   *
-   * @var string
-   */
-  protected $bio = '';
+    /**
+     * bio
+     *
+     * @var string
+     */
+    protected $bio = '';
 
-  /**
-   * image
-   *
-   * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-   */
-  protected $image;
+    /**
+     * image
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    protected $image;
 
-  /**
-   * categories
-   *
-   * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
-   */
-  protected $categories;
+    /**
+     * categories
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
+     */
+    protected $categories;
 
-  /**
-   * news
-   *
-   * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\News>
-   * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
-   */
-  protected $news;
+    /**
+     * news
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\News>
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     */
+    protected $news;
 
-  /**
-   * Returns the gender
-   *
-   * @return string $gender
-   */
-  public function getGender()
-  {
-    return $this->gender;
-  }
+    /**
+     * Returns the gender
+     *
+     * @return string $gender
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
 
-  /**
-   * Sets the gender
-   *
-   * @param string $gender
-   * @return void
-   */
-  public function setGender($gender)
-  {
-    $this->gender = $gender;
-  }
+    /**
+     * Sets the gender
+     *
+     * @param string $gender
+     * @return void
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+    }
 
-  /**
-   * Returns the title
-   *
-   * @return string $title
-   */
-  public function getTitle()
-  {
-    return $this->title;
-  }
+    /**
+     * Returns the title
+     *
+     * @return string $title
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 
-  /**
-   * Sets the title
-   *
-   * @param string $title
-   * @return void
-   */
-  public function setTitle($title)
-  {
-    $this->title = $title;
-  }
+    /**
+     * Sets the title
+     *
+     * @param string $title
+     * @return void
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
 
-  /**
-   * Returns the firstname
-   *
-   * @return string $firstname
-   */
-  public function getFirstname()
-  {
-    return $this->firstname;
-  }
+    /**
+     * Returns the firstname
+     *
+     * @return string $firstname
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
 
-  /**
-   * Sets the firstname
-   *
-   * @param string $firstname
-   * @return void
-   */
-  public function setFirstname($firstname)
-  {
-    $this->firstname = $firstname;
-  }
+    /**
+     * Sets the firstname
+     *
+     * @param string $firstname
+     * @return void
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+    }
 
-  /**
-   * Returns the lastname
-   *
-   * @return string $lastname
-   */
-  public function getLastname()
-  {
-    return $this->lastname;
-  }
+    /**
+     * Returns the lastname
+     *
+     * @return string $lastname
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
 
-  /**
-   * Sets the lastname
-   *
-   * @param string $lastname
-   * @return void
-   */
-  public function setLastname($lastname)
-  {
-    $this->lastname = $lastname;
-  }
+    /**
+     * Sets the lastname
+     *
+     * @param string $lastname
+     * @return void
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+    }
 
-  /**
-   * Returns the slug
-   *
-   * @return string $slug
-   */
-  public function getSlug()
-  {
-    return $this->slug;
-  }
+    /**
+     * Returns the slug
+     *
+     * @return string $slug
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
 
-  /**
-   * Sets the slug
-   *
-   * @param string $slug
-   * @return void
-   */
-  public function setSlug($slug)
-  {
-    $this->slug = $slug;
-  }
+    /**
+     * Sets the slug
+     *
+     * @param string $slug
+     * @return void
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
 
-  /**
-   * Returns the company
-   *
-   * @return string company
-   */
-  public function getCompany()
-  {
-    return $this->company;
-  }
+    /**
+     * Returns the company
+     *
+     * @return string company
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
 
-  /**
-   * Sets the company
-   *
-   * @param string company
-   * @return void
-   */
-  public function setCompany($company)
-  {
-    $this->company = $company;
-  }
+    /**
+     * Sets the company
+     *
+     * @param string company
+     * @return void
+     */
+    public function setCompany($company)
+    {
+        $this->company = $company;
+    }
 
-  /**
-   * Returns the position
-   *
-   * @return string position
-   */
-  public function getPosition()
-  {
-    return $this->position;
-  }
+    /**
+     * Returns the position
+     *
+     * @return string position
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
 
-  /**
-   * Sets the position
-   *
-   * @param string position
-   * @return void
-   */
-  public function setPosition($position)
-  {
-    $this->position = $position;
-  }
+    /**
+     * Sets the position
+     *
+     * @param string position
+     * @return void
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+    }
 
-  /**
-   * Returns the phone numer
-   *
-   * @return string $phone
-   */
-  public function getPhone()
-  {
-    return $this->phone;
-  }
+    /**
+     * Returns the phone numer
+     *
+     * @return string $phone
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
 
-  /**
-   * Sets the phone number
-   *
-   * @param string $phone
-   * @return void
-   */
-  public function setPhone($phone)
-  {
-    $this->phone = $phone;
-  }
+    /**
+     * Sets the phone number
+     *
+     * @param string $phone
+     * @return void
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
 
-  /**
-   * Returns the email
-   *
-   * @return string $email
-   */
-  public function getEmail()
-  {
-    return $this->email;
-  }
+    /**
+     * Returns the email
+     *
+     * @return string $email
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
 
-  /**
-   * Sets the email
-   *
-   * @param string $email
-   * @return void
-   */
-  public function setEmail($email)
-  {
-    $this->email = $email;
-  }
+    /**
+     * Sets the email
+     *
+     * @param string $email
+     * @return void
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
 
-  /**
-   * Returns the www
-   *
-   * @return string $www
-   */
-  public function getWww()
-  {
-    return $this->www;
-  }
+    /**
+     * Returns the www
+     *
+     * @return string $www
+     */
+    public function getWww()
+    {
+        return $this->www;
+    }
 
-  /**
-   * Sets the www
-   *
-   * @param string $www
-   * @return void
-   */
-  public function setWww($www)
-  {
-    $this->www = $www;
-  }
+    /**
+     * Sets the www
+     *
+     * @param string $www
+     * @return void
+     */
+    public function setWww($www)
+    {
+        $this->www = $www;
+    }
 
-  /**
-   * Returns the facebook
-   *
-   * @return string $facebook
-   */
-  public function getFacebook()
-  {
-    return $this->facebook;
-  }
+    /**
+     * Returns the facebook
+     *
+     * @return string $facebook
+     */
+    public function getFacebook()
+    {
+        return $this->facebook;
+    }
 
-  /**
-   * Sets the facebook
-   *
-   * @param string $facebook
-   * @return void
-   */
-  public function setFacebook($facebook)
-  {
-    $this->facebook = $facebook;
-  }
+    /**
+     * Sets the facebook
+     *
+     * @param string $facebook
+     * @return void
+     */
+    public function setFacebook($facebook)
+    {
+        $this->facebook = $facebook;
+    }
 
-  /**
-   * Returns the twitter
-   *
-   * @return string $twitter
-   */
-  public function getTwitter()
-  {
-    return $this->twitter;
-  }
+    /**
+     * Returns the twitter
+     *
+     * @return string $twitter
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
+    }
 
-  /**
-   * Sets the twitter
-   *
-   * @param string $twitter
-   * @return void
-   */
-  public function setTwitter($twitter)
-  {
-    $this->twitter = $twitter;
-  }
+    /**
+     * Sets the twitter
+     *
+     * @param string $twitter
+     * @return void
+     */
+    public function setTwitter($twitter)
+    {
+        $this->twitter = $twitter;
+    }
 
-  /**
-   * Returns the linkedin
-   *
-   * @return string linkedin
-   */
-  public function getLinkedin()
-  {
-    return $this->linkedin;
-  }
+    /**
+     * Returns the linkedin
+     *
+     * @return string linkedin
+     */
+    public function getLinkedin()
+    {
+        return $this->linkedin;
+    }
 
-  /**
-   * Sets the linkedin
-   *
-   * @param string linkedin
-   * @return void
-   */
-  public function setLinkedin($linkedin)
-  {
-    $this->linkedin = $linkedin;
-  }
+    /**
+     * Sets the linkedin
+     *
+     * @param string linkedin
+     * @return void
+     */
+    public function setLinkedin($linkedin)
+    {
+        $this->linkedin = $linkedin;
+    }
 
-  /**
-   * Returns the xing
-   *
-   * @return string xing
-   */
-  public function getXing()
-  {
-    return $this->xing;
-  }
+    /**
+     * Returns the xing
+     *
+     * @return string xing
+     */
+    public function getXing()
+    {
+        return $this->xing;
+    }
 
-  /**
-   * Sets the xing
-   *
-   * @param string xing
-   * @return void
-   */
-  public function setXing($xing)
-  {
-    $this->xing = $xing;
-  }
+    /**
+     * Sets the xing
+     *
+     * @param string xing
+     * @return void
+     */
+    public function setXing($xing)
+    {
+        $this->xing = $xing;
+    }
 
-  /**
-   * Returns the bio
-   *
-   * @return string $bio
-   */
-  public function getBio()
-  {
-    return $this->bio;
-  }
+    /**
+     * Returns the bio
+     *
+     * @return string $bio
+     */
+    public function getBio()
+    {
+        return $this->bio;
+    }
 
-  /**
-   * Sets the bio
-   *
-   * @param string $bio
-   * @return void
-   */
-  public function setBio($bio)
-  {
-    $this->bio = $bio;
-  }
+    /**
+     * Sets the bio
+     *
+     * @param string $bio
+     * @return void
+     */
+    public function setBio($bio)
+    {
+        $this->bio = $bio;
+    }
 
-  /**
-   * Returns the image
-   *
-   * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $image
-   */
-  public function getImage()
-  {
-    return $this->image;
-  }
+    /**
+     * Returns the image
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
 
-  /**
-   * Sets the image
-   *
-   * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $image
-   * @return void
-   */
-  public function setImage($image)
-  {
-    $this->image = $image;
-  }
+    /**
+     * Sets the image
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $image
+     * @return void
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
 
-  /**
-   * Adds a Category
-   *
-   * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
-   * @return void
-   */
-  public function addCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
-  {
-    $this->categories->attach($category);
-  }
+    /**
+     * Adds a Category
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
+     * @return void
+     */
+    public function addCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
+    {
+        $this->categories->attach($category);
+    }
 
-  /**
-   * Removes a Category
-   *
-   * @param \TYPO3\CMS\Extbase\Domain\Model\Category $categoryToRemove The Category to be removed
-   * @return void
-   */
-  public function removeCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $categoryToRemove)
-  {
-    $this->categories->detach($categoryToRemove);
-  }
+    /**
+     * Removes a Category
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $categoryToRemove The Category to be removed
+     * @return void
+     */
+    public function removeCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $categoryToRemove)
+    {
+        $this->categories->detach($categoryToRemove);
+    }
 
-  /**
-   * Returns the categories
-   *
-   * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $categories
-   */
-  public function getCategories()
-  {
-    return $this->categories;
-  }
+    /**
+     * Returns the categories
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $categories
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
 
-  /**
-   * Sets the categories
-   *
-   * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $categories
-   * @return void
-   */
-  public function setCategories(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories)
-  {
-    $this->categories = $categories;
-  }
+    /**
+     * Sets the categories
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $categories
+     * @return void
+     */
+    public function setCategories(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories)
+    {
+        $this->categories = $categories;
+    }
 
-  /**
-   * Adds a News
-   *
-   * @param \Mediadreams\MdNewsAuthor\Domain\Model\News $news
-   * @return void
-   */
-  public function addNews(\Mediadreams\MdNewsAuthor\Domain\Model\News $news)
-  {
-    $this->news->attach($news);
-  }
+    /**
+     * Adds a News
+     *
+     * @param \Mediadreams\MdNewsAuthor\Domain\Model\News $news
+     * @return void
+     */
+    public function addNews(\Mediadreams\MdNewsAuthor\Domain\Model\News $news)
+    {
+        $this->news->attach($news);
+    }
 
-  /**
-   * Removes a News
-   *
-   * @param \Mediadreams\MdNewsAuthor\Domain\Model\News $newsToRemove The News to be removed
-   * @return void
-   */
-  public function removeNews(\Mediadreams\MdNewsAuthor\Domain\Model\News $newsToRemove)
-  {
-    $this->news->detach($newsToRemove);
-  }
+    /**
+     * Removes a News
+     *
+     * @param \Mediadreams\MdNewsAuthor\Domain\Model\News $newsToRemove The News to be removed
+     * @return void
+     */
+    public function removeNews(\Mediadreams\MdNewsAuthor\Domain\Model\News $newsToRemove)
+    {
+        $this->news->detach($newsToRemove);
+    }
 
-  /**
-   * Returns the news
-   *
-   * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\News> $news
-   */
-  public function getNews()
-  {
-    return $this->news;
-  }
+    /**
+     * Returns the news
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\News> $news
+     */
+    public function getNews()
+    {
+        return $this->news;
+    }
 
-  /**
-   * Sets the news
-   *
-   * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\News> $news
-   * @return void
-   */
-  public function setNews(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $news)
-  {
-    $this->news = $news;
-  }
+    /**
+     * Sets the news
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\News> $news
+     * @return void
+     */
+    public function setNews(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $news)
+    {
+        $this->news = $news;
+    }
 
 }
