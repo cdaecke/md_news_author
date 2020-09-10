@@ -29,9 +29,4 @@ $GLOBALS['TYPO3_CONF_VARS']
 /**
  * Extend ext:news
  */
-\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\Container\Container::class)
-    ->registerImplementation(
-        \GeorgRinger\News\Domain\Model\News::class,
-        \Mediadreams\MdNewsAuthor\Domain\Model\News::class
-    );
-
+$GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['classes']['Domain/Model/News'][] = 'md_news_author';
