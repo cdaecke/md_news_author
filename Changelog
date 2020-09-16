@@ -1,3 +1,9 @@
+Version 5.0.0 (2020-09-16)
+    [BUGFIX] get author data in news record again (with ext:news v8.4.0)
+
+    All changes
+    https://github.com/cdaecke/md_news_author/compare/v5.0.0...v5.0.1
+
 Version 5.0.0 (2020-08-04)
     FEATURE: TYPO3 10 compatibility
 
