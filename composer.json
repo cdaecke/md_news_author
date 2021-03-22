@@ -29,6 +29,11 @@
         "typo3/cms-core": ">=9.5,<11.0",
         "georgringer/news": ">=7.0.0"
     },
+    "extra": {
+      "typo3/cms": {
+         "extension-key": "md_news_author"
+      }
+   },
     "autoload": {
         "psr-4": {
             "Mediadreams\\MdNewsAuthor\\": "Classes"
