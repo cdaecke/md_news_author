@@ -47,7 +47,7 @@ Insert a author detail view. This page includes also all news which are associat
 
 ### Show author in ``ext:news`` view
 
-- Access the author properties in a news record with {newsItem.newsAuthor}. Since there could be more than one author attached to a news record, you have to iterate:
+- Access the author properties in a news record with `{newsItem.newsAuthor}`. Since there could be more than one author attached to a news record, you have to iterate:
 
 ```
 <f:for each="{newsItem.newsAuthor}" as="author">
@@ -59,7 +59,7 @@ Insert a author detail view. This page includes also all news which are associat
 
 - Add a link to the profile page
 
-Don't forget to load the viewhelper {namespace md=Mediadreams\MdNewsAuthor\ViewHelpers}:
+Don't forget to load the viewhelper `{namespace md=Mediadreams\MdNewsAuthor\ViewHelpers}`:
 
     <f:for each="{newsItem.newsAuthor}" as="author">
         <f:link.action action="show" controller="NewsAuthor" extensionName="mdnewsauthor" pluginName="newsauthor" arguments="{newsAuthor: author}" pageUid="{settings.newsAuthor.authorDetailPid}" title="More about {md:ShowAuthorName(author:'{author}')}">
@@ -95,11 +95,8 @@ routeEnhancers:
         _arguments:
           'letter': 'selectedLetter'
     defaultController: 'NewsAuthor::list'
-    defaults:
-      letter: ''
     requirements:
       slug: '^[a-zA-Z0-9].*$'
-      letter: \d+
     aspects:
       slug:
         type: PersistedAliasMapper
