@@ -24,16 +24,53 @@ return [
         'searchFields' => 'title,firstname,lastname,bio,image,',
         'iconfile' => 'EXT:md_news_author/Resources/Public/Icons/tx_mdnewsauthor_domain_model_newsauthor.svg'
     ],
-    'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, gender, title, firstname, lastname, slug, company, position, phone, email, www, facebook, twitter, xing, linkedin, bio, image',
-    ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid,l10n_parent,l10n_diffsource,,--palette--;;palette_name,,--palette--;;palette_company,,--palette--;;palette_contact,bio,image,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,hidden,starttime,endtime,--div--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_category.tabs.category,categories'],
+        '1' => [
+            'showitem' => '
+                --palette--;;palette_name,
+                --palette--;;palette_company,
+                --palette--;;palette_contact,
+                bio,image,
+                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,
+                    hidden,starttime,endtime,
+                --div--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_category.tabs.category,
+                    categories,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
+                    --palette--;;paletteLanguage,
+            ',
+        ],
     ],
     'palettes' => [
-        'palette_name' => ['showitem' => 'gender, title, --linebreak--, firstname, lastname, --linebreak--, slug'],
-        'palette_company' => ['showitem' => 'company, position'],
-        'palette_contact' => ['showitem' => 'phone, --linebreak--, email, www, --linebreak--, facebook, twitter, --linebreak--, linkedin, xing'],
+        'palette_name' => [
+            'showitem' => '
+                gender, title,
+                --linebreak--,
+                firstname, lastname,
+                --linebreak--,
+                slug,
+            '
+        ],
+        'palette_company' => [
+            'showitem' => '
+                company, position,
+            '
+        ],
+        'palette_contact' => [
+            'showitem' => '
+                phone,
+                --linebreak--,
+                email, www,
+                --linebreak--,
+                facebook, twitter,
+                --linebreak--,
+                linkedin, xing,
+            '
+        ],
+        'paletteLanguage' => [
+            'showitem' => '
+                sys_language_uid, l10n_parent, l10n_diffsource,
+            ',
+        ],
     ],
     'columns' => [
 
@@ -44,17 +81,18 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'special' => 'languages',
-                'foreign_table' => 'sys_language',
-                'foreign_table_where' => 'ORDER BY sys_language.title',
                 'items' => [
-                    ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages', -1, 'flags-multiple']
+                    [
+                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
+                        -1,
+                        'flags-multiple'
+                    ],
                 ],
                 'default' => 0,
             ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
@@ -320,8 +358,7 @@ return [
                     ],
                     'maxitems' => 1
                 ],
-                //$GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
-                'gif,jpg,jpeg,png'
+                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             ),
         ],
         'news' => [

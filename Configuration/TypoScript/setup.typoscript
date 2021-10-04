@@ -31,9 +31,6 @@ plugin.tx_mdnewsauthor {
         templateRootPaths.0 = {$plugin.tx_mdnewsauthor.view.templateRootPath}
         partialRootPaths.0 = {$plugin.tx_mdnewsauthor.view.partialRootPath}
         layoutRootPaths.0 = {$plugin.tx_mdnewsauthor.view.layoutRootPath}
-
-        # user the paginate widget template from news extension
-        widget.TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper.templateRootPath = {$plugin.tx_mdnewsauthor.view.widget.paginate}
     }
 
     persistence {

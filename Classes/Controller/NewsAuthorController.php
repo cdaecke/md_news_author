@@ -1,4 +1,5 @@
 <?php
+
 namespace Mediadreams\MdNewsAuthor\Controller;
 
 
@@ -27,36 +28,54 @@ namespace Mediadreams\MdNewsAuthor\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use GeorgRinger\NumberedPagination\NumberedPagination;
+use Mediadreams\MdNewsAuthor\Domain\Repository\NewsAuthorRepository;
+use Mediadreams\MdNewsAuthor\Domain\Repository\NewsRepository;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 
 /**
  * NewsAuthorController
  */
-class NewsAuthorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class NewsAuthorController extends ActionController
 {
 
     /**
      * newsAuthorRepository
      *
-     * @var \Mediadreams\MdNewsAuthor\Domain\Repository\NewsAuthorRepository
-     * @TYPO3\CMS\Extbase\Annotation\Inject
+     * @var NewsAuthorRepository
      */
-    protected $newsAuthorRepository = NULL;
+    protected $newsAuthorRepository;
 
     /**
      * newsRepository
      *
-     * @var \Mediadreams\MdNewsAuthor\Domain\Repository\NewsRepository
-     * @TYPO3\CMS\Extbase\Annotation\Inject
+     * @var NewsRepository
      */
     protected $newsRepository;
-  
+
+    /**
+     * NewsAuthorController constructor.
+     *
+     * @param NewsAuthorRepository $newsAuthorRepository
+     * @param NewsRepository $newsRepository
+     */
+    public function __construct(
+        NewsAuthorRepository $newsAuthorRepository,
+        NewsRepository $newsRepository
+    ) {
+        $this->newsAuthorRepository = $newsAuthorRepository;
+        $this->newsRepository = $newsRepository;
+    }
+
     /**
      * action list
      *
      * @param string $selectedLetter
+     * @param int $currentPage
      * @return void
      */
-    public function listAction($selectedLetter="")
+    public function listAction($selectedLetter = "", int $currentPage = 1)
     {
         // get all authors
         // we need all authors all the time because the alphabetical filter needs them as well
@@ -67,12 +86,13 @@ class NewsAuthorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         }
 
         $activeLetters = array();
-        foreach($newsAuthors as $author){
-            $char = mb_substr($author->getLastname(),0,1, "UTF-8");
+        foreach ($newsAuthors as $author) {
+            $char = mb_strtoupper(mb_substr($author->getLastname(), 0, 1, "UTF-8"));
             $activeLetters[$char] = true;
         }
         $this->view->assign('activeLetters', $activeLetters);
-        $this->view->assign('selectedLetter', $selectedLetter);
+        $this->view->assign('selectedLetter', mb_strtoupper($selectedLetter));
+        $this->view->assign('letters', explode(',', $this->settings['authorList']['letters']) );
 
         // assign selected authors only
         // we need to query again because of the selected letter
@@ -84,9 +104,13 @@ class NewsAuthorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
             }
         }
 
-        $this->view->assign('newsAuthors', $newsAuthors);
+        $this->assignPagination(
+            $newsAuthors,
+            $this->settings['authorList']['paginate']['itemsPerPage'],
+            $this->settings['authorList']['paginate']['maximumNumberOfLinks']
+        );
     }
-  
+
     /**
      * action show
      *
@@ -96,14 +120,45 @@ class NewsAuthorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     public function showAction(\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor)
     {
         // write page title
-        $pageTitle = $newsAuthor->getTitle().' '.$newsAuthor->getFirstname().' '.$newsAuthor->getLastname();
+        $pageTitle = $newsAuthor->getTitle() . ' ' . $newsAuthor->getFirstname() . ' ' . $newsAuthor->getLastname();
         $GLOBALS['TSFE']->page['title'] = $pageTitle;
         $GLOBALS['TSFE']->indexedDocTitle = $pageTitle;
 
-        $this->view->assignMultiple([
-            'newsAuthor' => $newsAuthor,
-            'authorNews' => $this->newsRepository->getNewsByAuthor($newsAuthor->getUid())
-        ]);
+        $this->view->assign('newsAuthor', $newsAuthor);
+
+        $this->assignPagination(
+            $this->newsRepository->getNewsByAuthor($newsAuthor->getUid()),
+            $this->settings['authorDetail']['paginate']['itemsPerPage'],
+            $this->settings['authorDetail']['paginate']['maximumNumberOfLinks']
+        );
     }
 
+    /**
+     * Assign pagination to current view object
+     *
+     * @param $items
+     * @param int $itemsPerPage
+     * @param int $maximumNumberOfLinks
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
+     */
+    protected function assignPagination($items, $itemsPerPage = 10, $maximumNumberOfLinks = 5)
+    {
+        $currentPage = $this->request->hasArgument('currentPage') ? (int)$this->request->getArgument('currentPage') : 1;
+
+        $paginator = new QueryResultPaginator(
+            $items,
+            $currentPage,
+            $itemsPerPage
+        );
+
+        $pagination = new NumberedPagination(
+            $paginator,
+            $maximumNumberOfLinks
+        );
+
+        $this->view->assign('pagination', [
+            'paginator' => $paginator,
+            'pagination' => $pagination,
+        ]);
+    }
 }

@@ -45,19 +45,6 @@
                 <target>Twitter</target>
             </trans-unit>
 
-            <trans-unit id="template.paginate_overall">
-                <source>Page %s of %s.</source>
-                <target>Seite %s von %s</target>
-            </trans-unit>
-            <trans-unit id="template.paginate_previous">
-                <source>Previous</source>
-                <target>Vorherige</target>
-            </trans-unit>
-            <trans-unit id="template.paginate_next">
-                <source>Next</source>
-                <target>Nächste</target>
-            </trans-unit>
-            
             <trans-unit id="template.dateFormat">
                 <source>%d.%m.%Y</source>
                 <target>%d.%m.%Y</target>
@@ -67,7 +54,28 @@
                 <source>Articles of %s</source>
                 <target>Beiträge von %s</target>
             </trans-unit>
-          
+
+            <trans-unit id="pagination.overall">
+                <source>Page %s of %s</source>
+                <target>Seite %s von %s</target>
+            </trans-unit>
+            <trans-unit id="pagination.first">
+                <source>First</source>
+                <target>Anfang</target>
+            </trans-unit>
+            <trans-unit id="pagination.last">
+                <source>Last</source>
+                <target>End</target>
+            </trans-unit>
+            <trans-unit id="pagination.previous">
+                <source>Previous</source>
+                <target>Vorherige</target>
+            </trans-unit>
+            <trans-unit id="pagination.next">
+                <source>Next</source>
+                <target>Nächste</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>
