@@ -2,7 +2,7 @@
 plugin.tx_mdnewsauthor {
     # Pid for author detail view
     settings {
-        authorDetailPid = 
+        authorDetailPid =
         newsDetailPid =
 
         authorList {

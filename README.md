@@ -1,15 +1,18 @@
 # TYPO3 Extension ``md_news_author``
 
-This extension is based on extbase & fluid and provides the famous extension ``ext:news`` of Georg Ringer (thanks a lot @georgringer !) with one or more authors. You can centrally manage authors and attach them to news records. The extensions comes with a plugin, which lists all authors and provides a detail page of one author which also shows the news records of the selected author.
+This extension is based on extbase & fluid and provides the famous extension ``ext:news`` of Georg Ringer 
+(thanks a lot @georgringer !) with one or more authors. You can centrally manage authors and attach them to 
+news records. The extensions comes with two plugins, one for listing all authors and one for the detail page of an 
+author which also shows the news records of the selected author.
 
 ## Requirements
 
-- TYPO3 >= 9.5
+- TYPO3 >= 10.4
 - ext:news >= 7.0
 
 ### Installation
 
-- Install the extension by using the extension manager
+- Install the extension by using the extension manager or use composer (`composer req mediadreams/md_news_author`)
 - Include the static TypoScript of the extension
 - Configure the extension by setting your own constants
 
@@ -17,8 +20,8 @@ This extension is based on extbase & fluid and provides the famous extension ``e
 
 ### Create authors and attach them to news records
 
-- Create some author records on a sysfolder (use list modul, push plus-icon [*Create new record*] and select *News Author*)
-- Create a news record on a sysfolder and find the new tab *Author*
+- Create some author records on a sysfolder (use list modul, push plus-icon `Create new record` and select `News Author`)
+- Create a news record on a sysfolder and find the new tab `Author`
 - Select one or more authors for the news record
 - Save and close
 
@@ -26,28 +29,27 @@ This extension is based on extbase & fluid and provides the famous extension ``e
 
 Insert paginated list of all authors.
 
-- Create a plugin *News Author* on a page
-- Choose the value *List authors* in *Plugin settings*
-- Choose for *Page with single author view* the page with single author view
+- Create a plugin `News author: Author list` on a page
+- Choose for `Page with single author view` the page with single author view
 - Select the sysfolder where the author records are stored
-- Additional settings can be found in the tab *List view settings*
-- If needed, show authors of certain categoreies only (tab *Categories*)
+- Additional settings can be found in the tab `List view settings`
+- If needed, show authors of certain categories only (tab `Categories`)
 - Save and close
 
 ### Authors detail page
 
-Insert a author detail view. This page includes also all news which are associated with the choosen author.
+Insert an author detail view. This page includes also all news which are associated with the choosen author.
 
-- Create a plugin *News Author* on a page
-- Choose the value *Author details* in *Plugin settings*
-- Optionally choose for *Page with author list* the page with the list of all authors
+- Create a plugin `News author: Show author` on a page
+- Optionally choose for `Page with author list` the page with the list of all authors
 - Select the sysfolder where the author records are stored
-- Additional settings can be found in the tab *List view settings*
+- Additional settings can be found in the tab `Detail view settings`
 - Save and close
 
 ### Show author in ``ext:news`` view
 
-- Access the author properties in a news record with `{newsItem.newsAuthor}`. Since there could be more than one author attached to a news record, you have to iterate:
+- Access the author properties in a news record with `{newsItem.newsAuthor}`. Since there could be more 
+than one author attached to a news record, you have to iterate:
 
 ```
 <f:for each="{newsItem.newsAuthor}" as="author">
@@ -62,7 +64,7 @@ Insert a author detail view. This page includes also all news which are associat
 Don't forget to load the viewhelper `{namespace md=Mediadreams\MdNewsAuthor\ViewHelpers}`:
 
     <f:for each="{newsItem.newsAuthor}" as="author">
-        <f:link.action action="show" controller="NewsAuthor" extensionName="mdnewsauthor" pluginName="newsauthor" arguments="{newsAuthor: author}" pageUid="{settings.newsAuthor.authorDetailPid}" title="More about {md:ShowAuthorName(author:'{author}')}">
+        <f:link.action action="show" controller="NewsAuthor" extensionName="mdnewsauthor" pluginName="show" arguments="{newsAuthor: author}" pageUid="{settings.newsAuthor.authorDetailPid}" title="More about {md:ShowAuthorName(author:'{author}')}">
             <md:ShowAuthorName author="{author}" />
         </f:link.action>
     </f:for>
@@ -79,22 +81,27 @@ This will show only the author records, which are stored on page ID = 1
 
 ```
 routeEnhancers:
-  NewsAuthorPlugin:
+  NewsAuthorList:
     type: Extbase
     extension: MdNewsAuthor
-    plugin: NewsAuthor
+    plugin: list
     routes:
-      - 
-        routePath: '{slug}'
-        _controller: 'NewsAuthor::show'
-        _arguments:
-          'slug': 'newsAuthor'
       -
         routePath: '/a-z/{letter}'
         _controller: 'NewsAuthor::list'
         _arguments:
           'letter': 'selectedLetter'
     defaultController: 'NewsAuthor::list'
+  NewsAuthorShow:
+    type: Extbase
+    extension: MdNewsAuthor
+    plugin: show
+    routes:
+      - 
+        routePath: '{slug}'
+        _controller: 'NewsAuthor::show'
+        _arguments:
+          'slug': 'newsAuthor'
     requirements:
       slug: '^[a-zA-Z0-9].*$'
     aspects:
