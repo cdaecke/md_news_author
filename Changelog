@@ -1,3 +1,17 @@
+Version 6.0.0 (2021-10-05)
+    FEATURE: TYPO3 11 compatibility
+    TASK: Dependency to ext:numbered_pagination was added.
+
+    BREAKING
+    - News Author-Plugin was splited in two separate plugins, one for listing the authors and one for a detail view of an author. Use the Upgrade Wizard to migrate!
+    - Templates where changed.
+    - ShowAlphabeticalNavigationViewHelper was removed.
+    - New paginator was introduced, so partial needs to be change, if you use your own.
+    - routeEnhancers for speaking urls need to be adapted (find new configuration in the documentation).
+
+    All changes
+        https://github.com/cdaecke/md_news_author/compare/v5.0.1...v6.0.0
+
 Version 5.0.0 (2020-09-16)
     [BUGFIX] get author data in news record again (with ext:news v8.4.0)
 
