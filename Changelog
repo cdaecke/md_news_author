@@ -1,3 +1,9 @@
+Version 6.0.1 (2021-10-06)
+    TASK: Update TYPO3 dependency in composer.json
+
+    All changes
+    https://github.com/cdaecke/md_news_author/compare/v6.0.0...v6.0.1
+
 Version 6.0.0 (2021-10-05)
     FEATURE: TYPO3 11 compatibility
     TASK: Dependency to ext:numbered_pagination was added.
@@ -10,7 +16,7 @@ Version 6.0.0 (2021-10-05)
     - routeEnhancers for speaking urls need to be adapted (find new configuration in the documentation).
 
     All changes
-        https://github.com/cdaecke/md_news_author/compare/v5.0.1...v6.0.0
+    https://github.com/cdaecke/md_news_author/compare/v5.0.1...v6.0.0
 
 Version 5.0.0 (2020-09-16)
     [BUGFIX] get author data in news record again (with ext:news v8.4.0)
