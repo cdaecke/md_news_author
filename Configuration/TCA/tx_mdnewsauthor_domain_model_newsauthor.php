@@ -27,9 +27,10 @@ return [
     'types' => [
         '1' => [
             'showitem' => '
-                --palette--;;palette_name,
-                --palette--;;palette_company,
-                --palette--;;palette_contact,
+                --palette--;LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:palette.general;palette_name,
+                --palette--;LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:palette.company;palette_company,
+                --palette--;LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:palette.contact;palette_contact,
+                --palette--;LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:palette.social;palette_social,
                 bio,image,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,
                     hidden,starttime,endtime,
@@ -60,7 +61,10 @@ return [
                 phone,
                 --linebreak--,
                 email, www,
-                --linebreak--,
+            '
+        ],
+        'palette_social' => [
+            'showitem' => '
                 facebook, twitter,
                 --linebreak--,
                 linkedin, xing,

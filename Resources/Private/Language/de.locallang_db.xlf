@@ -21,7 +21,7 @@
             </trans-unit>
             <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.gender.female">
                 <source>female</source>
-                <target>weibliche</target>
+                <target>weiblich</target>
             </trans-unit>
             <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.gender.male">
                 <source>male</source>
@@ -74,6 +74,23 @@
             <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.news">
                 <source>News</source>
                 <target>News</target>
+            </trans-unit>
+
+            <trans-unit id="palette.general">
+                <source>General</source>
+                <target>Allgemein</target>
+            </trans-unit>
+            <trans-unit id="palette.company">
+                <source>Company details</source>
+                <target>Firma</target>
+            </trans-unit>
+            <trans-unit id="palette.contact">
+                <source>Contact details</source>
+                <target>Kontaktinformationen</target>
+            </trans-unit>
+            <trans-unit id="palette.social">
+                <source>Social networks</source>
+                <target>Soziale Netzwerke</target>
             </trans-unit>
 
             <trans-unit id="flex_author">

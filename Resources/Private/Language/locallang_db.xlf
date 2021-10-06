@@ -70,6 +70,19 @@
                 <source>News</source>
             </trans-unit>
 
+            <trans-unit id="palette.general">
+                <source>General</source>
+            </trans-unit>
+            <trans-unit id="palette.company">
+                <source>Company details</source>
+            </trans-unit>
+            <trans-unit id="palette.contact">
+                <source>Contact details</source>
+            </trans-unit>
+            <trans-unit id="palette.social">
+                <source>Social networks</source>
+            </trans-unit>
+
             <trans-unit id="flex_author">
                 <source>General settings</source>
             </trans-unit>
