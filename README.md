@@ -9,6 +9,7 @@ author which also shows the news records of the selected author.
 
 - TYPO3 >= 10.4
 - ext:news >= 7.0
+- ext:numbered_pagination >= 1.0
 
 ### Installation
 
