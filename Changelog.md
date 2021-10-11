@@ -1,3 +1,9 @@
+# Version 6.0.3 (2021-10-11)
+- [BUGFIX] use correct version number for TYPO3 in ext_localconf.php constraints
+
+All changes
+https://github.com/cdaecke/md_news_author/compare/v6.0.2...v6.0.3
+
 # Version 6.0.2 (2021-10-07)
 - [BUGFIX] change flexform filenames uppercase
 - [TASK] update palettes in news_author TCA
@@ -12,8 +18,8 @@ All changes
 https://github.com/cdaecke/md_news_author/compare/v6.0.0...v6.0.1
 
 # Version 6.0.0 (2021-10-05)
-- [FEATURE]: TYPO3 11 compatibility
-- [TASK]: Dependency to ext:numbered_pagination was added.
+- [FEATURE] TYPO3 11 compatibility
+- [TASK] Dependency to ext:numbered_pagination was added.
 
 ## BREAKING
 - News Author-Plugin was splited in two separate plugins, one for listing the authors and one for a detail view of an author. Use the Upgrade Wizard to migrate!
@@ -32,19 +38,19 @@ All changes
 https://github.com/cdaecke/md_news_author/compare/v5.0.0...v5.0.1
 
 # Version 5.0.0 (2020-08-04)
-FEATURE: TYPO3 10 compatibility
+[FEATURE] TYPO3 10 compatibility
 
 All changes
 https://github.com/cdaecke/md_news_author/compare/v4.0.1...v5.0.0
 
 # Version 4.0.1 (2020-01-07)
-BUGFIX: Get all news records on an authors detail page
+[BUGFIX] Get all news records on an authors detail page
 
 All changes
 https://github.com/cdaecke/md_news_author/compare/v4.0.0...v4.0.1
 
 # Version 4.0.0 (2019-02-14)
-FEATURE: TYPO3 9 compatibility
+[FEATURE] TYPO3 9 compatibility
 
 ATTENTION:
 Make sure to run the database analyzer in the install tool and clear the cache afterwards!
@@ -53,9 +59,9 @@ All changes
 https://github.com/cdaecke/md_news_author/compare/v3.0.2...v4.0.0
 
 # Version 3.0.2 (2019-02-04)
-BUGFIX: Respect translations of authors in news records
-BUGFIX: Make TCEFORM working again for TYPO3 8
-Add some more fields the author record
+- [BUGFIX] Respect translations of authors in news records
+- [BUGFIX] Make TCEFORM working again for TYPO3 8
+- Add some more fields the author record
 
 ATTENTION: Make sure to clear the cache in TYPO3 install tool after this update!
 
@@ -63,7 +69,7 @@ All changes
 https://github.com/cdaecke/md_news_author/compare/v3.0.1...v3.0.2
 
 # Version 3.0.1 (2018-02-19)
-BUGFIX: Do not allow to add the same author multiple times to the same news record
+[BUGFIX] Do not allow to add the same author multiple times to the same news record
 
 All changes
 https://github.com/cdaecke/md_news_author/compare/v3.0.0...v3.0.1
