@@ -114,23 +114,35 @@ class NewsAuthorController extends ActionController
     /**
      * action show
      *
-     * @param \Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor
-     * @return void
+     * @param \Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor|null $newsAuthor
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      */
-    public function showAction(\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor)
+    public function showAction(\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor = null)
     {
-        // write page title
-        $pageTitle = $newsAuthor->getTitle() . ' ' . $newsAuthor->getFirstname() . ' ' . $newsAuthor->getLastname();
-        $GLOBALS['TSFE']->page['title'] = $pageTitle;
-        $GLOBALS['TSFE']->indexedDocTitle = $pageTitle;
+        if ($newsAuthor != null) {
+            // write page title
+            $pageTitle = $newsAuthor->getTitle() . ' ' . $newsAuthor->getFirstname() . ' ' . $newsAuthor->getLastname();
+            $GLOBALS['TSFE']->page['title'] = $pageTitle;
+            $GLOBALS['TSFE']->indexedDocTitle = $pageTitle;
 
-        $this->view->assign('newsAuthor', $newsAuthor);
+            $this->view->assign('newsAuthor', $newsAuthor);
 
-        $this->assignPagination(
-            $this->newsRepository->getNewsByAuthor($newsAuthor->getUid()),
-            $this->settings['authorDetail']['paginate']['itemsPerPage'],
-            $this->settings['authorDetail']['paginate']['maximumNumberOfLinks']
-        );
+            $this->assignPagination(
+                $this->newsRepository->getNewsByAuthor($newsAuthor->getUid()),
+                $this->settings['authorDetail']['paginate']['itemsPerPage'],
+                $this->settings['authorDetail']['paginate']['maximumNumberOfLinks']
+            );
+        } else {
+            if ($this->settings['listPid']) {
+                $uriBuilder = $this->uriBuilder;
+                $uri = $uriBuilder
+                    ->setTargetPageUid($this->settings['listPid'])
+                    ->build();
+
+                $this->redirectToUri($uri, 0, 308);
+            }
+        }
     }
 
     /**
