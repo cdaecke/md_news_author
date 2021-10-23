@@ -1,3 +1,11 @@
+# Version 6.0.4 (2021-10-23)
+- [TASK] sort author records by lastname in backend list view
+- [TASK] add missing slash in Persistence/Classes.php class configuration
+- [TASK] check, if author is provided in showAction. If not, redirect to page with list view.
+
+All changes
+https://github.com/cdaecke/md_news_author/compare/v6.0.3...v6.0.4
+
 # Version 6.0.3 (2021-10-11)
 - [BUGFIX] use correct version number for TYPO3 in ext_localconf.php constraints
 
