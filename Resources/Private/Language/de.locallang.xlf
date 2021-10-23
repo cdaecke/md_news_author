@@ -65,7 +65,7 @@
             </trans-unit>
             <trans-unit id="pagination.last">
                 <source>Last</source>
-                <target>End</target>
+                <target>Ende</target>
             </trans-unit>
             <trans-unit id="pagination.previous">
                 <source>Previous</source>

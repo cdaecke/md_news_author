@@ -30,8 +30,6 @@ plugin.tx_mdnewsauthor {
         templateRootPath = EXT:md_news_author/Resources/Private/Templates/
         partialRootPath = EXT:md_news_author/Resources/Private/Partials/
         layoutRootPath = EXT:md_news_author/Resources/Private/Layouts/
-
-        widget.paginate = EXT:md_news_author/Resources/Private/Templates/
     }
 
     persistence {

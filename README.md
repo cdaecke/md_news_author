@@ -88,28 +88,26 @@ routeEnhancers:
     plugin: list
     routes:
       -
+        routePath: 'page-{page}'
+        _controller: 'NewsAuthor::list'
+        _arguments:
+          slug: 'newsAuthor'
+          page: 'currentPage'
+      -
         routePath: '/a-z/{letter}'
         _controller: 'NewsAuthor::list'
         _arguments:
           'letter': 'selectedLetter'
     defaultController: 'NewsAuthor::list'
-  NewsAuthorShow:
-    type: Extbase
-    extension: MdNewsAuthor
-    plugin: show
-    routes:
-      - 
-        routePath: '{slug}'
-        _controller: 'NewsAuthor::show'
-        _arguments:
-          'slug': 'newsAuthor'
     requirements:
-      slug: '^[a-zA-Z0-9].*$'
+      page: '\d+'
+    defaults:
+      page: '0'
     aspects:
-      slug:
-        type: PersistedAliasMapper
-        tableName: 'tx_mdnewsauthor_domain_model_newsauthor'
-        routeFieldName: 'slug'
+      page:
+        type: StaticRangeMapper
+        start: '1'
+        end: '100'
       letter:
         type: StaticValueMapper
         map:
@@ -139,6 +137,37 @@ routeEnhancers:
           x: X
           y: Y
           z: Z
+  NewsAuthorShow:
+    type: Extbase
+    extension: MdNewsAuthor
+    plugin: show
+    routes:
+      - 
+        routePath: '{slug}'
+        _controller: 'NewsAuthor::show'
+        _arguments:
+          slug: 'newsAuthor'
+      -
+        routePath: '{slug}/articles-{page}'
+        _controller: 'NewsAuthor::show'
+        _arguments:
+          slug: 'newsAuthor'
+          page: 'currentPage'
+    defaultController: 'NewsAuthor::show'
+    requirements:
+      slug: '^[a-zA-Z0-9].*$'
+      page: '\d+'
+    defaults:
+      page: '0'
+    aspects:
+      slug:
+        type: PersistedAliasMapper
+        tableName: 'tx_mdnewsauthor_domain_model_newsauthor'
+        routeFieldName: 'slug'
+      page:
+        type: StaticRangeMapper
+        start: '1'
+        end: '100'
 ```
 
 ## Bugs and Known Issues
