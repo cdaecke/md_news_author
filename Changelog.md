@@ -1,3 +1,9 @@
+# Version 6.0.5 (2021-10-25)
+- [BUGFIX] use "default_sortby" instead of "sortby" in tca for authors
+
+All changes
+https://github.com/cdaecke/md_news_author/compare/v6.0.4...v6.0.5
+
 # Version 6.0.4 (2021-10-23)
 - [TASK] sort author records by lastname in backend list view
 - [TASK] add missing slash in Persistence/Classes.php class configuration
