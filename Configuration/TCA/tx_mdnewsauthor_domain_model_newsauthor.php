@@ -7,7 +7,7 @@ return [
         'label' => 'lastname',
         'label_alt' => 'firstname',
         'label_alt_force' => 1, // use lastname and firstname as label
-        'sortby' => 'lastname',
+        'default_sortby' => 'lastname',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
