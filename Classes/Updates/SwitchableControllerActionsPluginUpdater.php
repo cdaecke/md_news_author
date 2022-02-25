@@ -58,7 +58,7 @@ class SwitchableControllerActionsPluginUpdater implements UpgradeWizardInterface
         ],
     ];
 
-    protected FlexFormService $flexFormService;
+    protected $flexFormService;
 
     public function __construct()
     {
