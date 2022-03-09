@@ -1,3 +1,9 @@
+# Version 6.0.7 (2022-03-09)
+- [TASK] Update github workflow
+
+All changes
+https://github.com/cdaecke/md_news_author/compare/v6.0.6...v6.0.7
+
 # Version 6.0.6 (2022-03-09)
 - [TASK] PHP 7.2 compatibility for upgrade wizard
 
