@@ -1,3 +1,9 @@
+# Version 6.0.6 (2022-03-09)
+- [TASK] PHP 7.2 compatibility for upgrade wizard
+
+All changes
+https://github.com/cdaecke/md_news_author/compare/v6.0.5...v6.0.6
+
 # Version 6.0.5 (2021-10-25)
 - [BUGFIX] use "default_sortby" instead of "sortby" in tca for authors
 
