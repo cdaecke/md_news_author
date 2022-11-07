@@ -1,3 +1,9 @@
+# Version 6.0.8 (2022-11-07)
+- [TASK] Update dependency to ext:news
+
+All changes
+https://github.com/cdaecke/md_news_author/compare/v6.0.7...v6.0.8
+
 # Version 6.0.7 (2022-03-09)
 - [TASK] Update github workflow
 

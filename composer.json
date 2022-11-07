@@ -26,7 +26,7 @@
     },
     "require": {
         "typo3/cms-core": ">=10.0,<12.0",
-        "georgringer/news": ">=7.0,<10.0",
+        "georgringer/news": ">=7.0,<11.0",
         "georgringer/numbered-pagination": ">=1.0.1,<2.0.0"
     },
     "extra": {
