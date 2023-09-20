@@ -1,5 +1,5 @@
 <?php
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die();
 
 /**
  * Add new select group for list_type
@@ -25,7 +25,7 @@ $plugins = [
  */
 foreach ($plugins as $plugin) {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-        'Mediadreams.md_news_author',
+        'md_news_author',
         ucfirst($plugin),
         'LLL:EXT:md_news_author/Resources/Private/Language/locallang.xlf:plugin.' . $plugin . '.title',
         'EXT:md_news_author/Resources/Public/Icons/tx_mdnewsauthor_domain_model_newsauthor.svg',

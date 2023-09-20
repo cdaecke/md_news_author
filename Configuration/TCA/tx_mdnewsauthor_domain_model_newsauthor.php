@@ -1,5 +1,7 @@
 <?php
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die();
+
+$versionInformation = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class);
 
 return [
     'ctrl' => [
@@ -10,7 +12,7 @@ return [
         'default_sortby' => 'lastname',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
+        'cruser_id' => 'cruser_id', // TODO: Remove as soon as TYPO3 v11 is not supported anymore
         'dividers2tabs' => TRUE,
         'versioningWS' => TRUE,
         'languageField' => 'sys_language_uid',
@@ -21,6 +23,9 @@ return [
             'disabled' => 'hidden',
             'starttime' => 'starttime',
             'endtime' => 'endtime',
+        ],
+        'security' => [
+            'ignorePageTypeRestriction' => true,
         ],
         'searchFields' => 'title,firstname,lastname,bio,image,',
         'iconfile' => 'EXT:md_news_author/Resources/Public/Icons/tx_mdnewsauthor_domain_model_newsauthor.svg'
@@ -83,17 +88,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ],
-                ],
-                'default' => 0,
+                'type' => 'language'
             ],
         ],
         'l10n_parent' => [
@@ -127,6 +122,16 @@ return [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'default' => 0,
+                'items' => $versionInformation->getMajorVersion() < 12 ? [
+                    [
+                        0 => '',
+                        1 => '',
+                    ],
+                ] : [
+                    ['label' => '', 'value' => ''],
+                ],
             ],
         ],
         'starttime' => [
@@ -136,7 +141,7 @@ return [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
                 'size' => 13,
-                'eval' => 'datetime',
+                'eval' => 'datetime,int',
                 'default' => 0,
                 'behaviour' => [
                     'allowLanguageSynchronization' => true
@@ -150,7 +155,7 @@ return [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
                 'size' => 13,
-                'eval' => 'datetime',
+                'eval' => 'datetime,int',
                 'default' => 0,
                 'range' => [
                     'upper' => mktime(0, 0, 0, 1, 1, 2038)
@@ -169,7 +174,7 @@ return [
                 'renderType' => 'selectSingle',
                 'size' => 1,
                 'items' => [
-                    ['-', ''],
+                    ['label' => '-', 'value' => ''],
                     ['LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.gender.female', 'f'],
                     ['LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.gender.male', 'm'],
                 ]
@@ -251,9 +256,9 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.email',
             'config' => [
-                'type' => 'input',
+                'type' => 'input', // TODO: change to `email` as soon, as TYPO3 v11 is not supported anymore
                 'size' => 30,
-                'eval' => 'trim,email'
+                'eval' => 'trim,email' // TODO: remove `email` as soon, as TYPO3 v11 is not supported anymore
             ],
         ],
         'www' => [
@@ -383,6 +388,11 @@ return [
                 ],
             ],
         ],
-      
+        'categories' => [
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_category.tabs.category',
+            'config' => [
+                'type' => 'category'
+            ]
+        ]
     ],
 ];

@@ -81,21 +81,22 @@ class NewsAuthorRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $categories = \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $categories, true);
         }
 
+        $categoryConstraints = [];
         foreach ($categories as $category) {
             $categoryConstraints[] = $query->contains('categories', $category);
         }
 
-        $constraint[] = $query->logicalOr($categoryConstraints);
+        if (count($categoryConstraints) > 0) {
+            $constraint[] = $query->logicalOr(...$categoryConstraints);
+        }
 
         if (!empty($initial)) {
-            $constraint[] = $query->logicalAnd(
-                $query->like('lastname', $initial . '%')
-            );
+            $constraint[] = $query->logicalAnd($query->like('lastname', $initial . '%'));
         }
 
         if (!empty($constraint)) {
             $query->matching(
-                $query->logicalAnd($constraint)
+                $query->logicalAnd(...$constraint)
             );
         }
 

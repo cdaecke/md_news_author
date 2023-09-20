@@ -1,5 +1,5 @@
 <?php
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die();
 
 call_user_func(
     function () {
@@ -19,7 +19,7 @@ call_user_func(
 
         foreach ($plugins as $plugin => $pluginOptions) {
             \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-                'Mediadreams.MdNewsAuthor',
+                'MdNewsAuthor',
                 $plugin,
                 [
                     \Mediadreams\MdNewsAuthor\Controller\NewsAuthorController::class => $pluginOptions['cacheable'],

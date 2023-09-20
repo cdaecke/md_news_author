@@ -31,6 +31,7 @@ namespace Mediadreams\MdNewsAuthor\Controller;
 use GeorgRinger\NumberedPagination\NumberedPagination;
 use Mediadreams\MdNewsAuthor\Domain\Repository\NewsAuthorRepository;
 use Mediadreams\MdNewsAuthor\Domain\Repository\NewsRepository;
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 
@@ -73,9 +74,10 @@ class NewsAuthorController extends ActionController
      *
      * @param string $selectedLetter
      * @param int $currentPage
-     * @return void
+     * @return ResponseInterface
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
      */
-    public function listAction($selectedLetter = "", int $currentPage = 1)
+    public function listAction($selectedLetter = "", int $currentPage = 1): ResponseInterface
     {
         // get all authors
         // we need all authors all the time because the alphabetical filter needs them as well
@@ -109,16 +111,18 @@ class NewsAuthorController extends ActionController
             $this->settings['authorList']['paginate']['itemsPerPage'],
             $this->settings['authorList']['paginate']['maximumNumberOfLinks']
         );
+
+        return $this->htmlResponse();
     }
 
     /**
      * action show
      *
      * @param \Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor|null $newsAuthor
+     * @return ResponseInterface
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      */
-    public function showAction(\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor = null)
+    public function showAction(\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor = null): ResponseInterface
     {
         if ($newsAuthor != null) {
             // write page title
@@ -143,6 +147,8 @@ class NewsAuthorController extends ActionController
                 $this->redirectToUri($uri, 0, 308);
             }
         }
+
+        return $this->htmlResponse();
     }
 
     /**

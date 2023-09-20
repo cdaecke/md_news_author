@@ -71,9 +71,12 @@ class NewsRepository extends \GeorgRinger\News\Domain\Repository\NewsRepository
     {
         $query = $this->createQuery();
         $query->matching(
-            $query->logicalAnd([
-                $query->equals('newsAuthor.uid', (int)$authorUid),
-            ])
+            $query->logicalAnd(
+                ...
+                [
+                    $query->equals('newsAuthor.uid', (int)$authorUid),
+                ]
+            )
         );
 
         return $query->execute();
