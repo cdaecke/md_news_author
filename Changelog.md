@@ -1,3 +1,6 @@
+# Version 7.0.0 (2023-09-22)
+- [FEATURE] TYPO3 12 compatibility
+
 # Version 6.0.8 (2022-11-07)
 - [TASK] Update dependency to ext:news
 
