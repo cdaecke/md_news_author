@@ -1,3 +1,9 @@
+# Version 7.0.1 (2024-01-22)
+- [TASK] Update dependency to ext:numbered_pagination
+
+All changes
+https://github.com/cdaecke/md_news_author/compare/v7.0.0...v7.0.1
+
 # Version 7.0.0 (2023-09-22)
 - [FEATURE] TYPO3 12 compatibility
 
