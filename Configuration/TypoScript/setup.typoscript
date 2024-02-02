@@ -46,3 +46,13 @@ plugin.tx_news {
     }
 
 }
+
+# Configure pageTitleProvider
+config {
+    pageTitleProviders {
+        md_mews_author {
+            provider = Mediadreams\MdNewsAuthor\PageTitle\AuthorPageTitleProvider
+            before = record
+        }
+    }
+}

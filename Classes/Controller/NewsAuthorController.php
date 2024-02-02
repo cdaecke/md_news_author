@@ -31,6 +31,7 @@ namespace Mediadreams\MdNewsAuthor\Controller;
 use GeorgRinger\NumberedPagination\NumberedPagination;
 use Mediadreams\MdNewsAuthor\Domain\Repository\NewsAuthorRepository;
 use Mediadreams\MdNewsAuthor\Domain\Repository\NewsRepository;
+use Mediadreams\MdNewsAuthor\PageTitle\AuthorPageTitleProvider;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
@@ -56,17 +57,27 @@ class NewsAuthorController extends ActionController
     protected $newsRepository;
 
     /**
+     * titleProvider
+     *
+     * @var AuthorPageTitleProvider
+     */
+    protected $titleProvider;
+
+    /**
      * NewsAuthorController constructor.
      *
      * @param NewsAuthorRepository $newsAuthorRepository
      * @param NewsRepository $newsRepository
+     * @param AuthorPageTitleProvider $titleProvider
      */
     public function __construct(
         NewsAuthorRepository $newsAuthorRepository,
-        NewsRepository $newsRepository
+        NewsRepository $newsRepository,
+        AuthorPageTitleProvider $titleProvider
     ) {
         $this->newsAuthorRepository = $newsAuthorRepository;
         $this->newsRepository = $newsRepository;
+        $this->titleProvider = $titleProvider;
     }
 
     /**
@@ -125,11 +136,7 @@ class NewsAuthorController extends ActionController
     public function showAction(\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor = null): ResponseInterface
     {
         if ($newsAuthor != null) {
-            // write page title
-            $pageTitle = $newsAuthor->getTitle() . ' ' . $newsAuthor->getFirstname() . ' ' . $newsAuthor->getLastname();
-            $GLOBALS['TSFE']->page['title'] = $pageTitle;
-            $GLOBALS['TSFE']->indexedDocTitle = $pageTitle;
-
+            $this->titleProvider->setTitle($newsAuthor);
             $this->view->assign('newsAuthor', $newsAuthor);
 
             $this->assignPagination(
