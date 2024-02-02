@@ -1,3 +1,9 @@
+# Version 7.0.2 (2024-02-02)
+- [FEATURE] Add PageTitleProvider
+
+All changes
+https://github.com/cdaecke/md_news_author/compare/v7.0.1...v7.0.2
+
 # Version 7.0.1 (2024-01-22)
 - [TASK] Update dependency to ext:numbered_pagination
 
