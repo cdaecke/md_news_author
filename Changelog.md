@@ -1,3 +1,9 @@
+# Version 7.0.3 (2024-12-12)
+- [TASK] Update dependency to ext:news
+
+All changes
+https://github.com/cdaecke/md_news_author/compare/v7.0.2...v7.0.3
+
 # Version 7.0.2 (2024-02-02)
 - [FEATURE] Add PageTitleProvider
 
