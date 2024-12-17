@@ -28,7 +28,7 @@ foreach ($plugins as $plugin) {
         'md_news_author',
         ucfirst($plugin),
         'LLL:EXT:md_news_author/Resources/Private/Language/locallang.xlf:plugin.' . $plugin . '.title',
-        'EXT:md_news_author/Resources/Public/Icons/tx_mdnewsauthor_domain_model_newsauthor.svg',
+        'mdnewsauthor_' . $plugin,
         'mdNewsAuthor'
     );
 
