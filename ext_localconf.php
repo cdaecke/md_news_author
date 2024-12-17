@@ -42,12 +42,5 @@ call_user_func(
          * Extend ext:news
          */
         $GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['classes']['Domain/Model/News'][] = 'md_news_author';
-
-        /**
-         * Register Upgrade Wizard for migrating switchableControllerActions
-         */
-        $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['switchableControllerActionsPluginUpdater']
-            = \Mediadreams\MdNewsAuthor\Updates\SwitchableControllerActionsPluginUpdater::class;
-
     }
 );
