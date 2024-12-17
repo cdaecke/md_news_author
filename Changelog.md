@@ -1,3 +1,9 @@
+# Version 8.0.0 (2024-12-17)
+- [FEATURE] TYPO3 v13 compatibility
+
+All changes
+https://github.com/cdaecke/md_news_author/compare/v7.0.3...v8.0.0
+
 # Version 7.0.3 (2024-12-12)
 - [TASK] Update dependency to ext:news
 

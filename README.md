@@ -7,8 +7,8 @@ author which also shows the news records of the selected author.
 
 ## Requirements
 
-- TYPO3 >= 11.5
-- ext:news >= 9.0
+- TYPO3 >= 12.4
+- ext:news >= 10.0
 - ext:numbered_pagination >= 1.0.1
 
 ### Installation
@@ -179,4 +179,4 @@ Thanks a lot to all who make this outstanding TYPO3 project possible!
 
 ## Credits
 
-Extension icon by [Font Awesome](https://fontawesome.com/icons/user?style=solid).
+Icons used by this extension are kindly take from Font Awesome ([user](https://fontawesome.com/icons/user?style=solid) and [users](https://fontawesome.com/icons/users?f=classic&s=solid) ).
