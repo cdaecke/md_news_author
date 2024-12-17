@@ -3,33 +3,29 @@
     <sheets>
         <general>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:flex_author</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:flex_author</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.detailPid>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:flex_author.detailPid</label>
-                            <config>
-                                <type>group</type>
-                                <internal_type>db</internal_type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <maxitems>1</maxitems>
-                                <minitems>1</minitems>
-                                <show_thumbs>1</show_thumbs>
-                                <wizards>
-                                    <suggest>
-                                        <type>suggest</type>
-                                        <default>
-                                            <searchWholePhrase>1</searchWholePhrase>
-                                        </default>
-                                    </suggest>
-                                </wizards>
-                            </config>
-                        </TCEforms>
+                        <exclude>1</exclude>
+                        <label>LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:flex_author.detailPid</label>
+                        <config>
+                            <type>group</type>
+                            <internal_type>db</internal_type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <maxitems>1</maxitems>
+                            <minitems>1</minitems>
+                            <show_thumbs>1</show_thumbs>
+                            <wizards>
+                                <suggest>
+                                    <type>suggest</type>
+                                    <default>
+                                        <searchWholePhrase>1</searchWholePhrase>
+                                    </default>
+                                </suggest>
+                            </wizards>
+                        </config>
                     </settings.detailPid>
                 </el>
             </ROOT>
@@ -38,40 +34,32 @@
 
         <templateList>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:flex_author.tabList</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:flex_author.tabList</sheetTitle>
                 <type>array</type>
                 <el>
 
                     <!-- Image list -->
                     <settings.list.image.width>
-                        <TCEforms>
-                            <label>LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:flex_author.listImageWidth</label>
-                            <config>
-                                <type>input</type>
-                                <size>5</size>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:flex_author.listImageWidth</label>
+                        <config>
+                            <type>input</type>
+                            <size>5</size>
+                        </config>
                     </settings.list.image.width>
 
                     <settings.list.image.height>
-                        <TCEforms>
-                            <label>LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:flex_author.listImageHeight</label>
-                            <config>
-                                <type>input</type>
-                                <size>5</size>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:flex_author.listImageHeight</label>
+                        <config>
+                            <type>input</type>
+                            <size>5</size>
+                        </config>
                     </settings.list.image.height>
 
                     <settings.list.alphabeticalNavigation>
-                        <TCEforms>
-                            <label>LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:flex_author.listAlphabeticalNavigation</label>
-                            <config>
-                                <type>check</type>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:flex_author.listAlphabeticalNavigation</label>
+                        <config>
+                            <type>check</type>
+                        </config>
                     </settings.list.alphabeticalNavigation>
 
                 </el>
@@ -80,32 +68,28 @@
 
         <templateListCategory>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:flex_author.tabCategory</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:flex_author.tabCategory</sheetTitle>
                 <type>array</type>
                 <el>
 
                     <settings.categoriesList>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:flex_author.categoryDesc</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectTree</renderType>
-                                <autoSizeMax>50</autoSizeMax>
-                                <foreign_table>sys_category</foreign_table>
-                                <maxitems>9999</maxitems>
-                                <size>10</size>
-                                <treeConfig>
-                                    <appearance>
-                                        <expandAll>1</expandAll>
-                                        <showHeader>1</showHeader>
-                                    </appearance>
-                                    <parentField>parent</parentField>
-                                </treeConfig>
-                            </config>
-                        </TCEforms>
+                        <exclude>1</exclude>
+                        <label>LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:flex_author.categoryDesc</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectTree</renderType>
+                            <autoSizeMax>50</autoSizeMax>
+                            <foreign_table>sys_category</foreign_table>
+                            <maxitems>9999</maxitems>
+                            <size>10</size>
+                            <treeConfig>
+                                <appearance>
+                                    <expandAll>1</expandAll>
+                                    <showHeader>1</showHeader>
+                                </appearance>
+                                <parentField>parent</parentField>
+                            </treeConfig>
+                        </config>
                     </settings.categoriesList>
 
                 </el>
