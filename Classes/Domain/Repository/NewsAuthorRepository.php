@@ -1,7 +1,8 @@
 <?php
 
-namespace Mediadreams\MdNewsAuthor\Domain\Repository;
+declare(strict_types=1);
 
+namespace Mediadreams\MdNewsAuthor\Domain\Repository;
 
 /***************************************************************
  *
@@ -28,6 +29,10 @@ namespace Mediadreams\MdNewsAuthor\Domain\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+
 /**
  * The repository for NewsAuthors
  */
@@ -35,16 +40,17 @@ class NewsAuthorRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
 
     protected $defaultOrderings = array(
-        'lastname' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+        'lastname' => QueryInterface::ORDER_ASCENDING
     );
 
     /**
      * Get authors according to the initial of the lastname
      *
      * @param string $initial Initial of lastname
-     * @return QueryInterface
+     * @return \mixed[][]|QueryResultInterface
+     * @throws InvalidQueryException
      */
-    public function getAuthorsByInitial($initial)
+    public function getAuthorsByInitial(string $initial)
     {
         if (empty($initial)) {
             throw new \InvalidArgumentException('No initial for lastname given.', 1496613849);
@@ -66,9 +72,10 @@ class NewsAuthorRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * @param string $categories Comma separated UIDs of categories
      * @param string $initial Initial of lastname
-     * @return QueryInterface
+     * @return \mixed[][]|QueryResultInterface
+     * @throws InvalidQueryException
      */
-    public function getAuthorsByCategories($categories = '', $initial = '')
+    public function getAuthorsByCategories(string $categories = '', string $initial = '')
     {
         if (empty($categories)) {
             throw new \InvalidArgumentException('No categories given.', 1494071855);

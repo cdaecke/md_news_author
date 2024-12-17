@@ -1,7 +1,8 @@
 <?php
 
-namespace Mediadreams\MdNewsAuthor\Domain\Model;
+declare(strict_types=1);
 
+namespace Mediadreams\MdNewsAuthor\Domain\Model;
 
 /***************************************************************
  *
@@ -28,6 +29,10 @@ namespace Mediadreams\MdNewsAuthor\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\Domain\Model\Category;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
 /**
  * Authors
  */
@@ -38,14 +43,14 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var string
      */
-    protected $title = '';
+    protected string $title = '';
 
     /**
      * gender
      *
      * @var string
      */
-    protected $gender = '';
+    protected string $gender = '';
 
     /**
      * firstname
@@ -53,7 +58,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $firstname = '';
+    protected string $firstname = '';
 
     /**
      * lastname
@@ -61,114 +66,128 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $lastname = '';
+    protected string $lastname = '';
 
     /**
      * slug
      *
      * @var string
      */
-    protected $slug = '';
+    protected string $slug = '';
 
     /**
      * company
      *
      * @var string
      */
-    protected $company = '';
+    protected string $company = '';
 
     /**
      * position
      *
      * @var string
      */
-    protected $position = '';
+    protected string $position = '';
 
     /**
      * phone
      *
      * @var string
      */
-    protected $phone = '';
+    protected string $phone = '';
 
     /**
      * email
      *
      * @var string
      */
-    protected $email = '';
+    protected string $email = '';
 
     /**
      * www
      *
      * @var string
      */
-    protected $www = '';
+    protected string $www = '';
 
     /**
      * facebook
      *
      * @var string
      */
-    protected $facebook = '';
+    protected string $facebook = '';
 
     /**
      * twitter
      *
      * @var string
      */
-    protected $twitter = '';
+    protected string $twitter = '';
 
     /**
      * linkedin
      *
      * @var string
      */
-    protected $linkedin = '';
+    protected string $linkedin = '';
 
     /**
      * xing
      *
      * @var string
      */
-    protected $xing = '';
-
+    protected string $xing = '';
 
     /**
      * bio
      *
      * @var string
      */
-    protected $bio = '';
+    protected string $bio = '';
 
     /**
      * image
      *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var FileReference|null
      */
-    protected $image;
+    protected ?FileReference $image;
 
     /**
      * categories
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
+     * @var ObjectStorage<Category>
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
-    protected $categories;
+    protected ObjectStorage $categories;
 
     /**
      * news
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\News>
+     * @var ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\News>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
-    protected $news;
+    protected ObjectStorage $news;
+
+    public function __construct()
+    {
+        $this->initializeObject();
+    }
+
+    /**
+     * Initialize all ObjectStorages
+     */
+    public function initializeObject(): void
+    {
+        $this->categories = new ObjectStorage();
+        $this->news = new ObjectStorage();
+    }
 
     /**
      * Returns the gender
      *
      * @return string $gender
      */
-    public function getGender()
+    public function getGender(): string
     {
         return $this->gender;
     }
@@ -179,7 +198,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $gender
      * @return void
      */
-    public function setGender($gender)
+    public function setGender(string $gender): void
     {
         $this->gender = $gender;
     }
@@ -189,7 +208,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $title
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -200,7 +219,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $title
      * @return void
      */
-    public function setTitle($title)
+    public function setTitle(string $title): void
     {
         $this->title = $title;
     }
@@ -210,7 +229,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $firstname
      */
-    public function getFirstname()
+    public function getFirstname(): string
     {
         return $this->firstname;
     }
@@ -221,7 +240,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $firstname
      * @return void
      */
-    public function setFirstname($firstname)
+    public function setFirstname(string $firstname): void
     {
         $this->firstname = $firstname;
     }
@@ -231,7 +250,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $lastname
      */
-    public function getLastname()
+    public function getLastname(): string
     {
         return $this->lastname;
     }
@@ -242,7 +261,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $lastname
      * @return void
      */
-    public function setLastname($lastname)
+    public function setLastname(string $lastname): void
     {
         $this->lastname = $lastname;
     }
@@ -252,7 +271,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $slug
      */
-    public function getSlug()
+    public function getSlug(): string
     {
         return $this->slug;
     }
@@ -263,7 +282,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $slug
      * @return void
      */
-    public function setSlug($slug)
+    public function setSlug(string $slug): void
     {
         $this->slug = $slug;
     }
@@ -271,9 +290,9 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the company
      *
-     * @return string company
+     * @return string $company
      */
-    public function getCompany()
+    public function getCompany(): string
     {
         return $this->company;
     }
@@ -281,10 +300,10 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the company
      *
-     * @param string company
+     * @param string $company
      * @return void
      */
-    public function setCompany($company)
+    public function setCompany(string $company): void
     {
         $this->company = $company;
     }
@@ -292,9 +311,9 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the position
      *
-     * @return string position
+     * @return string $position
      */
-    public function getPosition()
+    public function getPosition(): string
     {
         return $this->position;
     }
@@ -302,20 +321,20 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the position
      *
-     * @param string position
+     * @param string $position
      * @return void
      */
-    public function setPosition($position)
+    public function setPosition(string $position): void
     {
         $this->position = $position;
     }
 
     /**
-     * Returns the phone numer
+     * Returns the phone number
      *
      * @return string $phone
      */
-    public function getPhone()
+    public function getPhone(): string
     {
         return $this->phone;
     }
@@ -326,7 +345,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $phone
      * @return void
      */
-    public function setPhone($phone)
+    public function setPhone(string $phone): void
     {
         $this->phone = $phone;
     }
@@ -336,7 +355,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $email
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -347,7 +366,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $email
      * @return void
      */
-    public function setEmail($email)
+    public function setEmail(string $email): void
     {
         $this->email = $email;
     }
@@ -357,7 +376,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $www
      */
-    public function getWww()
+    public function getWww(): string
     {
         return $this->www;
     }
@@ -368,7 +387,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $www
      * @return void
      */
-    public function setWww($www)
+    public function setWww(string $www): void
     {
         $this->www = $www;
     }
@@ -378,7 +397,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $facebook
      */
-    public function getFacebook()
+    public function getFacebook(): string
     {
         return $this->facebook;
     }
@@ -389,7 +408,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $facebook
      * @return void
      */
-    public function setFacebook($facebook)
+    public function setFacebook(string $facebook): void
     {
         $this->facebook = $facebook;
     }
@@ -399,7 +418,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $twitter
      */
-    public function getTwitter()
+    public function getTwitter(): string
     {
         return $this->twitter;
     }
@@ -410,7 +429,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $twitter
      * @return void
      */
-    public function setTwitter($twitter)
+    public function setTwitter(string $twitter): void
     {
         $this->twitter = $twitter;
     }
@@ -418,9 +437,9 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the linkedin
      *
-     * @return string linkedin
+     * @return string $linkedin
      */
-    public function getLinkedin()
+    public function getLinkedin(): string
     {
         return $this->linkedin;
     }
@@ -428,10 +447,10 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the linkedin
      *
-     * @param string linkedin
+     * @param string $linkedin
      * @return void
      */
-    public function setLinkedin($linkedin)
+    public function setLinkedin(string $linkedin): void
     {
         $this->linkedin = $linkedin;
     }
@@ -439,9 +458,9 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the xing
      *
-     * @return string xing
+     * @return string $xing
      */
-    public function getXing()
+    public function getXing(): string
     {
         return $this->xing;
     }
@@ -449,10 +468,10 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the xing
      *
-     * @param string xing
+     * @param string $xing
      * @return void
      */
-    public function setXing($xing)
+    public function setXing(string $xing): void
     {
         $this->xing = $xing;
     }
@@ -462,7 +481,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $bio
      */
-    public function getBio()
+    public function getBio(): string
     {
         return $this->bio;
     }
@@ -473,7 +492,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $bio
      * @return void
      */
-    public function setBio($bio)
+    public function setBio(string $bio): void
     {
         $this->bio = $bio;
     }
@@ -481,9 +500,9 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the image
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $image
+     * @return FileReference|null $image
      */
-    public function getImage()
+    public function getImage(): ?FileReference
     {
         return $this->image;
     }
@@ -491,10 +510,10 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the image
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $image
+     * @param FileReference|null $image
      * @return void
      */
-    public function setImage($image)
+    public function setImage(?FileReference $image): void
     {
         $this->image = $image;
     }
@@ -502,10 +521,10 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Adds a Category
      *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
+     * @param Category $category
      * @return void
      */
-    public function addCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
+    public function addCategory(Category $category): void
     {
         $this->categories->attach($category);
     }
@@ -513,10 +532,10 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Removes a Category
      *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $categoryToRemove The Category to be removed
+     * @param Category $categoryToRemove The Category to be removed
      * @return void
      */
-    public function removeCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $categoryToRemove)
+    public function removeCategory(Category $categoryToRemove): void
     {
         $this->categories->detach($categoryToRemove);
     }
@@ -524,9 +543,9 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the categories
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $categories
+     * @return ObjectStorage<Category> $categories
      */
-    public function getCategories()
+    public function getCategories(): ObjectStorage
     {
         return $this->categories;
     }
@@ -534,10 +553,10 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the categories
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $categories
+     * @param ObjectStorage<Category> $categories
      * @return void
      */
-    public function setCategories(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories)
+    public function setCategories(ObjectStorage $categories): void
     {
         $this->categories = $categories;
     }
@@ -548,7 +567,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \Mediadreams\MdNewsAuthor\Domain\Model\News $news
      * @return void
      */
-    public function addNews(\Mediadreams\MdNewsAuthor\Domain\Model\News $news)
+    public function addNews(\Mediadreams\MdNewsAuthor\Domain\Model\News $news): void
     {
         $this->news->attach($news);
     }
@@ -559,7 +578,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \Mediadreams\MdNewsAuthor\Domain\Model\News $newsToRemove The News to be removed
      * @return void
      */
-    public function removeNews(\Mediadreams\MdNewsAuthor\Domain\Model\News $newsToRemove)
+    public function removeNews(\Mediadreams\MdNewsAuthor\Domain\Model\News $newsToRemove): void
     {
         $this->news->detach($newsToRemove);
     }
@@ -567,9 +586,9 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the news
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\News> $news
+     * @return ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\News>|null $news
      */
-    public function getNews()
+    public function getNews(): ?ObjectStorage
     {
         return $this->news;
     }
@@ -577,12 +596,11 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the news
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\News> $news
+     * @param ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\News> $news
      * @return void
      */
-    public function setNews(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $news)
+    public function setNews(ObjectStorage $news): void
     {
         $this->news = $news;
     }
-
 }

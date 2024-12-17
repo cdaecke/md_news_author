@@ -1,6 +1,8 @@
 <?php
-namespace Mediadreams\MdNewsAuthor\ViewHelpers;
 
+declare(strict_types=1);
+
+namespace Mediadreams\MdNewsAuthor\ViewHelpers;
 
 /***************************************************************
  *

@@ -1,7 +1,8 @@
 <?php
 
-namespace Mediadreams\MdNewsAuthor\Controller;
+declare(strict_types=1);
 
+namespace Mediadreams\MdNewsAuthor\Controller;
 
 /***************************************************************
  *
@@ -41,27 +42,26 @@ use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
  */
 class NewsAuthorController extends ActionController
 {
-
     /**
      * newsAuthorRepository
      *
      * @var NewsAuthorRepository
      */
-    protected $newsAuthorRepository;
+    protected NewsAuthorRepository $newsAuthorRepository;
 
     /**
      * newsRepository
      *
      * @var NewsRepository
      */
-    protected $newsRepository;
+    protected NewsRepository $newsRepository;
 
     /**
      * titleProvider
      *
      * @var AuthorPageTitleProvider
      */
-    protected $titleProvider;
+    protected AuthorPageTitleProvider $titleProvider;
 
     /**
      * NewsAuthorController constructor.
@@ -86,19 +86,19 @@ class NewsAuthorController extends ActionController
      * @param string $selectedLetter
      * @param int $currentPage
      * @return ResponseInterface
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException|\TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function listAction($selectedLetter = "", int $currentPage = 1): ResponseInterface
+    public function listAction(string $selectedLetter = '', int $currentPage = 1): ResponseInterface
     {
         // get all authors
         // we need all authors all the time because the alphabetical filter needs them as well
-        if ($this->settings['categoriesList'] != '') {
+        if (isset($this->settings['categoriesList']) && $this->settings['categoriesList'] != '') {
             $newsAuthors = $this->newsAuthorRepository->getAuthorsByCategories($this->settings['categoriesList']);
         } else {
             $newsAuthors = $this->newsAuthorRepository->findAll();
         }
 
-        $activeLetters = array();
+        $activeLetters = [];
         foreach ($newsAuthors as $author) {
             $char = mb_strtoupper(mb_substr($author->getLastname(), 0, 1, "UTF-8"));
             $activeLetters[$char] = true;
@@ -119,8 +119,8 @@ class NewsAuthorController extends ActionController
 
         $this->assignPagination(
             $newsAuthors,
-            $this->settings['authorList']['paginate']['itemsPerPage'],
-            $this->settings['authorList']['paginate']['maximumNumberOfLinks']
+            (int)$this->settings['authorList']['paginate']['itemsPerPage'],
+            (int)$this->settings['authorList']['paginate']['maximumNumberOfLinks']
         );
 
         return $this->htmlResponse();
@@ -141,14 +141,14 @@ class NewsAuthorController extends ActionController
 
             $this->assignPagination(
                 $this->newsRepository->getNewsByAuthor($newsAuthor->getUid()),
-                $this->settings['authorDetail']['paginate']['itemsPerPage'],
-                $this->settings['authorDetail']['paginate']['maximumNumberOfLinks']
+                (int)$this->settings['authorDetail']['paginate']['itemsPerPage'],
+                (int)$this->settings['authorDetail']['paginate']['maximumNumberOfLinks']
             );
         } else {
             if ($this->settings['listPid']) {
                 $uriBuilder = $this->uriBuilder;
                 $uri = $uriBuilder
-                    ->setTargetPageUid($this->settings['listPid'])
+                    ->setTargetPageUid((int)$this->settings['listPid'])
                     ->build();
 
                 $this->redirectToUri($uri, 0, 308);
@@ -164,9 +164,8 @@ class NewsAuthorController extends ActionController
      * @param $items
      * @param int $itemsPerPage
      * @param int $maximumNumberOfLinks
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
      */
-    protected function assignPagination($items, $itemsPerPage = 10, $maximumNumberOfLinks = 5)
+    protected function assignPagination($items, int $itemsPerPage = 10, int $maximumNumberOfLinks = 5): void
     {
         $currentPage = $this->request->hasArgument('currentPage') ? (int)$this->request->getArgument('currentPage') : 1;
 

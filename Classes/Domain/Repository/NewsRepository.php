@@ -1,7 +1,8 @@
 <?php
 
-namespace Mediadreams\MdNewsAuthor\Domain\Repository;
+declare(strict_types=1);
 
+namespace Mediadreams\MdNewsAuthor\Domain\Repository;
 
 /***************************************************************
  *
@@ -28,10 +29,8 @@ namespace Mediadreams\MdNewsAuthor\Domain\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Database\Query\QueryBuilder;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 /**
  * The repository for News
@@ -45,10 +44,9 @@ class NewsRepository extends \GeorgRinger\News\Domain\Repository\NewsRepository
      */
     const TABLE_AUTHOR_MM = 'tx_mdnewsauthor_news_newsauthor_mm';
 
-
     // Ordering of result
     protected $defaultOrderings = array(
-        'datetime' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING
+        'datetime' => QueryInterface::ORDER_DESCENDING
     );
 
     public function createQuery()
@@ -65,7 +63,7 @@ class NewsRepository extends \GeorgRinger\News\Domain\Repository\NewsRepository
      * We use this to get the news records ordered by "datetime"
      *
      * @param int $authorUid Uid of author
-     * @return obj
+     * @return \mixed[][]|QueryResultInterface
      */
     public function getNewsByAuthor(int $authorUid)
     {
@@ -81,5 +79,4 @@ class NewsRepository extends \GeorgRinger\News\Domain\Repository\NewsRepository
 
         return $query->execute();
     }
-
 }
