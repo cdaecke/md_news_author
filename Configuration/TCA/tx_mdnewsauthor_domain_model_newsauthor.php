@@ -12,7 +12,6 @@ return [
         'default_sortby' => 'lastname',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id', // TODO: Remove as soon as TYPO3 v11 is not supported anymore
         'dividers2tabs' => TRUE,
         'versioningWS' => TRUE,
         'languageField' => 'sys_language_uid',
@@ -24,11 +23,13 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
+        'typeicon_classes' => [
+            'default' => 'tx_mdnewsauthor_domain_model_newsauthor',
+        ],
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],
-        'searchFields' => 'title,firstname,lastname,bio,image,',
-        'iconfile' => 'EXT:md_news_author/Resources/Public/Icons/tx_mdnewsauthor_domain_model_newsauthor.svg'
+        'searchFields' => 'title,firstname,lastname,bio,image,'
     ],
     'types' => [
         '1' => [
@@ -98,10 +99,14 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['', 0],
+                    [
+                        'label' => '',
+                        'value' => 0,
+                    ],
                 ],
                 'foreign_table' => 'tx_mdnewsauthor_domain_model_newsauthor',
-                'foreign_table_where' => 'AND tx_mdnewsauthor_domain_model_newsauthor.pid=###CURRENT_PID### AND tx_mdnewsauthor_domain_model_newsauthor.sys_language_uid IN (-1,0)',
+                'foreign_table_where' => 'AND {#tx_mdnewsauthor_domain_model_newsauthor}.{#pid}=###CURRENT_PID### AND {#tx_mdnewsauthor_domain_model_newsauthor}.{#sys_language_uid} IN (-1,0)',
+                'default' => 0,
             ],
         ],
         'l10n_diffsource' => [
@@ -130,32 +135,24 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 13,
-                'eval' => 'datetime,int',
+                'type' => 'datetime',
                 'default' => 0,
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true
-                ],
             ],
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
         ],
         'endtime' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 13,
-                'eval' => 'datetime,int',
+                'type' => 'datetime',
                 'default' => 0,
                 'range' => [
-                    'upper' => mktime(0, 0, 0, 1, 1, 2038)
-                ],
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true
+                    'upper' => mktime(0, 0, 0, 1, 1, 2038),
                 ],
             ],
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
         ],
 
         'gender' => [
@@ -167,8 +164,9 @@ return [
                 'size' => 1,
                 'items' => [
                     ['label' => '-', 'value' => ''],
-                    ['LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.gender.female', 'f'],
-                    ['LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.gender.male', 'm'],
+                    ['label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.gender.female', 'value' => 'f'],
+                    ['label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.gender.male', 'value' => 'm'],
+                    ['label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.gender.divers', 'value' => 'd'],
                 ]
             ],
         ],
@@ -187,7 +185,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required'
+                'required' => true,
+                'eval' => 'trim'
             ],
         ],
         'lastname' => [
@@ -196,7 +195,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required'
+                'required' => true,
+                'eval' => 'trim'
             ],
         ],
         'slug' => [
@@ -248,9 +248,9 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.email',
             'config' => [
-                'type' => 'input', // TODO: change to `email` as soon, as TYPO3 v11 is not supported anymore
+                'type' => 'email',
                 'size' => 30,
-                'eval' => 'trim,email' // TODO: remove `email` as soon, as TYPO3 v11 is not supported anymore
+                'eval' => 'trim'
             ],
         ],
         'www' => [
@@ -318,50 +318,11 @@ return [
         'image' => [
             'exclude' => true,
             'label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.image',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'image',
-                [
-                    'overrideChildTca' => [
-                        'types' => [
-                            '0' => [
-                                'showitem' => '
-                                    --palette--;LLL::EXT:core/Resources/Private/Language/locallang_general.xlf::sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                    --palette--;;filePalette'
-                            ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
-                                'showitem' => '
-                                    --palette--;LLL::EXT:core/Resources/Private/Language/locallang_general.xlf::sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                    --palette--;;filePalette'
-                            ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
-                                'showitem' => '
-                                    --palette--;LLL::EXT:core/Resources/Private/Language/locallang_general.xlf::sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                    --palette--;;filePalette'
-                            ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
-                                'showitem' => '
-                                    --palette--;LLL::EXT:core/Resources/Private/Language/locallang_general.xlf::sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                    --palette--;;filePalette'
-                            ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
-                                'showitem' => '
-                                    --palette--;LLL::EXT:core/Resources/Private/Language/locallang_general.xlf::sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                    --palette--;;filePalette'
-                            ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
-                                'showitem' => '
-                                    --palette--;LLL::EXT:core/Resources/Private/Language/locallang_general.xlf::sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                    --palette--;;filePalette'
-                            ]
-                        ],
-                    ],
-                    'appearance' => [
-                        'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'
-                    ],
-                    'maxitems' => 1
-                ],
-                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
-            ),
+            'config' => [
+                'type' => 'file',
+                'maxitems' => 1,
+                'allowed' => 'common-image-types',
+            ],
         ],
         'news' => [
             'exclude' => true,

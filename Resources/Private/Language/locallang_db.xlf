@@ -21,6 +21,9 @@
             <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.gender.male">
                 <source>male</source>
             </trans-unit>
+            <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.gender.divers">
+                <source>divers</source>
+            </trans-unit>
             <trans-unit id="tx_mdnewsauthor_domain_model_newsauthor.firstname">
                 <source>Firstname</source>
             </trans-unit>
