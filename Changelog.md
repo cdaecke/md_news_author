@@ -1,3 +1,9 @@
+# Version 8.0.1 (2025-11-12)
+- [BUGFIX] change TCA config for field `news` in author record to `passthrough`.
+
+All changes
+https://github.com/cdaecke/md_news_author/compare/v8.0.0...v8.0.1
+
 # Version 8.0.0 (2024-12-17)
 - [FEATURE] TYPO3 v13 compatibility
 
