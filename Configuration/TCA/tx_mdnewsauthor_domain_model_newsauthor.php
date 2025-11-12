@@ -328,17 +328,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.news',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'tx_news_domain_model_news',
-                'MM' => 'tx_mdnewsauthor_news_newsauthor_mm',
-                'MM_opposite_field' => 'news',
-                'foreign_table_where' => ' AND tx_news_domain_model_news.pid=###CURRENT_PID### AND tx_news_domain_model_news.sys_language_uid = ###REC_FIELD_sys_language_uid### ORDER BY tx_news_domain_model_news.datetime DESC ',
-                'minitems' => 0,
-                'maxitems' => 99,
-                'behaviour' => [
-                    'allowLanguageSynchronization' => TRUE
-                ],
+                'type' => 'passthrough',
             ],
         ],
         'categories' => [
