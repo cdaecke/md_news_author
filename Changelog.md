@@ -1,4 +1,10 @@
-# Version 8.0.1 (2025-11-24)
+# Version 8.0.3 (2025-11-24)
+- [BUGFIX] Do not use `initializeObject()` in news model but move everything to `__construct()`
+
+All changes
+https://github.com/cdaecke/md_news_author/compare/v8.0.2...v8.0.3
+
+# Version 8.0.2 (2025-11-24)
 - [TASK] Update dependency to ext:news
 
 All changes

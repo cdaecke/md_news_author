@@ -44,14 +44,6 @@ class News extends \GeorgRinger\News\Domain\Model\News
 
     public function __construct()
     {
-        $this->initializeObject();
-    }
-
-    /**
-     * Initialize all ObjectStorages
-     */
-    public function initializeObject(): void
-    {
         $this->newsAuthor = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
