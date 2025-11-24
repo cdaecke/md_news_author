@@ -1,3 +1,10 @@
+# Version 8.0.1 (2025-11-24)
+- [TASK] Update dependency to ext:news
+
+All changes
+https://github.com/cdaecke/md_news_author/compare/v8.0.1...v8.0.2
+
+
 # Version 8.0.1 (2025-11-12)
 - [BUGFIX] change TCA config for field `news` in author record to `passthrough`.
 
