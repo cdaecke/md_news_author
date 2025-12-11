@@ -29,11 +29,11 @@ namespace Mediadreams\MdNewsAuthor\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use GeorgRinger\NumberedPagination\NumberedPagination;
 use Mediadreams\MdNewsAuthor\Domain\Repository\NewsAuthorRepository;
 use Mediadreams\MdNewsAuthor\Domain\Repository\NewsRepository;
 use Mediadreams\MdNewsAuthor\PageTitle\AuthorPageTitleProvider;
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Pagination\SlidingWindowPagination;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 
@@ -175,7 +175,7 @@ class NewsAuthorController extends ActionController
             $itemsPerPage
         );
 
-        $pagination = new NumberedPagination(
+        $pagination = new SlidingWindowPagination(
             $paginator,
             $maximumNumberOfLinks
         );
