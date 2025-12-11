@@ -1,3 +1,11 @@
+# Version 8.1.0 (2025-12-11)
+- [TASK] remove dependency to `georgringer/numbered-pagination` and use `SlidingWindowPagination` of core
+- [TASK] Handle deprecation: #104789 - renderStatic() for Fluid ViewHelpers
+- [TASK] handle PHP 8.4 deprecates implicitly nullable types
+
+All changes
+https://github.com/cdaecke/md_news_author/compare/v8.0.3...v8.1.0
+
 # Version 8.0.3 (2025-11-24)
 - [BUGFIX] Do not use `initializeObject()` in news model but move everything to `__construct()`
 
