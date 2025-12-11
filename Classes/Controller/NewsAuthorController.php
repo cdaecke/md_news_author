@@ -133,7 +133,7 @@ class NewsAuthorController extends ActionController
      * @return ResponseInterface
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
      */
-    public function showAction(\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor = null): ResponseInterface
+    public function showAction(?\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor = null): ResponseInterface
     {
         if ($newsAuthor != null) {
             $this->titleProvider->setTitle($newsAuthor);
