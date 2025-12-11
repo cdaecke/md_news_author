@@ -31,7 +31,6 @@ namespace Mediadreams\MdNewsAuthor\ViewHelpers;
 
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
-use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
 /**
  * ViewHelper to show author name with optional title
@@ -52,45 +51,28 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
  * @author Christoph Daecke <typo3@mediadreams.org>
  *
  */
-class ShowAuthorNameViewHelper extends AbstractViewHelper
+final class ShowAuthorNameViewHelper extends AbstractViewHelper
 {
-    use CompileWithRenderStatic;
-
-    /**
-     * Initialize arguments
-     */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
-        parent::initializeArguments();
         $this->registerArgument('author', 'object', 'the author object', true);
     }
 
-    /**
-     * @param array $arguments
-     * @param \Closure $renderChildrenClosure
-     * @param RenderingContextInterface $renderingContext
-     * @return string
-     */
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext
-    )
+    public function render(): string
     {
-        if (!is_object($arguments['author'])) {
+        if (!is_object($this->arguments['author'])) {
             return '';
         }
 
-        $author = $arguments['author'];
+        $author = $this->arguments['author'];
 
         $authorTitle = $author->getTitle();
         $fullAuthor = $author->getFirstname().' '.$author->getLastname();
 
         if ($authorTitle) {
-            $fullAuthor = $authorTitle.' '.$fullAuthor;
+            $fullAuthor = $authorTitle . ' ' . $fullAuthor;
         }
 
         return $fullAuthor;
     }
-  
 }
