@@ -8,8 +8,7 @@ author which also shows the news records of the selected author.
 ## Requirements
 
 - TYPO3 >= 12.4
-- ext:news >= 10.0
-- ext:numbered_pagination >= 1.0.1
+- ext:news >= 11.0
 
 ### Installation
 

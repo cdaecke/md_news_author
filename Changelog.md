@@ -1,3 +1,9 @@
+# Version 8.1.1 (2026-01-07)
+- [TASK] Allow ext:news v14
+
+All changes
+https://github.com/cdaecke/md_news_author/compare/v8.1.0...v8.1.1
+
 # Version 8.1.0 (2025-12-11)
 - [TASK] remove dependency to `georgringer/numbered-pagination` and use `SlidingWindowPagination` of core
 - [TASK] Handle deprecation: #104789 - renderStatic() for Fluid ViewHelpers
