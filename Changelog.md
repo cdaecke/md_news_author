@@ -1,3 +1,9 @@
+# Version 8.1.2 (2026-01-08)
+- [BUGFIX] Allow ext:news v12 in composer.json again, which got lost in version 8.1.1.
+
+All changes
+https://github.com/cdaecke/md_news_author/compare/v8.1.1...v8.1.2
+
 # Version 8.1.1 (2026-01-07)
 - [TASK] Allow ext:news v14
 
