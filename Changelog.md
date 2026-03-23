@@ -1,3 +1,9 @@
+# Version 8.1.3 (2026-03-23)
+- [BUGFIX] fix error Typed property GeorgRinger\News\Domain\Model\News::$newsAuthor must not be accessed before initialization. Thanks to [Lina Wolf](https://github.com/linawolf)
+
+All changes
+https://github.com/cdaecke/md_news_author/compare/v8.1.2...v8.1.3
+
 # Version 8.1.2 (2026-01-08)
 - [BUGFIX] Allow ext:news v12 in composer.json again, which got lost in version 8.1.1.
 
