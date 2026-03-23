@@ -55,6 +55,7 @@ class News extends \GeorgRinger\News\Domain\Model\News
      */
     public function addNewsAuthor(\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor): void
     {
+        $this->newsAuthor ??= new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->newsAuthor->attach($newsAuthor);
     }
 
@@ -66,6 +67,7 @@ class News extends \GeorgRinger\News\Domain\Model\News
      */
     public function removeNewsAuthor(\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthorToRemove): void
     {
+        $this->newsAuthor ??= new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->newsAuthor->detach($newsAuthorToRemove);
     }
 
@@ -76,6 +78,7 @@ class News extends \GeorgRinger\News\Domain\Model\News
      */
     public function getNewsAuthor(): ?\TYPO3\CMS\Extbase\Persistence\ObjectStorage
     {
+        $this->newsAuthor ??= new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         return $this->newsAuthor;
     }
 
@@ -85,7 +88,7 @@ class News extends \GeorgRinger\News\Domain\Model\News
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor> $newsAuthor
      * @return void
      */
-    public function setNewsAuthor(\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor): void
+    public function setNewsAuthor(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $newsAuthor): void
     {
         $this->newsAuthor = $newsAuthor;
     }
