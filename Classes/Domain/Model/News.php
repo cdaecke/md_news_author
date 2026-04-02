@@ -29,17 +29,17 @@ namespace Mediadreams\MdNewsAuthor\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
+
 /**
  * News
  */
 class News extends \GeorgRinger\News\Domain\Model\News
 {
     /**
-     * newsAuthor
-     *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor>
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
+    #[Lazy()]
     protected \TYPO3\CMS\Extbase\Persistence\ObjectStorage $newsAuthor;
 
     public function __construct()
@@ -47,24 +47,12 @@ class News extends \GeorgRinger\News\Domain\Model\News
         $this->newsAuthor = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
-    /**
-     * Adds a NewsAuthor
-     *
-     * @param \Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor
-     * @return void
-     */
     public function addNewsAuthor(\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor): void
     {
         $this->newsAuthor ??= new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->newsAuthor->attach($newsAuthor);
     }
 
-    /**
-     * Removes a NewsAuthor
-     *
-     * @param \Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthorToRemove The NewsAuthor to be removed
-     * @return void
-     */
     public function removeNewsAuthor(\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthorToRemove): void
     {
         $this->newsAuthor ??= new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();

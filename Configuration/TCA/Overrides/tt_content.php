@@ -24,7 +24,7 @@ $plugins = [
  * Register Plugins
  */
 foreach ($plugins as $plugin) {
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    $pluginSignature = \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
         'md_news_author',
         ucfirst($plugin),
         'LLL:EXT:md_news_author/Resources/Private/Language/locallang.xlf:plugin.' . $plugin . '.title',
@@ -32,14 +32,17 @@ foreach ($plugins as $plugin) {
         'mdNewsAuthor'
     );
 
-    // add flexform
-    $pluginSignature = 'mdnewsauthor_' . $plugin;
-    $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
-
-    TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
+        'tt_content',
+        '--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.plugin,pi_flexform,pages,recursive',
         $pluginSignature,
-        'FILE:EXT:md_news_author/Configuration/FlexForms/' . ucfirst($plugin) . '.xml'
+        'after:subheader'
     );
 
-    //$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature] = 'layout,select_key,pages,recursive';
+    // add flexform
+    TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+        '*',
+        'FILE:EXT:md_news_author/Configuration/FlexForms/' . ucfirst($plugin) . '.xml',
+        $pluginSignature
+    );
 }

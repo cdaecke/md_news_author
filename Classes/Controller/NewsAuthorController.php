@@ -151,7 +151,7 @@ class NewsAuthorController extends ActionController
                     ->setTargetPageUid((int)$this->settings['listPid'])
                     ->build();
 
-                $this->redirectToUri($uri, 0, 308);
+                return $this->redirectToUri($uri, 0, 308);
             }
         }
 
