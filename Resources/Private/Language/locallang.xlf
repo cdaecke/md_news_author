@@ -22,8 +22,14 @@
             <trans-unit id="plugin.list.title">
                 <source>News author: Author list</source>
             </trans-unit>
+            <trans-unit id="plugin.list.description">
+                <source>Shows a list with all authors. The list can add a 'Show alphabetical navigation' of show authors, who have a configured category attached.</source>
+            </trans-unit>
             <trans-unit id="plugin.show.title">
                 <source>News author: Show author</source>
+            </trans-unit>
+            <trans-unit id="plugin.show.description">
+                <source>Shows the authors detail page. This includes the news articles of the author.</source>
             </trans-unit>
 
             <trans-unit id="template.phone">

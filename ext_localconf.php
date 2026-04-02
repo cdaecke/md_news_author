@@ -27,7 +27,8 @@ call_user_func(
                 // non-cacheable actions
                 [
                     \Mediadreams\MdNewsAuthor\Controller\NewsAuthorController::class => $pluginOptions['nonCacheable'],
-                ]
+                ],
+                \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
             );
         }
 

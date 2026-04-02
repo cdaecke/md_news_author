@@ -24,6 +24,23 @@
                 <target>Alle</target>
             </trans-unit>
 
+            <trans-unit id="plugin.list.title">
+                <source>News author: Author list</source>
+                <target>News Autor: Liste</target>
+            </trans-unit>
+            <trans-unit id="plugin.list.description">
+                <source>Shows a list with all authors. The list can add a 'Show alphabetical navigation' of show authors, who have a configured category attached.</source>
+                <target>Zeigt eine Liste aller Autor:innen an. Die Liste kann um eine „Alphabetische Navigation“ erweitert werden. Weiterhin können nur Autor:innen anzeigt werden, die einer konfigurierten Kategorie zugeordnet ist.</target>
+            </trans-unit>
+            <trans-unit id="plugin.show.title">
+                <source>News author: Show author</source>
+                <target>News Autor: Details</target>
+            </trans-unit>
+            <trans-unit id="plugin.show.description">
+                <source>Shows the authors detail page. This includes the news articles of the author.</source>
+                <target>Zeigt die Autor:innen Detailseite an. Dazu gehören die Nachrichtenartikel der Autor:in.</target>
+            </trans-unit>
+
             <trans-unit id="template.phone">
                 <source>Phone</source>
                 <target>Telefon</target>

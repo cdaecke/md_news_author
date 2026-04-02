@@ -6,7 +6,7 @@ defined('TYPO3') or die();
  */
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItemGroup(
     'tt_content',
-    'list_type',
+    'CType',
     'mdNewsAuthor',
     'LLL:EXT:md_news_author/Resources/Private/Language/locallang.xlf:tx_newsauthor_domain_model_newsauthor',
     'after:default'
@@ -26,10 +26,11 @@ $plugins = [
 foreach ($plugins as $plugin) {
     $pluginSignature = \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
         'md_news_author',
-        ucfirst($plugin),
+        $plugin,
         'LLL:EXT:md_news_author/Resources/Private/Language/locallang.xlf:plugin.' . $plugin . '.title',
         'mdnewsauthor_' . $plugin,
-        'mdNewsAuthor'
+        'mdNewsAuthor',
+        'LLL:EXT:md_news_author/Resources/Private/Language/locallang.xlf:plugin.' . $plugin . '.description',
     );
 
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
