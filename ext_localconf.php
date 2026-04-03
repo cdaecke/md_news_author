@@ -1,4 +1,7 @@
 <?php
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+use Mediadreams\MdNewsAuthor\Controller\NewsAuthorController;
+
 defined('TYPO3') or die();
 
 call_user_func(
@@ -18,17 +21,17 @@ call_user_func(
         ];
 
         foreach ($plugins as $plugin => $pluginOptions) {
-            \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+            ExtensionUtility::configurePlugin(
                 'MdNewsAuthor',
                 $plugin,
                 [
-                    \Mediadreams\MdNewsAuthor\Controller\NewsAuthorController::class => $pluginOptions['cacheable'],
+                    NewsAuthorController::class => $pluginOptions['cacheable'],
                 ],
                 // non-cacheable actions
                 [
-                    \Mediadreams\MdNewsAuthor\Controller\NewsAuthorController::class => $pluginOptions['nonCacheable'],
+                    NewsAuthorController::class => $pluginOptions['nonCacheable'],
                 ],
-                \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
+                ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
             );
         }
 

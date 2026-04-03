@@ -1,4 +1,5 @@
 <?php
+
 defined('TYPO3') or die();
 
 return [
@@ -52,26 +53,26 @@ return [
                 firstname, lastname,
                 --linebreak--,
                 slug,
-            '
+            ',
         ],
         'palette_company' => [
             'showitem' => '
                 company, position,
-            '
+            ',
         ],
         'palette_contact' => [
             'showitem' => '
                 phone,
                 --linebreak--,
                 email, www,
-            '
+            ',
         ],
         'palette_social' => [
             'showitem' => '
                 facebook, twitter,
                 --linebreak--,
                 linkedin, xing,
-            '
+            ',
         ],
         'paletteLanguage' => [
             'showitem' => '
@@ -85,7 +86,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'language'
+                'type' => 'language',
             ],
         ],
         'l10n_parent' => [
@@ -117,9 +118,6 @@ return [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
                 'default' => 0,
-                'items' => [
-                    ['label' => '', 'value' => ''],
-                ],
             ],
         ],
         'starttime' => [
@@ -157,7 +155,7 @@ return [
                     ['label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.gender.female', 'value' => 'f'],
                     ['label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.gender.male', 'value' => 'm'],
                     ['label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.gender.divers', 'value' => 'd'],
-                ]
+                ],
             ],
         ],
         'title' => [
@@ -196,12 +194,12 @@ return [
                     'fields' => ['firstname', 'lastname'],
                     'fieldSeparator' => '-',
                     'replacements' => [
-                        '/' => '-'
+                        '/' => '-',
                     ],
                 ],
                 'fallbackCharacter' => '-',
                 'eval' => 'uniqueInSite',
-                'default' => ''
+                'default' => '',
             ],
         ],
         'company' => [
@@ -316,8 +314,8 @@ return [
         'categories' => [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_category.tabs.category',
             'config' => [
-                'type' => 'category'
-            ]
-        ]
+                'type' => 'category',
+            ],
+        ],
     ],
 ];

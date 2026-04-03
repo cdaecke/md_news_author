@@ -29,8 +29,8 @@ namespace Mediadreams\MdNewsAuthor\ViewHelpers;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 
 /**
  * ViewHelper to show author name with optional title
@@ -46,16 +46,13 @@ use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
  * {Title} Firstname Lastname
  * </output>
  *
- * @package MdNewsAuthor
- * @subpackage ViewHelpers
  * @author Christoph Daecke <typo3@mediadreams.org>
- *
  */
 final class ShowAuthorNameViewHelper extends AbstractViewHelper
 {
     public function initializeArguments(): void
     {
-        $this->registerArgument('author', 'object', 'the author object', true);
+        $this->registerArgument('author', NewsAuthor::class, 'the author object', true);
     }
 
     public function render(): string
@@ -64,6 +61,7 @@ final class ShowAuthorNameViewHelper extends AbstractViewHelper
             return '';
         }
 
+        /** @var NewsAuthor $author */
         $author = $this->arguments['author'];
 
         return trim(implode(' ', array_filter([

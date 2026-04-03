@@ -1,1 +1,9 @@
-.idea/*
+/.idea/
+/.Build/*
+/.cache
+/.fleet
+/.php-cs-fixer.cache
+/.phpunit.result.cache
+/composer.lock
+/public/
+/var/

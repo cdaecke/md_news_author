@@ -28,16 +28,15 @@ namespace Mediadreams\MdNewsAuthor\PageTitle;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
+use Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor;
 use TYPO3\CMS\Core\PageTitle\AbstractPageTitleProvider;
 
 /**
  * Class AuthorPageTitleProvider
- * @package Mediadreams\MdNewsAuthor\PageTitle
  */
 final class AuthorPageTitleProvider extends AbstractPageTitleProvider
 {
-    public function setTitle(\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor): void
+    public function setTitle(NewsAuthor $newsAuthor): void
     {
         $this->title = trim(implode(' ', array_filter([
             $newsAuthor->getTitle(),

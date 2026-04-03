@@ -1,0 +1,151 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 1
+			path: ../../Classes/Controller/NewsAuthorController.php
+
+		-
+			message: '#^Method Mediadreams\\MdNewsAuthor\\Controller\\NewsAuthorController\:\:assignPagination\(\) has parameter \$items with generic interface TYPO3\\CMS\\Extbase\\Persistence\\QueryResultInterface but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../../Classes/Controller/NewsAuthorController.php
+
+		-
+			message: '#^Method Mediadreams\\MdNewsAuthor\\Controller\\NewsAuthorController\:\:assignPagination\(\) has parameter \$items with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../Classes/Controller/NewsAuthorController.php
+
+		-
+			message: '#^Method Mediadreams\\MdNewsAuthor\\Controller\\NewsAuthorController\:\:assignPagination\(\) has parameter \$items with no value type specified in iterable type array\|TYPO3\\CMS\\Extbase\\Persistence\\QueryResultInterface\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../Classes/Controller/NewsAuthorController.php
+
+		-
+			message: '#^Mediadreams\\MdNewsAuthor\\Domain\\Model\\News\:\:__construct\(\) does not call parent constructor from GeorgRinger\\News\\Domain\\Model\\News\.$#'
+			identifier: constructor.missingParentCall
+			count: 1
+			path: ../../Classes/Domain/Model/News.php
+
+		-
+			message: '#^Property Mediadreams\\MdNewsAuthor\\Domain\\Model\\News\:\:\$newsAuthor on left side of \?\?\= is not nullable nor uninitialized\.$#'
+			identifier: nullCoalesce.initializedProperty
+			count: 3
+			path: ../../Classes/Domain/Model/News.php
+
+		-
+			message: '#^Method Mediadreams\\MdNewsAuthor\\Domain\\Model\\NewsAuthor\:\:getCategories\(\) return type with generic class TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage does not specify its types\: TEntity$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../../Classes/Domain/Model/NewsAuthor.php
+
+		-
+			message: '#^Method Mediadreams\\MdNewsAuthor\\Domain\\Model\\NewsAuthor\:\:getNews\(\) return type with generic class TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage does not specify its types\: TEntity$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../../Classes/Domain/Model/NewsAuthor.php
+
+		-
+			message: '#^Method Mediadreams\\MdNewsAuthor\\Domain\\Model\\NewsAuthor\:\:setCategories\(\) has parameter \$categories with generic class TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage but does not specify its types\: TEntity$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../../Classes/Domain/Model/NewsAuthor.php
+
+		-
+			message: '#^Method Mediadreams\\MdNewsAuthor\\Domain\\Model\\NewsAuthor\:\:setNews\(\) has parameter \$news with generic class TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage but does not specify its types\: TEntity$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../../Classes/Domain/Model/NewsAuthor.php
+
+		-
+			message: '#^Class Mediadreams\\MdNewsAuthor\\Domain\\Repository\\NewsAuthorRepository extends generic class TYPO3\\CMS\\Extbase\\Persistence\\Repository but does not specify its types\: T$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../../Classes/Domain/Repository/NewsAuthorRepository.php
+
+		-
+			message: '#^Method Mediadreams\\MdNewsAuthor\\Domain\\Repository\\NewsAuthorRepository\:\:buildCategoryConstraints\(\) has parameter \$query with generic interface TYPO3\\CMS\\Extbase\\Persistence\\QueryInterface but does not specify its types\: T$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../../Classes/Domain/Repository/NewsAuthorRepository.php
+
+		-
+			message: '#^Method Mediadreams\\MdNewsAuthor\\Domain\\Repository\\NewsAuthorRepository\:\:getAuthorsByCategories\(\) return type with generic interface TYPO3\\CMS\\Extbase\\Persistence\\QueryResultInterface does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../../Classes/Domain/Repository/NewsAuthorRepository.php
+
+		-
+			message: '#^Method Mediadreams\\MdNewsAuthor\\Domain\\Repository\\NewsAuthorRepository\:\:getAuthorsByInitial\(\) return type with generic interface TYPO3\\CMS\\Extbase\\Persistence\\QueryResultInterface does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../../Classes/Domain/Repository/NewsAuthorRepository.php
+
+		-
+			message: '#^Method Mediadreams\\MdNewsAuthor\\Domain\\Repository\\NewsRepository\:\:getNewsByAuthor\(\) return type with generic interface TYPO3\\CMS\\Extbase\\Persistence\\QueryResultInterface does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../../Classes/Domain/Repository/NewsRepository.php
+
+		-
+			message: '#^Out of 1 possible constant types, only 0 \- 0\.0 %% actually have it\. Add more constant types to get over 99 %%$#'
+			identifier: typeCoverage.constantTypeCoverage
+			count: 1
+			path: ../../Classes/Domain/Repository/NewsRepository.php
+
+		-
+			message: '#^Out of 61 possible return types, only 60 \- 98\.3 %% actually have it\. Add more return types to get over 100 %%$#'
+			identifier: typeCoverage.returnTypeCoverage
+			count: 1
+			path: ../../Classes/Domain/Repository/NewsRepository.php
+
+		-
+			message: '#^Return type \(TYPO3\\CMS\\Extbase\\Persistence\\QueryInterface\<TYPO3\\CMS\\Extbase\\DomainObject\\DomainObjectInterface\>\) of method Mediadreams\\MdNewsAuthor\\Domain\\Repository\\NewsRepository\:\:createQuery\(\) should be compatible with return type \(TYPO3\\CMS\\Extbase\\Persistence\\QueryInterface\<object\>\) of method TYPO3\\CMS\\Extbase\\Persistence\\RepositoryInterface\<object\>\:\:createQuery\(\)$#'
+			identifier: method.childReturnType
+			count: 1
+			path: ../../Classes/Domain/Repository/NewsRepository.php
+
+		-
+			message: '#^Call to function array_filter\(\) requires parameter \#2 to be passed to avoid loose comparison semantics\.$#'
+			identifier: arrayFilter.strict
+			count: 1
+			path: ../../Classes/PageTitle/AuthorPageTitleProvider.php
+
+		-
+			message: '#^Call to function array_filter\(\) requires parameter \#2 to be passed to avoid loose comparison semantics\.$#'
+			identifier: arrayFilter.strict
+			count: 1
+			path: ../../Classes/ViewHelpers/ShowAuthorNameViewHelper.php
+
+		-
+			message: '#^Cannot access an offset on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../../ext_localconf.php
+
+		-
+			message: '#^Cannot access offset ''Domain/Model/News'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../../ext_localconf.php
+
+		-
+			message: '#^Cannot access offset ''EXT'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../../ext_localconf.php
+
+		-
+			message: '#^Cannot access offset ''classes'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../../ext_localconf.php
+
+		-
+			message: '#^Cannot access offset ''news'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../../ext_localconf.php

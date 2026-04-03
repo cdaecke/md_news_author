@@ -1,8 +1,11 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
+
+use Mediadreams\MdNewsAuthor\Domain\Model\News;
 
 return [
-    \Mediadreams\MdNewsAuthor\Domain\Model\News::class => [
+    News::class => [
         'tableName' => 'tx_news_domain_model_news',
         'recordType' => 0,
     ],

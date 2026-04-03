@@ -28,36 +28,35 @@ namespace Mediadreams\MdNewsAuthor\Domain\Repository;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
+use TYPO3\CMS\Extbase\Persistence\Generic\Qom\ConstraintInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
  * The repository for NewsAuthors
  */
-class NewsAuthorRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class NewsAuthorRepository extends Repository
 {
-
-    protected $defaultOrderings = array(
-        'lastname' => QueryInterface::ORDER_ASCENDING
-    );
+    protected $defaultOrderings = [
+        'lastname' => QueryInterface::ORDER_ASCENDING,
+    ];
 
     /**
      * Get authors according to the initial of the lastname
      *
      * @param string $initial Initial of lastname
-     * @return \mixed[][]|QueryResultInterface
      * @throws InvalidQueryException
      */
-    public function getAuthorsByInitial(string $initial)
+    public function getAuthorsByInitial(string $initial): QueryResultInterface
     {
-        if (empty($initial)) {
+        if ($initial === '') {
             throw new \InvalidArgumentException('No initial for lastname given.', 1496613849);
         }
 
         $query = $this->createQuery();
-
         $query->matching(
             $query->logicalAnd(
                 $query->like('lastname', $initial . '%')
@@ -72,36 +71,22 @@ class NewsAuthorRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * @param string $categories Comma separated UIDs of categories
      * @param string $initial Initial of lastname
-     * @return \mixed[][]|QueryResultInterface
      * @throws InvalidQueryException
      */
-    public function getAuthorsByCategories(string $categories = '', string $initial = '')
+    public function getAuthorsByCategories(string $categories = '', string $initial = ''): QueryResultInterface
     {
-        if (empty($categories)) {
+        if ($categories === '') {
             throw new \InvalidArgumentException('No categories given.', 1494071855);
         }
 
-        $constraint = array();
         $query = $this->createQuery();
+        $constraint = $this->buildCategoryConstraints(
+            GeneralUtility::intExplode(',', $categories, true),
+            $query,
+            $initial
+        );
 
-        if (!is_array($categories)) {
-            $categories = \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $categories, true);
-        }
-
-        $categoryConstraints = [];
-        foreach ($categories as $category) {
-            $categoryConstraints[] = $query->contains('categories', $category);
-        }
-
-        if (count($categoryConstraints) > 0) {
-            $constraint[] = $query->logicalOr(...$categoryConstraints);
-        }
-
-        if (!empty($initial)) {
-            $constraint[] = $query->logicalAnd($query->like('lastname', $initial . '%'));
-        }
-
-        if (!empty($constraint)) {
+        if ($constraint !== []) {
             $query->matching(
                 $query->logicalAnd(...$constraint)
             );
@@ -110,4 +95,29 @@ class NewsAuthorRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return $query->execute();
     }
 
+    /**
+     * Build query constraints for category and optional initial filter.
+     *
+     * @param array<int> $categoryUids
+     * @return array<ConstraintInterface>
+     */
+    private function buildCategoryConstraints(array $categoryUids, QueryInterface $query, string $initial): array
+    {
+        $constraint = [];
+
+        $categoryConstraints = [];
+        foreach ($categoryUids as $category) {
+            $categoryConstraints[] = $query->contains('categories', $category);
+        }
+
+        if ($categoryConstraints !== []) {
+            $constraint[] = $query->logicalOr(...$categoryConstraints);
+        }
+
+        if ($initial !== '') {
+            $constraint[] = $query->logicalAnd($query->like('lastname', $initial . '%'));
+        }
+
+        return $constraint;
+    }
 }

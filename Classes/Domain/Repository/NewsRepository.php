@@ -42,12 +42,12 @@ class NewsRepository extends \GeorgRinger\News\Domain\Repository\NewsRepository
      *
      * @var string
      */
-    const TABLE_AUTHOR_MM = 'tx_mdnewsauthor_news_newsauthor_mm';
+    public const TABLE_AUTHOR_MM = 'tx_mdnewsauthor_news_newsauthor_mm';
 
     // Ordering of result
-    protected $defaultOrderings = array(
-        'datetime' => QueryInterface::ORDER_DESCENDING
-    );
+    protected $defaultOrderings = [
+        'datetime' => QueryInterface::ORDER_DESCENDING,
+    ];
 
     public function createQuery()
     {
@@ -63,16 +63,15 @@ class NewsRepository extends \GeorgRinger\News\Domain\Repository\NewsRepository
      * We use this to get the news records ordered by "datetime"
      *
      * @param int $authorUid Uid of author
-     * @return \mixed[][]|QueryResultInterface
      */
-    public function getNewsByAuthor(int $authorUid)
+    public function getNewsByAuthor(int $authorUid): QueryResultInterface
     {
         $query = $this->createQuery();
         $query->matching(
             $query->logicalAnd(
                 ...
                 [
-                    $query->equals('newsAuthor.uid', (int)$authorUid),
+                    $query->equals('newsAuthor.uid', $authorUid),
                 ]
             )
         );

@@ -28,7 +28,6 @@ namespace Mediadreams\MdNewsAuthor\Domain\Model;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
 use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 
 /**
@@ -74,7 +73,6 @@ class News extends \GeorgRinger\News\Domain\Model\News
      * Sets the newsAuthor
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor> $newsAuthor
-     * @return void
      */
     public function setNewsAuthor(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $newsAuthor): void
     {

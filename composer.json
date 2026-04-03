@@ -1,41 +1,146 @@
 {
     "name": "mediadreams/md_news_author",
-    "type": "typo3-cms-extension",
     "description": "Adds one or more authors to a tx_news record, show a list of all authors and display a detail page of the author containing the attached news entries.",
     "license": "GPL-2.0-or-later",
+    "type": "typo3-cms-extension",
     "keywords": [
-        "TYPO3", 
-        "TYPO3 CMS", 
-        "extension", 
-        "author", 
-        "news author", 
-        "news", 
-        "tx_news", 
+        "TYPO3",
+        "TYPO3 CMS",
+        "extension",
+        "author",
+        "news author",
+        "news",
+        "tx_news",
         "blog author"
     ],
-    "homepage": "http://www.mediadreams.org",
     "authors": [
         {
             "name": "Christoph Daecke",
             "role": "Developer"
         }
     ],
+    "homepage": "http://www.mediadreams.org",
     "support": {
         "issues": "https://github.com/cdaecke/md_news_author/issues",
         "source": "https://github.com/cdaecke/md_news_author"
     },
     "require": {
-        "typo3/cms-core": "^13.4 || ^14.0",
-        "georgringer/news": "^11.0 || ^12.0 || ^13.0 || ^14.0"
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+        "georgringer/news": "^11.0 || ^12.0 || ^13.0 || ^14.0",
+        "typo3/cms-core": "^13.4 || ^14.0"
     },
-    "extra": {
-      "typo3/cms": {
-         "extension-key": "md_news_author"
-      }
-   },
+    "require-dev": {
+        "ergebnis/composer-normalize": "2.50.0",
+        "friendsofphp/php-cs-fixer": "3.94.2",
+        "helmich/typo3-typoscript-lint": "3.3.0",
+        "icanhazstring/composer-unused": "0.8.11 || 0.9.6",
+        "php-parallel-lint/php-parallel-lint": "1.4.0",
+        "phpmd/phpmd": "2.15.0",
+        "phpstan/extension-installer": "1.4.3",
+        "phpstan/phpstan": "1.12.33 || 2.1.40",
+        "phpstan/phpstan-strict-rules": "1.6.2 || 2.0.8",
+        "rector/type-perfect": "1.0.0 || 2.1.2",
+        "saschaegerer/phpstan-typo3": "1.10.2 || 2.1.1",
+        "seld/jsonlint": "1.11.0",
+        "spaze/phpstan-disallowed-calls": "4.9.2",
+        "ssch/typo3-rector": "2.15.2 || 3.11.0",
+        "symfony/console": "^6.4 || ^7.4",
+        "symfony/translation": "^6.4 || ^7.4",
+        "symfony/yaml": "^6.4 || ^7.4",
+        "tomasvotruba/cognitive-complexity": "0.2.3 || 1.0.0",
+        "tomasvotruba/type-coverage": "1.0.0 || 2.1.0",
+        "typo3/coding-standards": "0.8.0"
+    },
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Mediadreams\\MdNewsAuthor\\": "Classes"
         }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "phpstan/extension-installer": true,
+            "typo3/class-alias-loader": true,
+            "typo3/cms-composer-installers": true
+        },
+        "bin-dir": ".Build/bin",
+        "lock": false,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true,
+        "vendor-dir": ".Build/vendor"
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "md_news_author"
+        }
+    },
+    "scripts": {
+        "check:composer:normalize": "@composer normalize --no-check-lock --dry-run",
+        "check:composer:psr-verify": "@composer dumpautoload --optimize --strict-psr --no-plugins",
+        "check:composer:unused": "composer-unused --configuration=Build/composer-unused/composer-unused.php",
+        "check:json:lint": "find . ! -path '*/.cache/*' ! -path '*/.Build/*' -name '*.json' | xargs -r php .Build/bin/jsonlint -q",
+        "check:php": [
+            "@check:php:cs-fixer",
+            "@check:php:lint",
+            "@check:php:stan"
+        ],
+        "check:php:cs-fixer": "php-cs-fixer fix --config ./Build/php-cs-fixer/config.php -v --dry-run --diff",
+        "check:php:lint": "parallel-lint *.php Build Classes Configuration",
+        "check:php:mess": "phpmd Classes xml Build/phpmd/config.xml",
+        "check:php:rector": "rector process --dry-run --config=./Build/rector/config.php",
+        "check:php:stan": "phpstan --no-progress -v --configuration=Build/phpstan/phpstan.neon",
+        "check:static": [
+            "@check:composer:normalize",
+            "@check:composer:unused",
+            "@check:json:lint",
+            "@check:php:lint",
+            "@check:composer:psr-verify",
+            "@check:php:rector",
+            "@check:php:stan",
+            "@check:php:cs-fixer",
+            "@check:typoscript:lint",
+            "@check:xliff:lint",
+            "@check:yaml:lint"
+        ],
+        "check:typoscript:lint": "typoscript-lint -c Build/typoscript-lint/config.yml --ansi -n --fail-on-warnings -vvv Configuration/TypoScript Configuration/Sets/MdNewsAuthor/setup.typoscript",
+        "check:xliff:lint": "php Build/Scripts/xliffLint.sh lint:xliff Resources/Private/Language",
+        "check:yaml:lint": "find . ! -path '*.Build/*' ! -path '*node_modules/*' \\( -name '*.yaml' -o -name '*.yml' \\) | xargs -r php ./.Build/bin/yaml-lint",
+        "fix": [
+            "@fix:composer:normalize",
+            "@fix:php"
+        ],
+        "fix:composer:normalize": "@composer normalize --no-check-lock",
+        "fix:php": [
+            "@fix:php:rector",
+            "@fix:php:cs-fixer"
+        ],
+        "fix:php:cs-fixer": "php-cs-fixer fix --config ./Build/php-cs-fixer/config.php",
+        "fix:php:rector": "rector process --config=./Build/rector/config.php",
+        "phpstan:baseline": "phpstan --generate-baseline=Build/phpstan/phpstan-baseline.neon --allow-empty-baseline --configuration=Build/phpstan/phpstan.neon"
+    },
+    "scripts-descriptions": {
+        "check:composer:normalize": "Checks the composer.json.",
+        "check:composer:psr-verify": "Verifies PSR-4 namespace correctness.",
+        "check:composer:unused": "Finds unused Composer packages required in composer.json.",
+        "check:json:lint": "Lints the JSON files.",
+        "check:php": "Runs all static checks for the PHP files.",
+        "check:php:cs-fixer": "Checks the code style with the PHP Coding Standards Fixer (PHP-CS-Fixer).",
+        "check:php:lint": "Lints the PHP files for syntax errors.",
+        "check:php:mess": "Runs PHP mess detection.",
+        "check:php:rector": "Checks for code for changes by Rector.",
+        "check:php:stan": "Checks the PHP types using PHPStan.",
+        "check:static": "Runs all static code checks (syntax, style, types).",
+        "check:typoscript:lint": "Lints the TypoScript files.",
+        "check:xliff:lint": "Lints the XLIFF files.",
+        "check:yaml:lint": "Lints the YAML files.",
+        "fix": "Runs all automatic code style fixes.",
+        "fix:composer:normalize": "Normalizes composer.json file content.",
+        "fix:php": "Runs all fixers for the PHP code.",
+        "fix:php:cs-fixer": "Fixes the code style with PHP-CS-Fixer.",
+        "fix:php:rector": "Updates the code with Rector.",
+        "phpstan:baseline": "Updates the PHPStan baseline file to match the code."
     }
 }

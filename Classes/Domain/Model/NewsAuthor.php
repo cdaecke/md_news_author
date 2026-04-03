@@ -28,17 +28,17 @@ namespace Mediadreams\MdNewsAuthor\Domain\Model;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
 use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 use TYPO3\CMS\Extbase\Annotation\Validate;
 use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * Authors
  */
-class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class NewsAuthor extends AbstractEntity
 {
     protected string $title = '';
 
@@ -81,7 +81,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected ObjectStorage $categories;
 
     /**
-     * @var ObjectStorage<\Mediadreams\MdNewsAuthor\Domain\Model\News>
+     * @var ObjectStorage<News>
      */
     #[Lazy()]
     protected ObjectStorage $news;
@@ -280,12 +280,12 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->categories = $categories;
     }
 
-    public function addNews(\Mediadreams\MdNewsAuthor\Domain\Model\News $news): void
+    public function addNews(News $news): void
     {
         $this->news->attach($news);
     }
 
-    public function removeNews(\Mediadreams\MdNewsAuthor\Domain\Model\News $newsToRemove): void
+    public function removeNews(News $newsToRemove): void
     {
         $this->news->detach($newsToRemove);
     }
