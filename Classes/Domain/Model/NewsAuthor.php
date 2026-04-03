@@ -72,7 +72,7 @@ class NewsAuthor extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     protected string $bio = '';
 
-    protected ?FileReference $image;
+    protected ?FileReference $image = null;
 
     /**
      * @var ObjectStorage<Category>

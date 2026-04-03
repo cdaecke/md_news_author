@@ -39,7 +39,10 @@ final class AuthorPageTitleProvider extends AbstractPageTitleProvider
 {
     public function setTitle(\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor): void
     {
-        $pageTitle = $newsAuthor->getTitle() . ' ' . $newsAuthor->getFirstname() . ' ' . $newsAuthor->getLastname();
-        $this->title = $pageTitle;
+        $this->title = trim(implode(' ', array_filter([
+            $newsAuthor->getTitle(),
+            $newsAuthor->getFirstname(),
+            $newsAuthor->getLastname(),
+        ])));
     }
 }

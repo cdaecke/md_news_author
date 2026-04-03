@@ -2,7 +2,12 @@
 plugin.tx_mdnewsauthor {
     settings {
         authorDetailPid = {$plugin.tx_mdnewsauthor.settings.authorDetailPid}
-        
+
+        # detailPid is used in the list template to link to the author detail page.
+        # It is typically set per plugin via FlexForm. This TypoScript fallback ensures
+        # the link works when no FlexForm value is provided (e.g. when using Site Sets).
+        detailPid = {$plugin.tx_mdnewsauthor.settings.authorDetailPid}
+
         # this will be used on authors profile page to link authors news
         newsDetailPid = {$plugin.tx_mdnewsauthor.settings.newsDetailPid}
 

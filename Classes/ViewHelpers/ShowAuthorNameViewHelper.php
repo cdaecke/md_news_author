@@ -66,13 +66,10 @@ final class ShowAuthorNameViewHelper extends AbstractViewHelper
 
         $author = $this->arguments['author'];
 
-        $authorTitle = $author->getTitle();
-        $fullAuthor = $author->getFirstname().' '.$author->getLastname();
-
-        if ($authorTitle) {
-            $fullAuthor = $authorTitle . ' ' . $fullAuthor;
-        }
-
-        return $fullAuthor;
+        return trim(implode(' ', array_filter([
+            $author->getTitle(),
+            $author->getFirstname(),
+            $author->getLastname(),
+        ])));
     }
 }

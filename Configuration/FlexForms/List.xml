@@ -15,15 +15,6 @@
                             <size>1</size>
                             <maxitems>1</maxitems>
                             <minitems>1</minitems>
-                            <show_thumbs>1</show_thumbs>
-                            <wizards>
-                                <suggest>
-                                    <type>suggest</type>
-                                    <default>
-                                        <searchWholePhrase>1</searchWholePhrase>
-                                    </default>
-                                </suggest>
-                            </wizards>
                         </config>
                     </settings.detailPid>
                 </el>
