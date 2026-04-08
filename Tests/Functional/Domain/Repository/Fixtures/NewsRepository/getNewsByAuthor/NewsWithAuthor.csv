@@ -1,0 +1,11 @@
+"tx_mdnewsauthor_domain_model_newsauthor"
+,"uid","pid","lastname","firstname"
+,1,0,"Doe","Jane"
+
+"tx_news_domain_model_news"
+,"uid","pid","title","news_author"
+,1,0,"Test News",1
+
+"tx_mdnewsauthor_news_newsauthor_mm"
+,"uid_local","uid_foreign"
+,1,1
