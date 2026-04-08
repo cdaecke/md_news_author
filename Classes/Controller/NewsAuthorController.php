@@ -125,7 +125,7 @@ class NewsAuthorController extends ActionController
      */
     private function redirectToList(): ?ResponseInterface
     {
-        if (!$this->settings['listPid']) {
+        if (!($this->settings['listPid'] ?? null)) {
             return null;
         }
 
