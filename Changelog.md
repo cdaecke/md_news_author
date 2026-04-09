@@ -1,3 +1,17 @@
+# Version 9.0.0 (2026-04-09)
+This version comes with one breaking change. Please follow the upgrade instructions.
+
+## Upgrade guide
+- Run upgrade wizard `EXT:md_news_author: Migrate plugin list_type to CType`
+
+## Main changes
+- [FEATURE] TYPO3 v14 support, support for v12 dropped
+- [FEATURE] Introduce configuration via Site Sets
+- [TASK] Introduce CI tools and automated testing - improve code quality
+
+All changes
+https://github.com/cdaecke/md_news_author/compare/v8.1.3...v9.0.0
+
 # Version 8.1.3 (2026-03-23)
 - [BUGFIX] fix error Typed property GeorgRinger\News\Domain\Model\News::$newsAuthor must not be accessed before initialization. Thanks to [Lina Wolf](https://github.com/linawolf)
 
