@@ -91,18 +91,6 @@ parameters:
 			path: ../../Classes/Domain/Repository/NewsRepository.php
 
 		-
-			message: '#^Out of 61 possible return types, only 60 \- 98\.3 %% actually have it\. Add more return types to get over 100 %%$#'
-			identifier: typeCoverage.returnTypeCoverage
-			count: 1
-			path: ../../Classes/Domain/Repository/NewsRepository.php
-
-		-
-			message: '#^Return type \(TYPO3\\CMS\\Extbase\\Persistence\\QueryInterface\<TYPO3\\CMS\\Extbase\\DomainObject\\DomainObjectInterface\>\) of method Mediadreams\\MdNewsAuthor\\Domain\\Repository\\NewsRepository\:\:createQuery\(\) should be compatible with return type \(TYPO3\\CMS\\Extbase\\Persistence\\QueryInterface\<object\>\) of method TYPO3\\CMS\\Extbase\\Persistence\\RepositoryInterface\<object\>\:\:createQuery\(\)$#'
-			identifier: method.childReturnType
-			count: 1
-			path: ../../Classes/Domain/Repository/NewsRepository.php
-
-		-
 			message: '#^Call to function array_filter\(\) requires parameter \#2 to be passed to avoid loose comparison semantics\.$#'
 			identifier: arrayFilter.strict
 			count: 1

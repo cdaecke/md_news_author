@@ -77,7 +77,8 @@
         <f:if condition="{pagination.paginator.paginatedItems}">
         <!--TYPO3SEARCH_end-->
             <section class="articles-wrapper" id="author-articles{newsAuthor.uid}">
-                <h2><f:translate key="template.show.articleHeader" arguments="{0: '{md:ShowAuthorName(author:newsAuthor)}'}" /></h2>
+                <f:variable name="authorName">{md:ShowAuthorName(author:newsAuthor) -> f:format.htmlspecialchars()}</f:variable>
+                <h2><f:translate key="template.show.articleHeader" arguments="{0: authorName}" /></h2>
 
                 <f:if condition="{settings.authorDetail.paginate.insertAbove}">
                     <f:render partial="Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator, section: 'author-articles{newsAuthor.uid}'}" />
