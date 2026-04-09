@@ -1,0 +1,13 @@
+"sys_category"
+,"uid","pid","title"
+,1,0,"Category A"
+
+"tx_mdnewsauthor_domain_model_newsauthor"
+,"uid","pid","lastname","firstname","categories"
+,1,0,"Doe","Jane",1
+,2,0,"Smith","John",1
+
+"sys_category_record_mm"
+,"uid_local","uid_foreign","tablenames","fieldname"
+,1,1,"tx_mdnewsauthor_domain_model_newsauthor","categories"
+,1,2,"tx_mdnewsauthor_domain_model_newsauthor","categories"

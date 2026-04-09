@@ -1,0 +1,6 @@
+"tt_content"
+,"uid","pid","CType","header","pi_flexform"
+,1,2,"mdnewsauthor_list","Author List",""
+,2,3,"mdnewsauthor_show","Author Detail",""
+,3,4,"mdnewsauthor_list","Author List with Categories","<?xml version=""1.0"" encoding=""utf-8"" standalone=""yes"" ?><T3FlexForms><data><sheet index=""templateListCategory""><language index=""lDEF""><field index=""settings.categoriesList""><value index=""vDEF"">1</value></field></language></sheet></data></T3FlexForms>"
+,4,5,"mdnewsauthor_list","Author List with Navigation","<?xml version=""1.0"" encoding=""utf-8"" standalone=""yes"" ?><T3FlexForms><data><sheet index=""templateList""><language index=""lDEF""><field index=""settings.list.alphabeticalNavigation""><value index=""vDEF"">1</value></field></language></sheet></data></T3FlexForms>"

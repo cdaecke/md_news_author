@@ -28,97 +28,48 @@ namespace Mediadreams\MdNewsAuthor\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
+use Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor;
 use Mediadreams\MdNewsAuthor\Domain\Repository\NewsAuthorRepository;
 use Mediadreams\MdNewsAuthor\Domain\Repository\NewsRepository;
 use Mediadreams\MdNewsAuthor\PageTitle\AuthorPageTitleProvider;
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Pagination\SlidingWindowPagination;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 /**
  * NewsAuthorController
  */
 class NewsAuthorController extends ActionController
 {
-    /**
-     * newsAuthorRepository
-     *
-     * @var NewsAuthorRepository
-     */
-    protected NewsAuthorRepository $newsAuthorRepository;
-
-    /**
-     * newsRepository
-     *
-     * @var NewsRepository
-     */
-    protected NewsRepository $newsRepository;
-
-    /**
-     * titleProvider
-     *
-     * @var AuthorPageTitleProvider
-     */
-    protected AuthorPageTitleProvider $titleProvider;
-
-    /**
-     * NewsAuthorController constructor.
-     *
-     * @param NewsAuthorRepository $newsAuthorRepository
-     * @param NewsRepository $newsRepository
-     * @param AuthorPageTitleProvider $titleProvider
-     */
     public function __construct(
-        NewsAuthorRepository $newsAuthorRepository,
-        NewsRepository $newsRepository,
-        AuthorPageTitleProvider $titleProvider
-    ) {
-        $this->newsAuthorRepository = $newsAuthorRepository;
-        $this->newsRepository = $newsRepository;
-        $this->titleProvider = $titleProvider;
-    }
+        protected NewsAuthorRepository $newsAuthorRepository,
+        protected NewsRepository $newsRepository,
+        protected AuthorPageTitleProvider $titleProvider
+    ) {}
 
-    /**
-     * action list
-     *
-     * @param string $selectedLetter
-     * @param int $currentPage
-     * @return ResponseInterface
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException|\TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
-     */
     public function listAction(string $selectedLetter = '', int $currentPage = 1): ResponseInterface
     {
-        // get all authors
-        // we need all authors all the time because the alphabetical filter needs them as well
-        if (isset($this->settings['categoriesList']) && $this->settings['categoriesList'] != '') {
-            $newsAuthors = $this->newsAuthorRepository->getAuthorsByCategories($this->settings['categoriesList']);
-        } else {
-            $newsAuthors = $this->newsAuthorRepository->findAll();
-        }
+        $categoriesList = $this->settings['categoriesList'] ?? '';
 
-        $activeLetters = [];
-        foreach ($newsAuthors as $author) {
-            $char = mb_strtoupper(mb_substr($author->getLastname(), 0, 1, "UTF-8"));
-            $activeLetters[$char] = true;
-        }
+        // Load all authors once. We need the full set to build the active-letters
+        // navigation regardless of any letter filter being applied.
+        $allAuthors = $categoriesList !== ''
+            ? $this->newsAuthorRepository->getAuthorsByCategories($categoriesList)
+            : $this->newsAuthorRepository->findAll();
+
+        $normalizedLetter = mb_strtoupper($selectedLetter);
+        ['activeLetters' => $activeLetters, 'filteredAuthors' => $filteredAuthors] = $this->buildLetterFilter($allAuthors, $normalizedLetter);
+
         $this->view->assign('activeLetters', $activeLetters);
-        $this->view->assign('selectedLetter', mb_strtoupper($selectedLetter));
-        $this->view->assign('letters', explode(',', $this->settings['authorList']['letters']) );
-
-        // assign selected authors only
-        // we need to query again because of the selected letter
-        if (!empty($selectedLetter)) {
-            if ($this->settings['categoriesList'] != '') {
-                $newsAuthors = $this->newsAuthorRepository->getAuthorsByCategories($this->settings['categoriesList'], $selectedLetter);
-            } else {
-                $newsAuthors = $this->newsAuthorRepository->getAuthorsByInitial($selectedLetter);
-            }
-        }
+        $this->view->assign('selectedLetter', $normalizedLetter);
+        $this->view->assign('letters', explode(',', (string)$this->settings['authorList']['letters']));
 
         $this->assignPagination(
-            $newsAuthors,
+            $filteredAuthors,
+            $currentPage,
             (int)$this->settings['authorList']['paginate']['itemsPerPage'],
             (int)$this->settings['authorList']['paginate']['maximumNumberOfLinks']
         );
@@ -126,54 +77,72 @@ class NewsAuthorController extends ActionController
         return $this->htmlResponse();
     }
 
-    /**
-     * action show
-     *
-     * @param \Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor|null $newsAuthor
-     * @return ResponseInterface
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
-     */
-    public function showAction(?\Mediadreams\MdNewsAuthor\Domain\Model\NewsAuthor $newsAuthor = null): ResponseInterface
+    public function showAction(?NewsAuthor $newsAuthor = null, int $currentPage = 1): ResponseInterface
     {
-        if ($newsAuthor != null) {
-            $this->titleProvider->setTitle($newsAuthor);
-            $this->view->assign('newsAuthor', $newsAuthor);
+        if ($newsAuthor === null) {
+            return $this->redirectToList() ?? $this->htmlResponse();
+        }
 
+        $this->titleProvider->setTitle($newsAuthor);
+        $this->view->assign('newsAuthor', $newsAuthor);
+
+        $uid = $newsAuthor->getUid();
+        if ($uid !== null) {
             $this->assignPagination(
-                $this->newsRepository->getNewsByAuthor($newsAuthor->getUid()),
+                $this->newsRepository->getNewsByAuthor($uid),
+                $currentPage,
                 (int)$this->settings['authorDetail']['paginate']['itemsPerPage'],
                 (int)$this->settings['authorDetail']['paginate']['maximumNumberOfLinks']
             );
-        } else {
-            if ($this->settings['listPid']) {
-                $uriBuilder = $this->uriBuilder;
-                $uri = $uriBuilder
-                    ->setTargetPageUid((int)$this->settings['listPid'])
-                    ->build();
-
-                $this->redirectToUri($uri, 0, 308);
-            }
         }
 
         return $this->htmlResponse();
     }
 
     /**
-     * Assign pagination to current view object
+     * Build active-letters index and filtered author list in a single pass.
      *
-     * @param $items
-     * @param int $itemsPerPage
-     * @param int $maximumNumberOfLinks
+     * @param iterable<NewsAuthor> $authors
+     * @return array{activeLetters: array<string, bool>, filteredAuthors: list<NewsAuthor>}
      */
-    protected function assignPagination($items, int $itemsPerPage = 10, int $maximumNumberOfLinks = 5): void
+    private function buildLetterFilter(iterable $authors, string $normalizedLetter): array
     {
-        $currentPage = $this->request->hasArgument('currentPage') ? (int)$this->request->getArgument('currentPage') : 1;
+        $activeLetters = [];
+        $filteredAuthors = [];
 
-        $paginator = new QueryResultPaginator(
-            $items,
-            $currentPage,
-            $itemsPerPage
-        );
+        foreach ($authors as $author) {
+            /** @var NewsAuthor $author */
+            $char = mb_strtoupper(mb_substr($author->getLastname(), 0, 1, 'UTF-8'));
+            $activeLetters[$char] = true;
+            if ($normalizedLetter === '' || $char === $normalizedLetter) {
+                $filteredAuthors[] = $author;
+            }
+        }
+
+        return ['activeLetters' => $activeLetters, 'filteredAuthors' => $filteredAuthors];
+    }
+
+    /**
+     * Redirect to the configured list page, or return null if no listPid is set.
+     */
+    private function redirectToList(): ?ResponseInterface
+    {
+        if (!($this->settings['listPid'] ?? null)) {
+            return null;
+        }
+
+        $uri = $this->uriBuilder
+            ->setTargetPageUid((int)$this->settings['listPid'])
+            ->build();
+
+        return $this->redirectToUri($uri, null, 308);
+    }
+
+    protected function assignPagination(array|QueryResultInterface $items, int $currentPage = 1, int $itemsPerPage = 10, int $maximumNumberOfLinks = 5): void
+    {
+        $paginator = is_array($items)
+            ? new ArrayPaginator($items, $currentPage, $itemsPerPage)
+            : new QueryResultPaginator($items, $currentPage, $itemsPerPage);
 
         $pagination = new SlidingWindowPagination(
             $paginator,

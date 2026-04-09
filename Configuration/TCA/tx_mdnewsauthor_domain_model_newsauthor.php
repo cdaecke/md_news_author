@@ -1,19 +1,17 @@
 <?php
-defined('TYPO3') or die();
 
-$versionInformation = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class);
+defined('TYPO3') or die();
 
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor',
         'label' => 'lastname',
         'label_alt' => 'firstname',
-        'label_alt_force' => 1, // use lastname and firstname as label
+        'label_alt_force' => true, // use lastname and firstname as label
         'default_sortby' => 'lastname',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'dividers2tabs' => TRUE,
-        'versioningWS' => TRUE,
+        'versioningWS' => true,
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -29,7 +27,6 @@ return [
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],
-        'searchFields' => 'title,firstname,lastname,bio,image,'
     ],
     'types' => [
         '1' => [
@@ -39,9 +36,9 @@ return [
                 --palette--;LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:palette.contact;palette_contact,
                 --palette--;LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:palette.social;palette_social,
                 bio,image,
-                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
                     hidden,starttime,endtime,
-                --div--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_category.tabs.category,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:categories,
                     categories,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
                     --palette--;;paletteLanguage,
@@ -56,26 +53,26 @@ return [
                 firstname, lastname,
                 --linebreak--,
                 slug,
-            '
+            ',
         ],
         'palette_company' => [
             'showitem' => '
                 company, position,
-            '
+            ',
         ],
         'palette_contact' => [
             'showitem' => '
                 phone,
                 --linebreak--,
                 email, www,
-            '
+            ',
         ],
         'palette_social' => [
             'showitem' => '
                 facebook, twitter,
                 --linebreak--,
                 linkedin, xing,
-            '
+            ',
         ],
         'paletteLanguage' => [
             'showitem' => '
@@ -89,7 +86,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'language'
+                'type' => 'language',
             ],
         ],
         'l10n_parent' => [
@@ -121,14 +118,6 @@ return [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
                 'default' => 0,
-                'items' => $versionInformation->getMajorVersion() < 12 ? [
-                    [
-                        0 => '',
-                        1 => '',
-                    ],
-                ] : [
-                    ['label' => '', 'value' => ''],
-                ],
             ],
         ],
         'starttime' => [
@@ -161,13 +150,12 @@ return [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'size' => 1,
                 'items' => [
                     ['label' => '-', 'value' => ''],
                     ['label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.gender.female', 'value' => 'f'],
                     ['label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.gender.male', 'value' => 'm'],
                     ['label' => 'LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.gender.divers', 'value' => 'd'],
-                ]
+                ],
             ],
         ],
         'title' => [
@@ -176,7 +164,6 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 10,
-                'eval' => 'trim'
             ],
         ],
         'firstname' => [
@@ -186,7 +173,6 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'required' => true,
-                'eval' => 'trim'
             ],
         ],
         'lastname' => [
@@ -196,7 +182,6 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'required' => true,
-                'eval' => 'trim'
             ],
         ],
         'slug' => [
@@ -209,12 +194,12 @@ return [
                     'fields' => ['firstname', 'lastname'],
                     'fieldSeparator' => '-',
                     'replacements' => [
-                        '/' => '-'
+                        '/' => '-',
                     ],
                 ],
                 'fallbackCharacter' => '-',
                 'eval' => 'uniqueInSite',
-                'default' => ''
+                'default' => '',
             ],
         ],
         'company' => [
@@ -223,7 +208,6 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
             ],
         ],
         'position' => [
@@ -232,7 +216,6 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
             ],
         ],
         'phone' => [
@@ -241,7 +224,6 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
             ],
         ],
         'email' => [
@@ -250,7 +232,6 @@ return [
             'config' => [
                 'type' => 'email',
                 'size' => 30,
-                'eval' => 'trim'
             ],
         ],
         'www' => [
@@ -259,7 +240,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'softref' => 'url',
             ],
         ],
         'facebook' => [
@@ -268,7 +249,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'softref' => 'url',
             ],
         ],
         'twitter' => [
@@ -277,7 +258,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'softref' => 'url',
             ],
         ],
         'xing' => [
@@ -286,7 +267,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'softref' => 'url',
             ],
         ],
         'linkedin' => [
@@ -295,7 +276,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'softref' => 'url',
             ],
         ],
         'bio' => [
@@ -305,7 +286,6 @@ return [
                 'type' => 'text',
                 'cols' => 40,
                 'rows' => 15,
-                'eval' => 'trim',
                 'enableRichtext' => true,
                 'richtextConfiguration' => 'default',
                 'fieldControl' => [
@@ -334,8 +314,8 @@ return [
         'categories' => [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_category.tabs.category',
             'config' => [
-                'type' => 'category'
-            ]
-        ]
+                'type' => 'category',
+            ],
+        ],
     ],
 ];

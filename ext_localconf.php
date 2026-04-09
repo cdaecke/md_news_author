@@ -1,4 +1,7 @@
 <?php
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+use Mediadreams\MdNewsAuthor\Controller\NewsAuthorController;
+
 defined('TYPO3') or die();
 
 call_user_func(
@@ -9,7 +12,7 @@ call_user_func(
         $plugins = [
             'list' => [
                 'cacheable' => 'list',
-                'nonCacheable' => 'list'
+                'nonCacheable' => ''
             ],
             'show' => [
                 'cacheable' => 'show',
@@ -18,25 +21,19 @@ call_user_func(
         ];
 
         foreach ($plugins as $plugin => $pluginOptions) {
-            \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+            ExtensionUtility::configurePlugin(
                 'MdNewsAuthor',
                 $plugin,
                 [
-                    \Mediadreams\MdNewsAuthor\Controller\NewsAuthorController::class => $pluginOptions['cacheable'],
+                    NewsAuthorController::class => $pluginOptions['cacheable'],
                 ],
                 // non-cacheable actions
                 [
-                    \Mediadreams\MdNewsAuthor\Controller\NewsAuthorController::class => $pluginOptions['nonCacheable'],
-                ]
+                    NewsAuthorController::class => $pluginOptions['nonCacheable'],
+                ],
+                ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
             );
         }
-
-        /**
-         * Add page TsConfig
-         */
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
-            '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:md_news_author/Configuration/TsConfig/Page/TCEFORM.tsconfig">'
-        );
 
         /**
          * Extend ext:news

@@ -17,14 +17,10 @@ $EM_CONF[$_EXTKEY] = [
     'author' => 'Christoph Daecke',
     'author_email' => 'typo3@mediadreams.org',
     'state' => 'stable',
-    'internal' => '',
-    'uploadfolder' => '0',
-    'createDirs' => '',
-    'clearCacheOnLoad' => 0,
     'version' => '8.1.3',
     'constraints' => [
         'depends' => [
-            'typo3' => '12.4.0-13.4.99',
+            'typo3' => '13.4.0-14.4.99',
             'news' => '11.0-14.99'
         ],
         'conflicts' => [],

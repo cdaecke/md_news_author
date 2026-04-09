@@ -1,6 +1,8 @@
 <?php
-defined('TYPO3') or die();
 
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
+defined('TYPO3') or die();
 
 $tmp_news_author_columns = [
 
@@ -17,19 +19,19 @@ $tmp_news_author_columns = [
             'autoSizeMax' => 30,
             'maxitems' => 99,
             'behaviour' => [
-                'allowLanguageSynchronization' => true
+                'allowLanguageSynchronization' => true,
             ],
         ],
     ],
 
 ];
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
+ExtensionManagementUtility::addTCAcolumns(
     'tx_news_domain_model_news',
     $tmp_news_author_columns
 );
 
-TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
+ExtensionManagementUtility::addToAllTCAtypes(
     'tx_news_domain_model_news',
     '--div--;LLL:EXT:md_news_author/Resources/Private/Language/locallang_db.xlf:tx_mdnewsauthor_domain_model_newsauthor.news_author_tab,news_author'
 );

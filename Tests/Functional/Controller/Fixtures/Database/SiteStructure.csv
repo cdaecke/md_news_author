@@ -1,0 +1,7 @@
+"pages"
+,"uid","pid","title","slug"
+,1,0,"Rootpage","/"
+,2,1,"Author List","/author-list"
+,3,1,"Author Detail","/author-detail"
+,4,1,"Author List with Categories","/author-list-categories"
+,5,1,"Author List with Navigation","/author-list-navigation"

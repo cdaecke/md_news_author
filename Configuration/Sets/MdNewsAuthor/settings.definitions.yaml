@@ -1,0 +1,107 @@
+categories:
+  mdnewsauthor:
+    label: 'News Author'
+  mdnewsauthor.list:
+    label: 'Author list'
+    parent: mdnewsauthor
+  mdnewsauthor.detail:
+    label: 'Author detail'
+    parent: mdnewsauthor
+  mdnewsauthor.templates:
+    label: 'Templates'
+    parent: mdnewsauthor
+
+settings:
+  # PIDs
+  plugin.tx_mdnewsauthor.settings.authorDetailPid:
+    label: 'Author detail page (UID)'
+    type: int
+    default: 0
+    category: mdnewsauthor
+
+  plugin.tx_mdnewsauthor.settings.newsDetailPid:
+    label: 'News detail page (UID)'
+    type: int
+    default: 0
+    category: mdnewsauthor
+
+  plugin.tx_mdnewsauthor.persistence.storagePid:
+    label: 'Storage page (UID)'
+    type: int
+    default: 0
+    category: mdnewsauthor
+
+  # Author list
+  plugin.tx_mdnewsauthor.settings.authorList.letters:
+    label: 'Alphabetical filter letters'
+    type: string
+    default: 'A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z'
+    category: mdnewsauthor.list
+
+  plugin.tx_mdnewsauthor.settings.authorList.paginate.itemsPerPage:
+    label: 'Items per page (list)'
+    type: int
+    default: 10
+    category: mdnewsauthor.list
+
+  plugin.tx_mdnewsauthor.settings.authorList.paginate.insertAbove:
+    label: 'Show pagination above list'
+    type: bool
+    default: false
+    category: mdnewsauthor.list
+
+  plugin.tx_mdnewsauthor.settings.authorList.paginate.insertBelow:
+    label: 'Show pagination below list'
+    type: bool
+    default: true
+    category: mdnewsauthor.list
+
+  plugin.tx_mdnewsauthor.settings.authorList.paginate.maximumNumberOfLinks:
+    label: 'Maximum number of pagination links (list)'
+    type: int
+    default: 6
+    category: mdnewsauthor.list
+
+  # Author detail
+  plugin.tx_mdnewsauthor.settings.authorDetail.paginate.itemsPerPage:
+    label: 'Items per page (detail)'
+    type: int
+    default: 10
+    category: mdnewsauthor.detail
+
+  plugin.tx_mdnewsauthor.settings.authorDetail.paginate.insertAbove:
+    label: 'Show pagination above detail'
+    type: bool
+    default: false
+    category: mdnewsauthor.detail
+
+  plugin.tx_mdnewsauthor.settings.authorDetail.paginate.insertBelow:
+    label: 'Show pagination below detail'
+    type: bool
+    default: true
+    category: mdnewsauthor.detail
+
+  plugin.tx_mdnewsauthor.settings.authorDetail.paginate.maximumNumberOfLinks:
+    label: 'Maximum number of pagination links (detail)'
+    type: int
+    default: 6
+    category: mdnewsauthor.detail
+
+  # Template paths
+  plugin.tx_mdnewsauthor.view.templateRootPath:
+    label: 'Template root path'
+    type: string
+    default: 'EXT:md_news_author/Resources/Private/Templates/'
+    category: mdnewsauthor.templates
+
+  plugin.tx_mdnewsauthor.view.partialRootPath:
+    label: 'Partial root path'
+    type: string
+    default: 'EXT:md_news_author/Resources/Private/Partials/'
+    category: mdnewsauthor.templates
+
+  plugin.tx_mdnewsauthor.view.layoutRootPath:
+    label: 'Layout root path'
+    type: string
+    default: 'EXT:md_news_author/Resources/Private/Layouts/'
+    category: mdnewsauthor.templates
