@@ -69,6 +69,7 @@ class NewsAuthorController extends ActionController
 
         $this->assignPagination(
             $filteredAuthors,
+            $currentPage,
             (int)$this->settings['authorList']['paginate']['itemsPerPage'],
             (int)$this->settings['authorList']['paginate']['maximumNumberOfLinks']
         );
@@ -76,7 +77,7 @@ class NewsAuthorController extends ActionController
         return $this->htmlResponse();
     }
 
-    public function showAction(?NewsAuthor $newsAuthor = null): ResponseInterface
+    public function showAction(?NewsAuthor $newsAuthor = null, int $currentPage = 1): ResponseInterface
     {
         if ($newsAuthor === null) {
             return $this->redirectToList() ?? $this->htmlResponse();
@@ -89,6 +90,7 @@ class NewsAuthorController extends ActionController
         if ($uid !== null) {
             $this->assignPagination(
                 $this->newsRepository->getNewsByAuthor($uid),
+                $currentPage,
                 (int)$this->settings['authorDetail']['paginate']['itemsPerPage'],
                 (int)$this->settings['authorDetail']['paginate']['maximumNumberOfLinks']
             );
@@ -136,10 +138,8 @@ class NewsAuthorController extends ActionController
         return $this->redirectToUri($uri, null, 308);
     }
 
-    protected function assignPagination(array|QueryResultInterface $items, int $itemsPerPage = 10, int $maximumNumberOfLinks = 5): void
+    protected function assignPagination(array|QueryResultInterface $items, int $currentPage = 1, int $itemsPerPage = 10, int $maximumNumberOfLinks = 5): void
     {
-        $currentPage = $this->request->hasArgument('currentPage') ? (int)$this->request->getArgument('currentPage') : 1;
-
         $paginator = is_array($items)
             ? new ArrayPaginator($items, $currentPage, $itemsPerPage)
             : new QueryResultPaginator($items, $currentPage, $itemsPerPage);

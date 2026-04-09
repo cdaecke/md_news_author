@@ -96,6 +96,22 @@ final class NewsAuthorControllerTest extends AbstractFrontendControllerTestCase
     }
 
     #[Test]
+    public function showActionSetsAuthorNameAsPageTitle(): void
+    {
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/Database/NewsAuthorController/showAction/AuthorForShow.csv'
+        );
+
+        $request = (new InternalRequest())->withPageId(3)->withQueryParameters([
+            'tx_mdnewsauthor_show[newsAuthor]' => '1',
+        ]);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('<title>Jane Doe', $html);
+    }
+
+    #[Test]
     public function showActionWithoutAuthorReturnsSuccessfulResponse(): void
     {
         $request = (new InternalRequest())->withPageId(3);
@@ -104,6 +120,7 @@ final class NewsAuthorControllerTest extends AbstractFrontendControllerTestCase
 
         self::assertSame(200, $response->getStatusCode());
     }
+
 
     #[Test]
     public function listActionWithCategoriesListFlexFormOnlyShowsAuthorsFromConfiguredCategory(): void
@@ -138,5 +155,49 @@ final class NewsAuthorControllerTest extends AbstractFrontendControllerTestCase
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
         self::assertStringNotContainsString('alphabetical-nav', $html);
+    }
+
+    #[Test]
+    public function listActionOnFirstPageShowsFirstPageOfAuthors(): void
+    {
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/Database/NewsAuthorController/listAction/ThreeAuthorsForPagination.csv'
+        );
+
+        $this->addTypoScriptToTemplateRecord(
+            1,
+            'plugin.tx_mdnewsauthor.settings.authorList.paginate.itemsPerPage = 2'
+        );
+
+        $request = (new InternalRequest())->withPageId(2);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('Adams', $html);
+        self::assertStringContainsString('Brown', $html);
+        self::assertStringNotContainsString('Clark', $html);
+    }
+
+    #[Test]
+    public function listActionOnSecondPageShowsRemainingAuthors(): void
+    {
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/Database/NewsAuthorController/listAction/ThreeAuthorsForPagination.csv'
+        );
+
+        $this->addTypoScriptToTemplateRecord(
+            1,
+            'plugin.tx_mdnewsauthor.settings.authorList.paginate.itemsPerPage = 2'
+        );
+
+        $request = (new InternalRequest())->withPageId(2)->withQueryParameters([
+            'tx_mdnewsauthor_list[currentPage]' => '2',
+        ]);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('Clark', $html);
+        self::assertStringNotContainsString('Adams', $html);
+        self::assertStringNotContainsString('Brown', $html);
     }
 }
