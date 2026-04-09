@@ -1,12 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 1
-			path: ../../Classes/Controller/NewsAuthorController.php
-
-		-
 			message: '#^Method Mediadreams\\MdNewsAuthor\\Controller\\NewsAuthorController\:\:assignPagination\(\) has parameter \$items with generic interface TYPO3\\CMS\\Extbase\\Persistence\\QueryResultInterface but does not specify its types\: TKey, TValue$#'
 			identifier: missingType.generics
 			count: 1
