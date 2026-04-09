@@ -12,7 +12,7 @@ call_user_func(
         $plugins = [
             'list' => [
                 'cacheable' => 'list',
-                'nonCacheable' => 'list'
+                'nonCacheable' => ''
             ],
             'show' => [
                 'cacheable' => 'show',
