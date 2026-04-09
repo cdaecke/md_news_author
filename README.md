@@ -7,27 +7,75 @@ author which also shows the news records of the selected author.
 
 ## Requirements
 
-- TYPO3 >= 12.4
+- TYPO3 >= 13.4 or 14.x
 - ext:news >= 11.0
 
-### Installation
+## Installation
 
-- Install the extension by using the extension manager or use composer (`composer req mediadreams/md_news_author`)
-- Include the static TypoScript of the extension
-- Configure the extension by setting your own constants
+Install the extension via Composer:
+
+```bash
+composer req mediadreams/md_news_author
+```
+
+### Configuration via Site Sets (recommended)
+
+Site Sets are the preferred way to configure this extension in TYPO3 >= 13.4. Add the set to your
+site configuration in `config/sites/<your-site>/config.yaml`:
+
+```yaml
+dependencies:
+  - mediadreams/md-news-author
+```
+
+This automatically includes all necessary TypoScript. No manual TypoScript include is needed.
+
+You can then configure all settings directly in the **Site Management > Sites** backend module
+under the **Settings** tab.
+
+### Configuration via classic TypoScript
+
+Alternatively, include the static TypoScript manually:
+
+- Go to **Web > Template** and open your root template
+- In the **Includes** tab, add `News Author (md_news_author)` to the list of included static templates
+
+## Configuration
+
+### Available settings
+
+All settings can be configured via Site Sets or classic TypoScript constants.
+
+| Setting | Default | Description |
+|---|---|---|
+| `plugin.tx_mdnewsauthor.settings.authorDetailPid` | `0` | UID of the author detail page |
+| `plugin.tx_mdnewsauthor.settings.newsDetailPid` | `0` | UID of the news detail page |
+| `plugin.tx_mdnewsauthor.persistence.storagePid` | `0` | UID of the sysfolder with author records |
+| `plugin.tx_mdnewsauthor.settings.authorList.letters` | `A,B,...,Z` | Letters for the alphabetical filter |
+| `plugin.tx_mdnewsauthor.settings.authorList.paginate.itemsPerPage` | `10` | Items per page in list view |
+| `plugin.tx_mdnewsauthor.settings.authorList.paginate.insertAbove` | `false` | Show pagination above the list |
+| `plugin.tx_mdnewsauthor.settings.authorList.paginate.insertBelow` | `true` | Show pagination below the list |
+| `plugin.tx_mdnewsauthor.settings.authorList.paginate.maximumNumberOfLinks` | `6` | Maximum number of pagination links in list view |
+| `plugin.tx_mdnewsauthor.settings.authorDetail.paginate.itemsPerPage` | `10` | Items per page in detail view |
+| `plugin.tx_mdnewsauthor.settings.authorDetail.paginate.insertAbove` | `false` | Show pagination above the detail view |
+| `plugin.tx_mdnewsauthor.settings.authorDetail.paginate.insertBelow` | `true` | Show pagination below the detail view |
+| `plugin.tx_mdnewsauthor.settings.authorDetail.paginate.maximumNumberOfLinks` | `6` | Maximum number of pagination links in detail view |
+| `plugin.tx_mdnewsauthor.view.templateRootPath` | `EXT:md_news_author/…/Templates/` | Path to Fluid templates |
+| `plugin.tx_mdnewsauthor.view.partialRootPath` | `EXT:md_news_author/…/Partials/` | Path to Fluid partials |
+| `plugin.tx_mdnewsauthor.view.layoutRootPath` | `EXT:md_news_author/…/Layouts/` | Path to Fluid layouts |
 
 ## Usage
 
 ### Create authors and attach them to news records
 
-- Create some author records on a sysfolder (use list modul, push plus-icon `Create new record` and select `News Author`)
+- Create some author records on a sysfolder (use list module, push plus-icon `Create new record` and select `News Author`)
 - Create a news record on a sysfolder and find the new tab `Author`
 - Select one or more authors for the news record
 - Save and close
 
 ### List authors
 
-Insert paginated list of all authors.
+Insert a paginated list of all authors.
 
 - Create a plugin `News author: Author list` on a page
 - Choose for `Page with single author view` the page with single author view
@@ -36,9 +84,9 @@ Insert paginated list of all authors.
 - If needed, show authors of certain categories only (tab `Categories`)
 - Save and close
 
-### Authors detail page
+### Author detail page
 
-Insert an author detail view. This page includes also all news which are associated with the choosen author.
+Insert an author detail view. This page also lists all news records associated with the selected author.
 
 - Create a plugin `News author: Show author` on a page
 - Optionally choose for `Page with author list` the page with the list of all authors
@@ -48,10 +96,10 @@ Insert an author detail view. This page includes also all news which are associa
 
 ### Show author in ``ext:news`` view
 
-- Access the author properties in a news record with `{newsItem.newsAuthor}`. Since there could be more 
-than one author attached to a news record, you have to iterate:
+Access the author properties in a news record with `{newsItem.newsAuthor}`. Since there can be more
+than one author attached to a news record, iterate over them:
 
-```
+```html
 <f:for each="{newsItem.newsAuthor}" as="author">
     {md:ShowAuthorName(author: author)}
     {author.phone}
@@ -59,27 +107,32 @@ than one author attached to a news record, you have to iterate:
 </f:for>
 ```
 
-- Add a link to the profile page
+Add a link to the author profile page (load the viewhelper namespace first:
+`{namespace md=Mediadreams\MdNewsAuthor\ViewHelpers}`):
 
-Don't forget to load the viewhelper `{namespace md=Mediadreams\MdNewsAuthor\ViewHelpers}`:
-
-    <f:for each="{newsItem.newsAuthor}" as="author">
-        <f:link.action action="show" controller="NewsAuthor" extensionName="mdnewsauthor" pluginName="show" arguments="{newsAuthor: author}" pageUid="{settings.newsAuthor.authorDetailPid}" title="More about {md:ShowAuthorName(author:'{author}')}">
-            <md:ShowAuthorName author="{author}" />
-        </f:link.action>
-    </f:for>
+```html
+<f:for each="{newsItem.newsAuthor}" as="author">
+    <f:link.action action="show" controller="NewsAuthor" extensionName="mdnewsauthor" pluginName="show"
+        arguments="{newsAuthor: author}" pageUid="{settings.newsAuthor.authorDetailPid}"
+        title="More about {md:ShowAuthorName(author:'{author}')}">
+        <md:ShowAuthorName author="{author}" />
+    </f:link.action>
+</f:for>
+```
 
 ### Page TSconfig
 
-In order to show only authors of a single page in the "Authors"-tab of a news record, you can use the following TSconfig:
+To show only authors from a specific page in the `Author` tab of a news record:
 
-    TCEFORM.tx_news_domain_model_news.news_author.PAGE_TSCONFIG_STR = 1
+```typo3_typoscript
+TCEFORM.tx_news_domain_model_news.news_author.PAGE_TSCONFIG_STR = 1
+```
 
-This will show only the author records, which are stored on page ID = 1
+Replace `1` with the UID of the sysfolder containing your author records.
 
 ### ``routeEnhancers``
 
-```
+```yaml
 routeEnhancers:
   NewsAuthorList:
     type: Extbase
@@ -141,7 +194,7 @@ routeEnhancers:
     extension: MdNewsAuthor
     plugin: show
     routes:
-      - 
+      -
         routePath: '{slug}'
         _controller: 'NewsAuthor::show'
         _arguments:
@@ -170,6 +223,7 @@ routeEnhancers:
 ```
 
 ## Bugs and Known Issues
+
 If you find a bug, it would be nice if you add an issue on [Github](https://github.com/cdaecke/md_news_author/issues).
 
 # THANKS
@@ -178,4 +232,4 @@ Thanks a lot to all who make this outstanding TYPO3 project possible!
 
 ## Credits
 
-Icons used by this extension are kindly take from Font Awesome ([user](https://fontawesome.com/icons/user?style=solid) and [users](https://fontawesome.com/icons/users?f=classic&s=solid) ).
+Icons used by this extension are kindly taken from Font Awesome ([user](https://fontawesome.com/icons/user?style=solid) and [users](https://fontawesome.com/icons/users?f=classic&s=solid)).
